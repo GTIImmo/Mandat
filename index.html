@@ -3,35 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Mandat GTI Immobilier : experts locaux + équipe structurée + suivi jusqu'à la signature. Option collaborative : honoraires divisés par deux si vous apportez l'acquéreur (selon conditions)." />
-  <title>Mandat GTI Immobilier | GTI Immobilier</title>
+
+  <title>Mandat Signature GTI | Vendre avec GTI Immobilier</title>
+  <meta name="description" content="Mandat Signature GTI : estimation stratégique, mise en valeur premium, diffusion maîtrisée, visites qualifiées et suivi jusqu’à l’acte. Honoraires divisés par deux si acquéreur présenté (selon conditions)." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-<header class="topbar">
+
+<header class="topbar" id="siteHeader">
   <div class="container topbar__inner">
-    <a class="brand" href="#top" aria-label="Retour en haut">
-      <span class="brand__logoWrap" aria-hidden="true">
-        <img class="brand__logo"
-             src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
-             alt=""
-             loading="eager" />
-      </span>
-      <span class="brand__name">GTI Immobilier</span>
+    <a class="brand" href="#top" aria-label="GTI Immobilier - Mandat Signature GTI">
+      <img class="brand__logo"
+           src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+           alt="GTI Immobilier">
+      <div class="brand__txt">
+        <div class="brand__name">GTI Immobilier</div>
+        <div class="brand__sub">Mandat Signature GTI</div>
+      </div>
     </a>
 
-    <nav class="nav">
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#signature">Le mandat</a>
+      <a href="#preuve">Ce que vous obtenez</a>
       <a href="#methode">Méthode</a>
-      <a href="#equipe">Équipe</a>
-      <a href="#collab">Collaboratif</a>
+      <a href="#organisation">Organisation</a>
+      <a href="#engagement">Engagement</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn--small btn--ghost" href="#contact">Contact</a>
+      <a class="btn btn--ghost btn--small" href="#contact">Être rappelé</a>
+      <a class="btn btn--small" href="tel:+33XXXXXXXXX">Appeler</a>
     </nav>
 
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -41,11 +46,14 @@
 
   <div class="mobileNav" hidden>
     <div class="container mobileNav__inner">
+      <a href="#signature">Le mandat</a>
+      <a href="#preuve">Ce que vous obtenez</a>
       <a href="#methode">Méthode</a>
-      <a href="#equipe">Équipe</a>
-      <a href="#collab">Collaboratif</a>
+      <a href="#organisation">Organisation</a>
+      <a href="#engagement">Engagement</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn--small" href="#contact">Contact</a>
+      <a class="btn btn--ghost btn--small" href="#contact">Être rappelé</a>
+      <a class="btn btn--small" href="tel:+33XXXXXXXXX">Appeler</a>
     </div>
   </div>
 </header>
@@ -53,162 +61,138 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero">
+  <section id="signature" class="hero">
     <div class="container hero__grid">
-      <div class="hero__content">
-        <p class="badge">Mandat GTI Immobilier</p>
+      <div class="hero__copy reveal">
+        <div class="chip">Mandat Signature GTI</div>
 
-        <h1>
-          Vendez avec des <span class="grad">experts locaux</span>,
-          une <span class="grad2">équipe structurée</span> et un suivi complet jusqu’à la signature.
-        </h1>
+        <h1>Vendre avec méthode,<br>sans improvisation.</h1>
 
         <p class="lead">
-          Chez <strong>GTI Immobilier</strong>, votre vente est pilotée par un négociateur référent et soutenue par une organisation complète :
-          commercialisation, suivi, offres, coordination notaire. Une méthode claire, des décisions rapides, un cadre sécurisé.
+          Le <strong>Mandat Signature GTI</strong> encadre votre vente de l’estimation à l’acte définitif :
+          positionnement stratégique, mise en valeur premium, diffusion maîtrisée,
+          visites qualifiées, encadrement des offres et coordination notariale.
         </p>
 
-        <div class="hero__line">
-          <div class="trust">
-            <div class="trust__stars" aria-hidden="true">★★★★★</div>
-            <div class="trust__txt">
-              <strong>Approche haut de gamme</strong> • Suivi clair • Cadre sécurisé
-            </div>
-          </div>
-
-          <div class="phoneBox">
-            <span class="phoneBox__label">Appeler l’agence</span>
-            <a class="phoneBox__num" href="tel:+33XXXXXXXXX">+33 X XX XX XX XX</a>
-          </div>
-        </div>
+        <p class="lead lead--small">
+          Un interlocuteur référent pilote votre projet. Et une organisation coordonnée assure la continuité du suivi
+          pour une vente claire, sécurisée… et qui va au bout.
+        </p>
 
         <div class="hero__cta">
-          <a class="btn" href="#guide">Être orienté en 20 secondes</a>
-          <a class="btn btn--ghost" href="#contact">Demander un rappel</a>
+          <a class="btn" href="tel:+33XXXXXXXXX">📞 Appeler maintenant</a>
+          <a class="btn btn--ghost" href="#contact">✉️ Demander un rappel</a>
         </div>
 
-        <div class="chips">
-          <span class="chip">Experts locaux</span>
-          <span class="chip">Travail d’équipe</span>
-          <span class="chip">Suivi offres → vente</span>
-          <span class="chip chip--accent">Option collaborative</span>
+        <div class="callout">
+          <div class="callout__title">Engagement intégré au mandat</div>
+          <div class="callout__text">
+            Si vous présentez vous-même l’acquéreur, les honoraires sont <strong>divisés par deux</strong>,
+            selon les conditions prévues au mandat.
+            <span class="muted">L’accompagnement reste identique jusqu’à l’acte.</span>
+          </div>
         </div>
 
-        <p class="micro">
-          Option collaborative : honoraires divisés par deux si vous apportez l’acquéreur, selon conditions prévues au mandat.
+        <div class="hero__pills">
+          <div class="pill">
+            <div class="pill__k">Experts locaux</div>
+            <div class="pill__v">conseil & stratégie</div>
+          </div>
+          <div class="pill">
+            <div class="pill__k">Présentation premium</div>
+            <div class="pill__v">plus de confiance</div>
+          </div>
+          <div class="pill">
+            <div class="pill__k">Suivi A→Z</div>
+            <div class="pill__v">jusqu’à l’acte</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal">
+        <figure class="mediaCard">
+          <div class="mediaCard__frame">
+            <img src="assets/hero.jpg" alt="Mandat Signature GTI - GTI Immobilier" loading="eager">
+            <div class="mediaCard__grad" aria-hidden="true"></div>
+            <div class="mediaCard__badge">Mandat Signature GTI</div>
+          </div>
+          <figcaption>Une vente structurée, suivie et sécurisée — jusqu’à la signature.</figcaption>
+        </figure>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="kpi__n">1</div>
+            <div class="kpi__t">référent</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi__n">+1</div>
+            <div class="kpi__t">organisation</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi__n">A→Z</div>
+            <div class="kpi__t">jusqu’à l’acte</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREUVE / BENEFICES -->
+  <section id="preuve" class="section">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2>Ce que le Mandat Signature GTI vous apporte concrètement</h2>
+        <p>
+          Vendre un bien, ce n’est pas “mettre une annonce”. C’est positionner au bon prix, inspirer confiance,
+          qualifier les acquéreurs, puis sécuriser la vente jusqu’à l’acte. Voilà notre méthode.
         </p>
       </div>
 
-      <div class="hero__visual">
-        <figure class="photoCard">
-          <img src="assets/hero.jpg" alt="Vendre avec GTI Immobilier" loading="eager" />
-          <figcaption>
-            Une méthode structurée. Une équipe coordonnée. Un accompagnement jusqu’à la signature.
-          </figcaption>
-        </figure>
+      <div class="cards3">
+        <article class="card reveal">
+          <h3>Un prix juste, dès le départ</h3>
+          <p>Un bon positionnement crée de la demande et facilite une négociation saine.</p>
+          <details class="acc" data-acc-group="preuve">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Analyse comparative du marché local</li>
+                <li>Stratégie prix expliquée : cible, calendrier, leviers</li>
+                <li>Recommandations concrètes avant la mise en vente</li>
+              </ul>
+            </div>
+          </details>
+        </article>
 
-        <div class="mini-stats">
-          <div class="mini-stats__item">
-            <p class="mini-stats__k">1</p>
-            <p class="mini-stats__v">Référent</p>
-          </div>
-          <div class="mini-stats__item">
-            <p class="mini-stats__k">+1</p>
-            <p class="mini-stats__v">Équipe support</p>
-          </div>
-          <div class="mini-stats__item">
-            <p class="mini-stats__k">0</p>
-            <p class="mini-stats__v">Flou</p>
-          </div>
-        </div>
+        <article class="card reveal">
+          <h3>Une présentation premium</h3>
+          <p>Une annonce claire et soignée améliore la qualité des contacts.</p>
+          <details class="acc" data-acc-group="preuve">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Annonce structurée, informations essentielles complètes</li>
+                <li>Mise en avant des points forts et de l’usage</li>
+                <li>Objectif : moins de visites inutiles, plus de profils sérieux</li>
+              </ul>
+            </div>
+          </details>
+        </article>
 
-        <div class="logoStamp" aria-hidden="true">
-          <img src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
-               alt=""
-               loading="lazy" />
-        </div>
-      </div>
-    </div>
-
-    <div class="hero__bg" aria-hidden="true"></div>
-  </section>
-
-  <!-- GUIDE 20s -->
-  <section id="guide" class="section section--soft">
-    <div class="container">
-      <div class="section__head">
-        <h2>On vous oriente en 20 secondes</h2>
-        <p>Trois infos simples, et on vous indique la meilleure suite : appel, rappel, estimation.</p>
-      </div>
-
-      <div class="guide">
-        <div class="guide__fields">
-          <label>
-            <span>Ville / code postal</span>
-            <input id="g_city" type="text" placeholder="ex : Saint-Étienne / 42000" />
-          </label>
-
-          <label>
-            <span>Type de bien</span>
-            <select id="g_type">
-              <option value="" selected>Choisir…</option>
-              <option>Maison</option>
-              <option>Appartement</option>
-              <option>Terrain</option>
-              <option>Immeuble</option>
-              <option>Autre</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Votre délai</span>
-            <select id="g_delay">
-              <option value="" selected>Choisir…</option>
-              <option>Urgent (moins de 30 jours)</option>
-              <option>1 à 3 mois</option>
-              <option>3 à 6 mois</option>
-              <option>Plus de 6 mois</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="guide__actions">
-          <a class="btn" href="#contact" id="g_cta">Continuer</a>
-          <a class="btn btn--ghost" href="tel:+33XXXXXXXXX">Appeler</a>
-          <p class="micro" id="g_hint">Astuce : sur mobile, “Appeler” est le plus rapide.</p>
-        </div>
-
-        <div class="guide__note">
-          <strong>Pourquoi ce guide ?</strong>
-          <p>
-            Pour cadrer rapidement votre projet et vous orienter vers un expert de votre secteur, sans aller-retours inutiles.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VISU PROOF (photos) -->
-  <section class="section">
-    <div class="container">
-      <div class="section__head">
-        <h2>Une vente visuelle, cohérente et maîtrisée</h2>
-        <p>Des visuels de qualité et une présentation premium renforcent la confiance et accélèrent les décisions.</p>
-      </div>
-
-      <div class="gallery">
-        <figure class="shot">
-          <img src="assets/shot-1.jpg" alt="Mise en valeur du bien" loading="lazy" />
-          <figcaption>Mise en valeur</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="assets/shot-2.jpg" alt="Diffusion et visibilité" loading="lazy" />
-          <figcaption>Visibilité & diffusion</figcaption>
-        </figure>
-        <figure class="shot">
-          <img src="assets/shot-3.jpg" alt="Suivi des offres jusqu'à la vente" loading="lazy" />
-          <figcaption>Offres → vente</figcaption>
-        </figure>
+        <article class="card reveal">
+          <h3>Un suivi transparent</h3>
+          <p>Retours structurés, décisions au bon moment, ajustements cohérents.</p>
+          <details class="acc" data-acc-group="preuve">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Retours de visites clairs</li>
+                <li>Suivi des performances (demande, objections, signaux faibles)</li>
+                <li>Ajustements : présentation, ciblage, stratégie</li>
+              </ul>
+            </div>
+          </details>
+        </article>
       </div>
     </div>
   </section>
@@ -216,286 +200,315 @@
   <!-- METHODE -->
   <section id="methode" class="section section--soft">
     <div class="container">
-      <div class="section__head">
-        <h2>La méthode GTI Immobilier</h2>
-        <p>Une stratégie claire, suivie et ajustée au bon moment. Le but : vendre dans les meilleures conditions.</p>
+      <div class="section__head reveal">
+        <h2>La méthode du Mandat Signature GTI</h2>
+        <p>Chaque étape est cadrée. Rien n’est laissé à l’improvisation.</p>
       </div>
 
       <div class="steps">
-        <article class="step">
-          <div class="step__n">1</div>
-          <h3>Estimation argumentée</h3>
-          <p>Analyse du marché local, prix cohérent, stratégie expliquée.</p>
+        <article class="step reveal">
+          <div class="step__top">
+            <h3>1. Estimation stratégique</h3>
+            <p>Comprendre le marché local, positionner juste, démarrer fort.</p>
+          </div>
+          <details class="acc" data-acc-group="methode">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Analyse des comparables & de la demande locale</li>
+                <li>Stratégie expliquée : prix, cible, timing</li>
+                <li>Conseils pour améliorer la perception avant mise en ligne</li>
+              </ul>
+            </div>
+          </details>
         </article>
-        <article class="step">
-          <div class="step__n">2</div>
-          <h3>Mise en valeur</h3>
-          <p>Présentation soignée du bien, mise en avant de ses atouts.</p>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <h3>2. Mise en valeur premium</h3>
+            <p>La présentation influence la confiance… et le prix perçu.</p>
+          </div>
+          <details class="acc" data-acc-group="methode">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Annonce orientée bénéfices, claire, complète</li>
+                <li>Visuels soignés (logique de visite, points forts)</li>
+                <li>Objectif : contacts sérieux & visites utiles</li>
+              </ul>
+            </div>
+          </details>
         </article>
-        <article class="step">
-          <div class="step__n">3</div>
-          <h3>Diffusion maîtrisée</h3>
-          <p>Visibilité optimisée + suivi des performances + ajustements.</p>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <h3>3. Diffusion maîtrisée</h3>
+            <p>Visibilité oui — mais visibilité efficace.</p>
+          </div>
+          <details class="acc" data-acc-group="methode">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Diffusion sur les canaux pertinents</li>
+                <li>Suivi de performance et retours terrain</li>
+                <li>Ajustements si nécessaire</li>
+              </ul>
+            </div>
+          </details>
         </article>
-        <article class="step">
-          <div class="step__n">4</div>
-          <h3>Visites qualifiées</h3>
-          <p>Tri des profils, visites ciblées, retours structurés.</p>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <h3>4. Visites qualifiées</h3>
+            <p>Moins de visites, mais des visites utiles.</p>
+          </div>
+          <details class="acc" data-acc-group="methode">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Qualification projet / timing / financement</li>
+                <li>Visites ciblées et retours structurés</li>
+                <li>Relances des profils intéressés</li>
+              </ul>
+            </div>
+          </details>
         </article>
-        <article class="step">
-          <div class="step__n">5</div>
-          <h3>Offres & négociation</h3>
-          <p>Encadrement des offres, sécurisation, négociation avec méthode.</p>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <h3>5. Offres & négociation</h3>
+            <p>Encadrer, sécuriser, négocier avec méthode.</p>
+          </div>
+          <details class="acc" data-acc-group="methode">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Analyse des conditions d’offre</li>
+                <li>Négociation structurée</li>
+                <li>Sécurisation du dossier pour aller au bout</li>
+              </ul>
+            </div>
+          </details>
         </article>
-        <article class="step">
-          <div class="step__n">6</div>
-          <h3>Jusqu’à la signature</h3>
-          <p>Coordination notaire et accompagnement jusqu’à l’acte.</p>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <h3>6. Suivi jusqu’à l’acte</h3>
+            <p>Notaire, pièces, délais : on pilote jusqu’à la signature.</p>
+          </div>
+          <details class="acc" data-acc-group="methode">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Coordination notariale</li>
+                <li>Suivi des pièces et étapes</li>
+                <li>Accompagnement jusqu’à l’acte définitif</li>
+              </ul>
+            </div>
+          </details>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- EQUIPE -->
-  <section id="equipe" class="section">
+  <!-- ORGANISATION -->
+  <section id="organisation" class="section">
     <div class="container">
-      <div class="section__head">
-        <h2>Des experts locaux + une équipe coordonnée</h2>
-        <p>La base, c’est l’expertise. Le différenciant, c’est l’équipe qui sécurise et fait avancer la vente.</p>
+      <div class="section__head reveal">
+        <h2>Un référent… et une organisation coordonnée</h2>
+        <p>
+          La qualité des négociateurs est la base : experts locaux, formés et suivis.
+          Et derrière, une organisation structurée pour la continuité, la commercialisation et le suivi des offres jusqu’à la vente.
+        </p>
       </div>
 
-      <div class="grid-2">
-        <div class="panel">
-          <h3>Experts de leur secteur</h3>
-          <ul class="bullets">
-            <li>Connaissance fine du marché local</li>
-            <li>Conseil prix & stratégie (données, méthode, cohérence)</li>
-            <li>Formation & accompagnement dans la durée</li>
-            <li>Exigence : suivi, retours, décisions</li>
-          </ul>
+      <div class="split">
+        <div class="panel reveal">
+          <h3>Des experts locaux, exigeants</h3>
+          <p>Connaissance terrain, réalisme sur le prix, capacité de négociation : c’est ce qui fait la différence.</p>
+          <details class="acc" data-acc-group="orga">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Conseil stratégique (positionnement, timing, objections)</li>
+                <li>Qualification et pilotage des visites</li>
+                <li>Négociation cadrée, orientée résultat</li>
+              </ul>
+            </div>
+          </details>
         </div>
 
-        <div class="panel">
-          <h3>Une vente portée par plusieurs compétences</h3>
-          <ul class="bullets">
-            <li>Référent : piloter, décider, ajuster</li>
-            <li>Commercialisation : diffusion, performance, qualité</li>
-            <li>Suivi offres : encadrement, sécurisation, notaire</li>
-            <li>Continuité : votre projet avance même si un agenda bouge</li>
-          </ul>
+        <div class="panel reveal">
+          <h3>Un suivi de dossier qui va au bout</h3>
+          <p>Après l’offre, la vente se gagne : pièces, délais, notaire, coordination.</p>
+          <details class="acc" data-acc-group="orga">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Suivi administratif et pièces</li>
+                <li>Offres : conditions, délais, financement</li>
+                <li>Coordination des étapes jusqu’à l’acte</li>
+              </ul>
+            </div>
+          </details>
         </div>
-      </div>
-
-      <div class="quote">
-        <p><strong>Vous avez un interlocuteur.</strong> Et derrière lui, une équipe qui suit, structure et sécurise la vente jusqu’au bout.</p>
       </div>
     </div>
   </section>
 
-  <!-- COLLAB -->
-  <section id="collab" class="section section--soft">
+  <!-- ENGAGEMENT -->
+  <section id="engagement" class="section section--soft">
     <div class="container">
-      <div class="section__head">
-        <h2>Option collaborative : vous activez votre réseau, nous pilotons et sécurisons</h2>
-        <p>Une vente est souvent plus efficace quand le vendeur peut aussi créer des opportunités, sans perdre le cadre professionnel.</p>
+      <div class="section__head reveal">
+        <h2>Un engagement équilibré</h2>
+        <p>
+          Si vous présentez vous-même l’acquéreur, les honoraires sont divisés par deux (selon conditions du mandat),
+          tout en gardant le même accompagnement jusqu’à la signature.
+        </p>
       </div>
 
-      <div class="cards">
-        <article class="card">
-          <h3>Vous restez acteur</h3>
-          <p>Vous pouvez partager, présenter, répondre à une demande. Nous restons le cadre : stratégie, négociation, sécurité.</p>
-        </article>
-
-        <article class="card card--highlight">
-          <h3>Si vous apportez l’acquéreur</h3>
-          <p class="big">Honoraires <strong>divisés par deux</strong>*</p>
+      <div class="engagement">
+        <div class="engagement__main reveal">
+          <h3>Honoraires divisés par deux si vous présentez l’acquéreur</h3>
           <p>
-            Ce n’est pas une “remise discount”. C’est un partage du travail.
-            Nous assurons l’offre, la sécurisation, le notaire et l’accompagnement jusqu’à la signature.
+            Ce n’est pas une “promo”. C’est une logique de travail partagé : vous apportez un contact,
+            et nous sécurisons la vente avec la même exigence jusqu’à l’acte.
           </p>
-          <p class="micro">* Selon conditions prévues au mandat GTI Immobilier.</p>
-        </article>
 
-        <article class="card">
-          <h3>Ce que nous prenons en charge</h3>
-          <ul class="checklist">
-            <li>Encadrement de l’offre d’achat</li>
-            <li>Sécurisation du dossier</li>
-            <li>Négociation & coordination</li>
-            <li>Suivi notaire jusqu’à l’acte</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="ctaBox">
-        <div>
-          <h3>Parlons de votre projet</h3>
-          <p>En 10 minutes, on vous explique le fonctionnement et la meilleure stratégie selon votre situation.</p>
-        </div>
-        <div class="ctaBox__btns">
-          <a class="btn" href="tel:+33XXXXXXXXX">Appeler</a>
-          <a class="btn btn--ghost" href="#contact">Rappel</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT / FORM -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section__head">
-        <h2>Contact rapide</h2>
-        <p>Choisissez : estimation ou rappel. Formulaire intelligent, très court.</p>
-      </div>
-
-      <div class="contactGrid">
-        <div class="contactCard">
-          <div class="contactCard__head">
-            <img class="contactCard__logo"
-                 src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
-                 alt="GTI Immobilier"
-                 loading="lazy" />
-          </div>
-          <h3>📞 Appel direct</h3>
-          <p class="muted">Le plus rapide, surtout sur mobile.</p>
-          <a class="btn" href="tel:+33XXXXXXXXX">Appeler +33 X XX XX XX XX</a>
-          <p class="micro">Remplace le numéro dans le code (tel:+33…).</p>
+          <details class="acc" data-acc-group="eng">
+            <summary>Voir le détail</summary>
+            <div class="acc__body">
+              <ul>
+                <li>Encadrement de l’offre et des conditions</li>
+                <li>Vérification / sécurisation du dossier</li>
+                <li>Coordination notariale et suivi jusqu’à l’acte</li>
+              </ul>
+            </div>
+          </details>
         </div>
 
-        <form class="form" id="smartForm">
-          <input type="hidden" name="source" value="Mandat GTI Immobilier - Landing" />
-          <input type="hidden" name="utm_source" id="utm_source" />
-          <input type="hidden" name="utm_medium" id="utm_medium" />
-          <input type="hidden" name="utm_campaign" id="utm_campaign" />
-          <input type="hidden" name="utm_content" id="utm_content" />
-          <input type="hidden" name="utm_term" id="utm_term" />
-          <!-- honeypot anti-bot -->
-          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-          <div class="toggle">
-            <button type="button" class="toggle__btn is-active" data-mode="estimation">Estimation</button>
-            <button type="button" class="toggle__btn" data-mode="rappel">Rappel</button>
+        <div class="engagement__aside reveal">
+          <div class="mini">
+            <div class="mini__t">Je veux vendre vite</div>
+            <div class="mini__p">On positionne juste, on diffuse efficacement, on qualifie fort.</div>
+            <a class="mini__a" href="tel:+33XXXXXXXXX">Appeler</a>
           </div>
-
-          <div class="form__grid">
-            <label>
-              <span>Votre prénom</span>
-              <input name="first_name" type="text" autocomplete="given-name" required />
-            </label>
-            <label>
-              <span>Votre téléphone</span>
-              <input name="phone" type="tel" autocomplete="tel" required />
-            </label>
-
-            <label class="span-2">
-              <span>Email (optionnel)</span>
-              <input name="email" type="email" autocomplete="email" />
-            </label>
-
-            <label class="span-2" id="field_address">
-              <span>Adresse / ville du bien</span>
-              <input name="address" type="text" placeholder="ex : Firminy, rue…" />
-            </label>
-
-            <label id="field_type">
-              <span>Type de bien</span>
-              <select name="property_type">
-                <option value="" selected>Choisir…</option>
-                <option>Maison</option>
-                <option>Appartement</option>
-                <option>Terrain</option>
-                <option>Immeuble</option>
-                <option>Autre</option>
-              </select>
-            </label>
-
-            <label id="field_delay">
-              <span>Délai</span>
-              <select name="delay">
-                <option value="" selected>Choisir…</option>
-                <option>Urgent</option>
-                <option>1 à 3 mois</option>
-                <option>3 à 6 mois</option>
-                <option>Plus de 6 mois</option>
-              </select>
-            </label>
-
-            <label class="span-2" id="field_slot" hidden>
-              <span>Quand vous rappeler ?</span>
-              <select name="slot">
-                <option value="" selected>Choisir…</option>
-                <option>Dans la journée</option>
-                <option>Demain matin</option>
-                <option>Demain après-midi</option>
-                <option>Cette semaine</option>
-              </select>
-            </label>
-
-            <label class="span-2">
-              <span>Message (optionnel)</span>
-              <textarea name="message" rows="3" placeholder="Ville, contexte, contrainte de délai…"></textarea>
-            </label>
+          <div class="mini">
+            <div class="mini__t">Je veux vendre au meilleur prix</div>
+            <div class="mini__p">Mise en valeur + stratégie + négociation structurée.</div>
+            <a class="mini__a" href="#contact">Être rappelé</a>
           </div>
-
-          <div class="form__actions">
-            <button class="btn" type="submit" id="submitBtn">Demander une estimation</button>
-            <p class="micro" id="formStatus" aria-live="polite"></p>
+          <div class="mini">
+            <div class="mini__t">J’ai déjà un acquéreur</div>
+            <div class="mini__p">On vous dit comment le sécuriser rapidement.</div>
+            <a class="mini__a" href="#contact">Expliquer ma situation</a>
           </div>
+        </div>
+      </div>
 
-          <p class="micro">
-            En envoyant ce formulaire, vous acceptez d’être recontacté par GTI Immobilier au sujet de votre demande.
-          </p>
-        </form>
+      <div class="banner reveal">
+        <strong>Parlons de votre projet.</strong> En 10 minutes : stratégie, prix, timing, plan d’action.
+        <div class="banner__cta">
+          <a class="btn btn--small" href="tel:+33XXXXXXXXX">Appeler</a>
+          <a class="btn btn--ghost btn--small" href="#contact">Être rappelé</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section section--soft">
+  <section id="faq" class="section">
     <div class="container">
-      <div class="section__head">
+      <div class="section__head reveal">
         <h2>FAQ</h2>
-        <p>Simple et utile. Si vous préférez : appelez-nous, on vous explique en 10 minutes.</p>
+        <p>Simple, utile, concret.</p>
       </div>
 
       <div class="faq">
-        <details>
-          <summary>Qu’est-ce que le Mandat GTI Immobilier ?</summary>
-          <div class="faq__content">
-            <p>
-              Une méthode de vente structurée : estimation, mise en valeur, diffusion maîtrisée, visites qualifiées,
-              suivi, offres et accompagnement jusqu’à la signature.
-            </p>
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Le Mandat Signature GTI, c’est quoi exactement ?</summary>
+          <div class="faq__body">
+            <p>Une méthode complète : estimation, mise en valeur, diffusion, visites qualifiées, offres et suivi jusqu’à l’acte.</p>
           </div>
         </details>
 
-        <details>
-          <summary>Comment se passe le suivi ?</summary>
-          <div class="faq__content">
-            <p>
-              Vous avez un interlocuteur référent et un suivi clair : retours structurés, décisions rapides,
-              ajustements quand c’est utile.
-            </p>
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Et si je présente moi-même l’acquéreur ?</summary>
+          <div class="faq__body">
+            <p>Selon les conditions du mandat, les honoraires sont divisés par deux. L’accompagnement reste identique jusqu’à la signature.</p>
           </div>
         </details>
 
-        <details>
-          <summary>Option collaborative : comment ça marche ?</summary>
-          <div class="faq__content">
-            <p>
-              Vous pouvez activer votre réseau et créer des opportunités. Nous gardons le cadre professionnel :
-              offre, sécurité, notaire, accompagnement jusqu’à l’acte. Si vous apportez l’acquéreur, les honoraires
-              sont divisés par deux selon les conditions prévues au mandat.
-            </p>
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Pourquoi l’estimation est si importante ?</summary>
+          <div class="faq__body">
+            <p>Le bon prix déclenche la demande, améliore la qualité des visites et protège votre négociation.</p>
           </div>
         </details>
+      </div>
+    </div>
+  </section>
 
-        <details>
-          <summary>Je préfère un échange rapide : c’est possible ?</summary>
-          <div class="faq__content">
-            <p>Oui : l’appel direct est le plus rapide. Sinon, laissez votre téléphone, on vous rappelle.</p>
-          </div>
-        </details>
+  <!-- CONTACT -->
+  <section id="contact" class="section section--soft">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2>Contact rapide</h2>
+        <p>Appel direct ou demande de rappel. Formulaire court et efficace.</p>
+      </div>
+
+      <div class="contact">
+        <div class="contact__card reveal">
+          <h3>📞 Appel direct</h3>
+          <p class="muted">Le plus rapide, surtout sur mobile.</p>
+          <a class="btn" href="tel:+33XXXXXXXXX">Appeler l’agence</a>
+          <p class="micro">Astuce : si vous avez déjà un acquéreur, dites-le dès le début.</p>
+        </div>
+
+        <form class="form reveal" id="contactForm">
+          <div class="form__title">Demande de rappel / estimation</div>
+
+          <label>
+            <span>Votre prénom</span>
+            <input name="prenom" type="text" required />
+          </label>
+
+          <label>
+            <span>Téléphone</span>
+            <input name="tel" type="tel" required />
+          </label>
+
+          <label>
+            <span>Email (optionnel)</span>
+            <input name="email" type="email" />
+          </label>
+
+          <label>
+            <span>Ville / adresse du bien (optionnel)</span>
+            <input name="ville" type="text" />
+          </label>
+
+          <label>
+            <span>Votre situation</span>
+            <select name="situation">
+              <option value="" selected>Choisir…</option>
+              <option>Je veux vendre vite</option>
+              <option>Je veux vendre au meilleur prix</option>
+              <option>J’ai déjà un acquéreur potentiel</option>
+              <option>Je veux une estimation d’abord</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Message (optionnel)</span>
+            <textarea name="message" rows="4" placeholder="Expliquez votre projet en quelques mots…"></textarea>
+          </label>
+
+          <button class="btn" type="submit">Envoyer</button>
+          <p class="form__msg" id="formMsg" aria-live="polite"></p>
+
+          <p class="micro">En envoyant ce formulaire, vous acceptez d’être recontacté par GTI Immobilier.</p>
+        </form>
       </div>
     </div>
   </section>
@@ -505,33 +518,26 @@
       <div class="footer__left">
         <img class="footer__logo"
              src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
-             alt="GTI Immobilier"
-             loading="lazy" />
+             alt="GTI Immobilier">
         <div>
-          <p class="footer__brand">GTI Immobilier</p>
-          <p class="micro">© <span id="year"></span> — Tous droits réservés.</p>
+          <div class="footer__brand">GTI Immobilier</div>
+          <div class="footer__sub">© <span id="year"></span> — Tous droits réservés</div>
         </div>
       </div>
-
       <div class="footer__links">
-        <a href="#top">Haut de page</a>
+        <a href="#top">Haut</a>
         <a href="#contact">Contact</a>
-        <a href="#faq">FAQ</a>
+        <a href="tel:+33XXXXXXXXX">Appeler</a>
       </div>
     </div>
   </footer>
 
-</main>
+  <div class="stickyCta" role="region" aria-label="Actions rapides">
+    <a class="stickyCta__btn" href="tel:+33XXXXXXXXX"><span>📞</span><span>Appeler</span></a>
+    <a class="stickyCta__btn stickyCta__btn--primary" href="#contact"><span>✉️</span><span>Contact</span></a>
+  </div>
 
-<!-- STICKY CTA -->
-<div class="stickyCta" role="region" aria-label="Actions rapides">
-  <a class="stickyCta__btn" href="tel:+33XXXXXXXXX" title="Appeler">
-    <span aria-hidden="true">📞</span><span>Appeler</span>
-  </a>
-  <a class="stickyCta__btn stickyCta__btn--primary" href="#contact" title="Contact">
-    <span aria-hidden="true">✉️</span><span>Contact</span>
-  </a>
-</div>
+</main>
 
 <script src="script.js"></script>
 </body>
