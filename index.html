@@ -1,146 +1,415 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+:root{
+  --bg:#ffffff;
+  --soft:#f6f7fb;
+  --text:#0f1115;
+  --muted:rgba(15,17,21,.72);
+  --line:rgba(15,17,21,.10);
 
-<title>Mandat Signature GTI | Vendre avec GTI Immobilier</title>
-<meta name="description" content="Vendez votre maison ou appartement avec le Mandat Signature GTI : estimation stratégique, diffusion maîtrisée, sécurisation jusqu’à l’acte. Honoraires divisés par deux si acquéreur présenté (selon conditions).">
+  --primary:#b31252;   /* framboise premium */
+  --primary2:#0b6b63;  /* vert pétrole discret */
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
+  --shadow: 0 18px 60px rgba(15,17,21,.10);
+  --shadow2: 0 10px 30px rgba(15,17,21,.08);
+  --shadow3: 0 6px 18px rgba(15,17,21,.06);
 
-<body>
+  --r:18px;
+  --r2:26px;
+  --container:1140px;
+}
 
-<header>
-  <div class="container nav">
-    <div class="logo">
-      <img src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png" alt="GTI Immobilier">
-    </div>
-    <div class="nav-links">
-      <a href="#methode">La méthode</a>
-      <a href="#engagement">Engagement</a>
-      <a href="#contact" class="btn btn-outline">Être rappelé</a>
-    </div>
-  </div>
-</header>
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.55;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(var(--container), calc(100% - 44px)); margin:0 auto}
 
-<section class="hero">
-  <div class="container hero-grid">
-    <div>
-      <h1>Mandat Signature GTI</h1>
-      <h2>L’exigence d’une méthode. La force d’une équipe.</h2>
+.muted{color:var(--muted)}
+/* Header */
+.header{
+  position:sticky; top:0; z-index:100;
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 0;
+  gap:14px;
+}
+.brand{
+  display:flex; align-items:center; gap:14px;
+  min-width:260px;
+}
+.brand-logo{
+  height:46px; width:auto;
+  padding:10px 14px;
+  border-radius:999px;
+  background: rgba(15,17,21,.03);
+  border:1px solid var(--line);
+  box-shadow: var(--shadow3);
+}
+.brand-text{display:flex; flex-direction:column; line-height:1.1}
+.brand-name{font-weight:900; letter-spacing:.2px}
+.brand-sub{font-size:12px; color:rgba(15,17,21,.62); font-weight:850}
 
-      <p class="lead">
-        Vendre votre maison ou votre appartement avec <strong>GTI Immobilier</strong>, 
-        c’est choisir une agence immobilière organisée, structurée et engagée 
-        jusqu’à la signature définitive.
-      </p>
+.nav-links{
+  display:flex; align-items:center; gap:16px;
+  font-weight:850; color:rgba(15,17,21,.78);
+}
+.nav-links a{padding:8px 10px; border-radius:14px}
+.nav-links a:hover{background:rgba(15,17,21,.05); color:var(--text)}
 
-      <div class="cta-group">
-        <a href="tel:+33XXXXXXXXX" class="btn">Appeler maintenant</a>
-        <a href="#contact" class="btn btn-outline">Demander une estimation</a>
-      </div>
+.burger{
+  display:none;
+  width:44px; height:44px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background: rgba(15,17,21,.03);
+  cursor:pointer;
+}
+.burger span{display:block; width:18px; height:2px; background:rgba(15,17,21,.65); margin:5px auto; border-radius:99px}
 
-      <div class="engagement-highlight">
-        <strong>Engagement équilibré :</strong> si vous présentez vous-même l’acquéreur,
-        les honoraires sont divisés par deux, selon les conditions prévues au mandat.
-      </div>
-    </div>
+.mobile{border-top:1px solid var(--line); background: rgba(255,255,255,.94)}
+.mobile-links{display:flex; flex-direction:column; gap:10px; padding:14px 0 18px}
+.mobile-links a{padding:10px 12px; border-radius:14px; font-weight:900; color:rgba(15,17,21,.78)}
+.mobile-links a:hover{background:rgba(15,17,21,.05); color:var(--text)}
 
-    <div class="hero-image">
-      <img src="assets/hero.jpg" alt="Vendre avec GTI Immobilier">
-    </div>
-  </div>
-</section>
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:12px 16px;
+  border-radius:16px;
+  font-weight:950;
+  border:1px solid rgba(179,18,82,.18);
+  background: linear-gradient(135deg, rgba(179,18,82,1), rgba(179,18,82,.85));
+  color:#fff;
+  box-shadow: 0 10px 24px rgba(179,18,82,.16);
+  transition: transform .15s ease, filter .15s ease;
+}
+.btn:hover{transform: translateY(-1px); filter: brightness(1.02)}
+.btn-outline{
+  background: rgba(15,17,21,.03);
+  border:1px solid var(--line);
+  color: var(--text);
+  box-shadow: none;
+}
+.btn-outline:hover{background: rgba(15,17,21,.05)}
 
-<section id="methode" class="section">
-  <div class="container">
-    <h2>Une vente immobilière structurée de A à Z</h2>
+/* Hero */
+.hero{
+  padding:56px 0 26px;
+  background:
+    radial-gradient(900px 520px at 10% -10%, rgba(179,18,82,.08), transparent 62%),
+    radial-gradient(900px 520px at 92% 10%, rgba(11,107,99,.06), transparent 62%),
+    #fff;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap:34px;
+  align-items:start;
+}
+.tag{
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(15,17,21,.03);
+  font-weight:950;
+  width:fit-content;
+}
+h1{
+  font-size: clamp(32px, 4.2vw, 54px);
+  line-height:1.05;
+  letter-spacing:-.035em;
+  margin:14px 0 10px;
+}
+.hero-sub{color:var(--muted); font-size:18px; margin:0 0 12px; font-weight:800}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px; margin:14px 0 14px}
 
-    <div class="grid-3">
-      <div class="card">
-        <h3>Estimation stratégique</h3>
-        <p>Analyse du marché local, positionnement cohérent et stratégie de mise en vente argumentée.</p>
-      </div>
+.highlight{
+  border:1px solid var(--line);
+  background: linear-gradient(135deg, rgba(11,107,99,.08), rgba(179,18,82,.06));
+  padding:14px;
+  border-radius: var(--r);
+  box-shadow: var(--shadow3);
+}
+.highlight-title{font-weight:950; margin-bottom:6px}
+.highlight-text{color:rgba(15,17,21,.88); font-weight:850}
 
-      <div class="card">
-        <h3>Commercialisation maîtrisée</h3>
-        <p>Mise en valeur professionnelle, diffusion optimisée et suivi des performances.</p>
-      </div>
+.pill-row{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px}
+.pill{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  padding:12px;
+  border-radius: var(--r);
+  box-shadow: var(--shadow3);
+}
+.pill strong{display:block; font-weight:950}
+.pill span{display:block; color:var(--muted); font-weight:850; margin-top:4px}
 
-      <div class="card">
-        <h3>Sécurisation complète</h3>
-        <p>Encadrement des offres, coordination notariale et accompagnement jusqu’à l’acte définitif.</p>
-      </div>
-    </div>
-  </div>
-</section>
+.hero-img{
+  border-radius: var(--r2);
+  overflow:hidden;
+  border:1px solid rgba(15,17,21,.08);
+  box-shadow: var(--shadow);
+}
+.hero-img img{width:100%; height:380px; object-fit:cover; display:block}
 
-<section class="section light">
-  <div class="container">
-    <h2>Un référent… et une organisation derrière lui</h2>
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px}
+.kpi{
+  border:1px solid var(--line);
+  background: rgba(15,17,21,.03);
+  border-radius: var(--r);
+  padding:14px;
+  box-shadow: var(--shadow3);
+}
+.kpi-n{font-weight:950; font-size:20px}
+.kpi-t{color:rgba(15,17,21,.60); font-weight:900; font-size:13px; margin-top:4px}
 
-    <p>
-      Votre interlocuteur pilote la stratégie de vente. 
-      Une organisation coordonnée assure la continuité : commercialisation, suivi des dossiers,
-      gestion des offres et respect des délais.
-    </p>
+/* Sections */
+.section{padding:68px 0}
+.soft{
+  background: var(--soft);
+  border-top:1px solid rgba(15,17,21,.08);
+  border-bottom:1px solid rgba(15,17,21,.08);
+}
+.section-head{margin-bottom:22px}
+.section-head h2{
+  margin:0;
+  font-size: clamp(22px, 3vw, 34px);
+  letter-spacing:-.02em;
+}
+.section-head p{margin:10px 0 0; color:var(--muted); max-width:95ch; font-weight:850}
 
-    <p>
-      Ce fonctionnement garantit rigueur, réactivité et sérénité.
-      Votre vente avance, même lorsque votre conseiller est en rendez-vous.
-    </p>
-  </div>
-</section>
+.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
+.card{
+  padding:18px;
+  border-radius: var(--r2);
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  box-shadow: var(--shadow3);
+}
+.card h3{margin:0 0 8px}
+.card p{margin:0; color:var(--muted); font-weight:850}
 
-<section id="engagement" class="section">
-  <div class="container">
-    <h2>Un mandat exigeant… et juste</h2>
+/* Gallery */
+.gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.shot{
+  margin:0;
+  border-radius: var(--r2);
+  overflow:hidden;
+  border:1px solid rgba(15,17,21,.08);
+  background:#fff;
+  box-shadow: var(--shadow3);
+}
+.shot img{width:100%; height:240px; object-fit:cover; display:block}
+.shot figcaption{
+  padding:12px 14px;
+  display:flex; flex-direction:column; gap:4px;
+}
+.shot figcaption strong{font-weight:950}
+.shot figcaption span{color:var(--muted); font-weight:850}
 
-    <p>
-      Le Mandat Signature GTI repose sur une relation de confiance et un engagement réciproque.
-      Vous bénéficiez d’un cadre structuré pour vendre efficacement.
-    </p>
+/* Steps + accordions */
+.steps{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+.step{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  border-radius: var(--r2);
+  padding:18px;
+  box-shadow: var(--shadow3);
+}
+.step-top h3{margin:0 0 6px}
+.step-top p{margin:0; color:var(--muted); font-weight:850}
 
-    <p>
-      Et si vous avez déjà trouvé un acquéreur ou si vous en présentez un,
-      les honoraires sont divisés par deux, selon les conditions prévues au mandat.
-      L’accompagnement reste identique jusqu’à la signature.
-    </p>
-  </div>
-</section>
+.acc{
+  margin-top:12px;
+  border:1px solid rgba(15,17,21,.10);
+  border-radius: 18px;
+  background: rgba(15,17,21,.02);
+  overflow:hidden;
+}
+.acc summary{
+  cursor:pointer;
+  list-style:none;
+  padding:12px 14px;
+  font-weight:950;
+  color:rgba(15,17,21,.86);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{
+  content:"+";
+  font-weight:950;
+  color:rgba(15,17,21,.70);
+}
+.acc[open] summary::after{content:"–"}
+.acc-body{padding:12px 14px; color:var(--muted); font-weight:850}
+.acc-body ul{margin:10px 0 0; padding-left:18px}
+.acc-body li{margin:6px 0}
 
-<section id="contact" class="section contact-section">
-  <div class="container contact-grid">
-    <div>
-      <h2>Parlons de votre projet</h2>
-      <p>
-        Un échange de quelques minutes suffit pour définir la meilleure stratégie 
-        et positionner votre bien au bon prix.
-      </p>
+/* Feature block */
+.feature{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:12px;
+  align-items:start;
+}
+.feature-left, .feature-right{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  border-radius: var(--r2);
+  padding:18px;
+  box-shadow: var(--shadow3);
+}
+.mini-cases{display:grid; grid-template-columns:1fr; gap:10px}
+.mini-case{
+  border:1px solid rgba(15,17,21,.10);
+  border-radius: 18px;
+  padding:14px;
+  background:
+    radial-gradient(500px 220px at 20% 0%, rgba(179,18,82,.08), transparent 60%),
+    rgba(255,255,255,.92);
+}
+.mini-title{font-weight:950}
+.mini-txt{color:var(--muted); font-weight:850; margin:6px 0 10px}
+.mini-link{
+  display:inline-flex;
+  padding:10px 12px;
+  border-radius: 14px;
+  border:1px solid rgba(179,18,82,.18);
+  background: rgba(179,18,82,.10);
+  color: rgba(15,17,21,.92);
+  font-weight:950;
+}
+.mini-link:hover{background: rgba(179,18,82,.14)}
 
-      <a href="tel:+33XXXXXXXXX" class="btn">📞 Appeler l’agence</a>
-    </div>
+.quote{
+  margin-top:12px;
+  border:1px solid rgba(15,17,21,.08);
+  background: linear-gradient(135deg, rgba(11,107,99,.08), rgba(179,18,82,.06));
+  border-radius: var(--r2);
+  padding:18px;
+  font-weight:950;
+}
 
-    <form id="contactForm">
-      <input type="text" placeholder="Votre prénom" required>
-      <input type="tel" placeholder="Votre téléphone" required>
-      <input type="text" placeholder="Ville du bien">
-      <button type="submit" class="btn">Être rappelé</button>
-      <p id="formMessage"></p>
-    </form>
-  </div>
-</section>
+/* FAQ */
+.faq{display:grid; gap:10px}
+.faq-item{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  border-radius: var(--r2);
+  padding:14px 16px;
+  box-shadow: var(--shadow3);
+}
+.faq-item summary{cursor:pointer; font-weight:950; list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-body{margin-top:10px; color:var(--muted); font-weight:850}
 
-<footer>
-  <div class="container footer">
-    <img src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png" alt="GTI Immobilier">
-    <p>© <span id="year"></span> GTI Immobilier — Tous droits réservés</p>
-  </div>
-</footer>
+/* Contact */
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  align-items:start;
+}
+.contact-left{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  border-radius: var(--r2);
+  padding:18px;
+  box-shadow: var(--shadow3);
+}
+.contact-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:12px}
+.contact-note{
+  margin-top:12px;
+  padding:14px;
+  border-radius: var(--r);
+  border:1px solid rgba(15,17,21,.10);
+  background: rgba(15,17,21,.02);
+  font-weight:850;
+  color:rgba(15,17,21,.80);
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+.form{
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.92);
+  border-radius: var(--r2);
+  padding:18px;
+  box-shadow: var(--shadow3);
+}
+.form-title{font-weight:950; margin-bottom:12px}
+.form label{display:flex; flex-direction:column; gap:8px; margin-bottom:12px; font-weight:950}
+.form input,.form select,.form textarea{
+  border-radius: 16px;
+  border:1px solid rgba(15,17,21,.12);
+  padding:12px;
+  font-weight:850;
+  font-family:inherit;
+  outline:none;
+}
+.form input:focus,.form select:focus,.form textarea:focus{
+  border-color: rgba(179,18,82,.26);
+  box-shadow: 0 0 0 4px rgba(179,18,82,.10);
+}
+.form-msg{margin:10px 0 0; color:rgba(15,17,21,.70); font-weight:900}
+.form-legal{margin-top:12px; color:rgba(15,17,21,.55); font-weight:850; font-size:12px}
+
+/* Footer */
+.footer{border-top:1px solid rgba(15,17,21,.08); padding:22px 0 78px}
+.footer-inner{display:flex; justify-content:space-between; gap:16px; align-items:flex-start}
+.footer-left{display:flex; gap:12px; align-items:center}
+.footer-logo{height:30px; width:auto; filter:grayscale(100%)}
+.footer-name{font-weight:950}
+.footer-sub{color:rgba(15,17,21,.60); font-weight:850; font-size:13px}
+.footer-links{display:flex; gap:14px; color:rgba(15,17,21,.70); font-weight:950}
+.footer-links a:hover{color:var(--text)}
+
+/* Sticky CTA */
+.sticky{
+  position:fixed; right:14px; bottom:14px;
+  display:flex; gap:10px; z-index:120;
+}
+.sticky-btn{
+  display:flex; align-items:center; gap:10px;
+  padding:12px 14px;
+  border-radius:999px;
+  border:1px solid rgba(15,17,21,.10);
+  background: rgba(255,255,255,.96);
+  box-shadow: var(--shadow3);
+  font-weight:950;
+}
+.sticky-btn.primary{
+  border-color: rgba(179,18,82,.18);
+  background: linear-gradient(135deg, rgba(179,18,82,1), rgba(179,18,82,.85));
+  color:#fff;
+  box-shadow: 0 10px 24px rgba(179,18,82,.16);
+}
+.sticky-btn:hover{transform: translateY(-1px)}
+
+/* Responsive */
+@media (max-width: 980px){
+  .nav-links{display:none}
+  .burger{display:block}
+  .hero-grid{grid-template-columns:1fr}
+  .pill-row{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .feature{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .hero-img img{height:300px}
+}
+@media (max-width: 560px){
+  .brand-text{display:none}
+  .sticky-btn span:last-child{display:none}
+}
