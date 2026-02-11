@@ -1,415 +1,538 @@
-:root{
-  --bg:#ffffff;
-  --soft:#f6f7fb;
-  --text:#0f1115;
-  --muted:rgba(15,17,21,.72);
-  --line:rgba(15,17,21,.10);
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Mandat GTI Immobilier : experts locaux + équipe structurée + suivi jusqu'à la signature. Option collaborative : honoraires divisés par deux si vous apportez l'acquéreur (selon conditions)." />
+  <title>Mandat GTI Immobilier | GTI Immobilier</title>
 
-  --primary:#b31252;   /* framboise premium */
-  --primary2:#0b6b63;  /* vert pétrole discret */
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  --shadow: 0 18px 60px rgba(15,17,21,.10);
-  --shadow2: 0 10px 30px rgba(15,17,21,.08);
-  --shadow3: 0 6px 18px rgba(15,17,21,.06);
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  --r:18px;
-  --r2:26px;
-  --container:1140px;
-}
+<body>
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="#top" aria-label="Retour en haut">
+      <span class="brand__logoWrap" aria-hidden="true">
+        <img class="brand__logo"
+             src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+             alt=""
+             loading="eager" />
+      </span>
+      <span class="brand__name">GTI Immobilier</span>
+    </a>
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--text);
-  background:var(--bg);
-  line-height:1.55;
-}
-a{color:inherit;text-decoration:none}
-.container{width:min(var(--container), calc(100% - 44px)); margin:0 auto}
+    <nav class="nav">
+      <a href="#methode">Méthode</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#collab">Collaboratif</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--small btn--ghost" href="#contact">Contact</a>
+    </nav>
 
-.muted{color:var(--muted)}
-/* Header */
-.header{
-  position:sticky; top:0; z-index:100;
-  background: rgba(255,255,255,.88);
-  backdrop-filter: blur(12px);
-  border-bottom:1px solid var(--line);
-}
-.nav{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:14px 0;
-  gap:14px;
-}
-.brand{
-  display:flex; align-items:center; gap:14px;
-  min-width:260px;
-}
-.brand-logo{
-  height:46px; width:auto;
-  padding:10px 14px;
-  border-radius:999px;
-  background: rgba(15,17,21,.03);
-  border:1px solid var(--line);
-  box-shadow: var(--shadow3);
-}
-.brand-text{display:flex; flex-direction:column; line-height:1.1}
-.brand-name{font-weight:900; letter-spacing:.2px}
-.brand-sub{font-size:12px; color:rgba(15,17,21,.62); font-weight:850}
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 
-.nav-links{
-  display:flex; align-items:center; gap:16px;
-  font-weight:850; color:rgba(15,17,21,.78);
-}
-.nav-links a{padding:8px 10px; border-radius:14px}
-.nav-links a:hover{background:rgba(15,17,21,.05); color:var(--text)}
+  <div class="mobileNav" hidden>
+    <div class="container mobileNav__inner">
+      <a href="#methode">Méthode</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#collab">Collaboratif</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--small" href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
 
-.burger{
-  display:none;
-  width:44px; height:44px;
-  border-radius:16px;
-  border:1px solid var(--line);
-  background: rgba(15,17,21,.03);
-  cursor:pointer;
-}
-.burger span{display:block; width:18px; height:2px; background:rgba(15,17,21,.65); margin:5px auto; border-radius:99px}
+<main id="top">
 
-.mobile{border-top:1px solid var(--line); background: rgba(255,255,255,.94)}
-.mobile-links{display:flex; flex-direction:column; gap:10px; padding:14px 0 18px}
-.mobile-links a{padding:10px 12px; border-radius:14px; font-weight:900; color:rgba(15,17,21,.78)}
-.mobile-links a:hover{background:rgba(15,17,21,.05); color:var(--text)}
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <p class="badge">Mandat GTI Immobilier</p>
 
-/* Buttons */
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  padding:12px 16px;
-  border-radius:16px;
-  font-weight:950;
-  border:1px solid rgba(179,18,82,.18);
-  background: linear-gradient(135deg, rgba(179,18,82,1), rgba(179,18,82,.85));
-  color:#fff;
-  box-shadow: 0 10px 24px rgba(179,18,82,.16);
-  transition: transform .15s ease, filter .15s ease;
-}
-.btn:hover{transform: translateY(-1px); filter: brightness(1.02)}
-.btn-outline{
-  background: rgba(15,17,21,.03);
-  border:1px solid var(--line);
-  color: var(--text);
-  box-shadow: none;
-}
-.btn-outline:hover{background: rgba(15,17,21,.05)}
+        <h1>
+          Vendez avec des <span class="grad">experts locaux</span>,
+          une <span class="grad2">équipe structurée</span> et un suivi complet jusqu’à la signature.
+        </h1>
 
-/* Hero */
-.hero{
-  padding:56px 0 26px;
-  background:
-    radial-gradient(900px 520px at 10% -10%, rgba(179,18,82,.08), transparent 62%),
-    radial-gradient(900px 520px at 92% 10%, rgba(11,107,99,.06), transparent 62%),
-    #fff;
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap:34px;
-  align-items:start;
-}
-.tag{
-  display:inline-flex;
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background: rgba(15,17,21,.03);
-  font-weight:950;
-  width:fit-content;
-}
-h1{
-  font-size: clamp(32px, 4.2vw, 54px);
-  line-height:1.05;
-  letter-spacing:-.035em;
-  margin:14px 0 10px;
-}
-.hero-sub{color:var(--muted); font-size:18px; margin:0 0 12px; font-weight:800}
-.cta-row{display:flex; flex-wrap:wrap; gap:12px; margin:14px 0 14px}
+        <p class="lead">
+          Chez <strong>GTI Immobilier</strong>, votre vente est pilotée par un négociateur référent et soutenue par une organisation complète :
+          commercialisation, suivi, offres, coordination notaire. Une méthode claire, des décisions rapides, un cadre sécurisé.
+        </p>
 
-.highlight{
-  border:1px solid var(--line);
-  background: linear-gradient(135deg, rgba(11,107,99,.08), rgba(179,18,82,.06));
-  padding:14px;
-  border-radius: var(--r);
-  box-shadow: var(--shadow3);
-}
-.highlight-title{font-weight:950; margin-bottom:6px}
-.highlight-text{color:rgba(15,17,21,.88); font-weight:850}
+        <div class="hero__line">
+          <div class="trust">
+            <div class="trust__stars" aria-hidden="true">★★★★★</div>
+            <div class="trust__txt">
+              <strong>Approche haut de gamme</strong> • Suivi clair • Cadre sécurisé
+            </div>
+          </div>
 
-.pill-row{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px}
-.pill{
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.92);
-  padding:12px;
-  border-radius: var(--r);
-  box-shadow: var(--shadow3);
-}
-.pill strong{display:block; font-weight:950}
-.pill span{display:block; color:var(--muted); font-weight:850; margin-top:4px}
+          <div class="phoneBox">
+            <span class="phoneBox__label">Appeler l’agence</span>
+            <a class="phoneBox__num" href="tel:+33XXXXXXXXX">+33 X XX XX XX XX</a>
+          </div>
+        </div>
 
-.hero-img{
-  border-radius: var(--r2);
-  overflow:hidden;
-  border:1px solid rgba(15,17,21,.08);
-  box-shadow: var(--shadow);
-}
-.hero-img img{width:100%; height:380px; object-fit:cover; display:block}
+        <div class="hero__cta">
+          <a class="btn" href="#guide">Être orienté en 20 secondes</a>
+          <a class="btn btn--ghost" href="#contact">Demander un rappel</a>
+        </div>
 
-.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px}
-.kpi{
-  border:1px solid var(--line);
-  background: rgba(15,17,21,.03);
-  border-radius: var(--r);
-  padding:14px;
-  box-shadow: var(--shadow3);
-}
-.kpi-n{font-weight:950; font-size:20px}
-.kpi-t{color:rgba(15,17,21,.60); font-weight:900; font-size:13px; margin-top:4px}
+        <div class="chips">
+          <span class="chip">Experts locaux</span>
+          <span class="chip">Travail d’équipe</span>
+          <span class="chip">Suivi offres → vente</span>
+          <span class="chip chip--accent">Option collaborative</span>
+        </div>
 
-/* Sections */
-.section{padding:68px 0}
-.soft{
-  background: var(--soft);
-  border-top:1px solid rgba(15,17,21,.08);
-  border-bottom:1px solid rgba(15,17,21,.08);
-}
-.section-head{margin-bottom:22px}
-.section-head h2{
-  margin:0;
-  font-size: clamp(22px, 3vw, 34px);
-  letter-spacing:-.02em;
-}
-.section-head p{margin:10px 0 0; color:var(--muted); max-width:95ch; font-weight:850}
+        <p class="micro">
+          Option collaborative : honoraires divisés par deux si vous apportez l’acquéreur, selon conditions prévues au mandat.
+        </p>
+      </div>
 
-.grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px}
-.card{
-  padding:18px;
-  border-radius: var(--r2);
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.92);
-  box-shadow: var(--shadow3);
-}
-.card h3{margin:0 0 8px}
-.card p{margin:0; color:var(--muted); font-weight:850}
+      <div class="hero__visual">
+        <figure class="photoCard">
+          <img src="assets/hero.jpg" alt="Vendre avec GTI Immobilier" loading="eager" />
+          <figcaption>
+            Une méthode structurée. Une équipe coordonnée. Un accompagnement jusqu’à la signature.
+          </figcaption>
+        </figure>
 
-/* Gallery */
-.gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
-.shot{
-  margin:0;
-  border-radius: var(--r2);
-  overflow:hidden;
-  border:1px solid rgba(15,17,21,.08);
-  background:#fff;
-  box-shadow: var(--shadow3);
-}
-.shot img{width:100%; height:240px; object-fit:cover; display:block}
-.shot figcaption{
-  padding:12px 14px;
-  display:flex; flex-direction:column; gap:4px;
-}
-.shot figcaption strong{font-weight:950}
-.shot figcaption span{color:var(--muted); font-weight:850}
+        <div class="mini-stats">
+          <div class="mini-stats__item">
+            <p class="mini-stats__k">1</p>
+            <p class="mini-stats__v">Référent</p>
+          </div>
+          <div class="mini-stats__item">
+            <p class="mini-stats__k">+1</p>
+            <p class="mini-stats__v">Équipe support</p>
+          </div>
+          <div class="mini-stats__item">
+            <p class="mini-stats__k">0</p>
+            <p class="mini-stats__v">Flou</p>
+          </div>
+        </div>
 
-/* Steps + accordions */
-.steps{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
-.step{
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.92);
-  border-radius: var(--r2);
-  padding:18px;
-  box-shadow: var(--shadow3);
-}
-.step-top h3{margin:0 0 6px}
-.step-top p{margin:0; color:var(--muted); font-weight:850}
+        <div class="logoStamp" aria-hidden="true">
+          <img src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+               alt=""
+               loading="lazy" />
+        </div>
+      </div>
+    </div>
 
-.acc{
-  margin-top:12px;
-  border:1px solid rgba(15,17,21,.10);
-  border-radius: 18px;
-  background: rgba(15,17,21,.02);
-  overflow:hidden;
-}
-.acc summary{
-  cursor:pointer;
-  list-style:none;
-  padding:12px 14px;
-  font-weight:950;
-  color:rgba(15,17,21,.86);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.acc summary::-webkit-details-marker{display:none}
-.acc summary::after{
-  content:"+";
-  font-weight:950;
-  color:rgba(15,17,21,.70);
-}
-.acc[open] summary::after{content:"–"}
-.acc-body{padding:12px 14px; color:var(--muted); font-weight:850}
-.acc-body ul{margin:10px 0 0; padding-left:18px}
-.acc-body li{margin:6px 0}
+    <div class="hero__bg" aria-hidden="true"></div>
+  </section>
 
-/* Feature block */
-.feature{
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap:12px;
-  align-items:start;
-}
-.feature-left, .feature-right{
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.92);
-  border-radius: var(--r2);
-  padding:18px;
-  box-shadow: var(--shadow3);
-}
-.mini-cases{display:grid; grid-template-columns:1fr; gap:10px}
-.mini-case{
-  border:1px solid rgba(15,17,21,.10);
-  border-radius: 18px;
-  padding:14px;
-  background:
-    radial-gradient(500px 220px at 20% 0%, rgba(179,18,82,.08), transparent 60%),
-    rgba(255,255,255,.92);
-}
-.mini-title{font-weight:950}
-.mini-txt{color:var(--muted); font-weight:850; margin:6px 0 10px}
-.mini-link{
-  display:inline-flex;
-  padding:10px 12px;
-  border-radius: 14px;
-  border:1px solid rgba(179,18,82,.18);
-  background: rgba(179,18,82,.10);
-  color: rgba(15,17,21,.92);
-  font-weight:950;
-}
-.mini-link:hover{background: rgba(179,18,82,.14)}
+  <!-- GUIDE 20s -->
+  <section id="guide" class="section section--soft">
+    <div class="container">
+      <div class="section__head">
+        <h2>On vous oriente en 20 secondes</h2>
+        <p>Trois infos simples, et on vous indique la meilleure suite : appel, rappel, estimation.</p>
+      </div>
 
-.quote{
-  margin-top:12px;
-  border:1px solid rgba(15,17,21,.08);
-  background: linear-gradient(135deg, rgba(11,107,99,.08), rgba(179,18,82,.06));
-  border-radius: var(--r2);
-  padding:18px;
-  font-weight:950;
-}
+      <div class="guide">
+        <div class="guide__fields">
+          <label>
+            <span>Ville / code postal</span>
+            <input id="g_city" type="text" placeholder="ex : Saint-Étienne / 42000" />
+          </label>
 
-/* FAQ */
-.faq{display:grid; gap:10px}
-.faq-item{
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.92);
-  border-radius: var(--r2);
-  padding:14px 16px;
-  box-shadow: var(--shadow3);
-}
-.faq-item summary{cursor:pointer; font-weight:950; list-style:none}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-body{margin-top:10px; color:var(--muted); font-weight:850}
+          <label>
+            <span>Type de bien</span>
+            <select id="g_type">
+              <option value="" selected>Choisir…</option>
+              <option>Maison</option>
+              <option>Appartement</option>
+              <option>Terrain</option>
+              <option>Immeuble</option>
+              <option>Autre</option>
+            </select>
+          </label>
 
-/* Contact */
-.contact-grid{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:12px;
-  align-items:start;
-}
-.contact-left{
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.92);
-  border-radius: var(--r2);
-  padding:18px;
-  box-shadow: var(--shadow3);
-}
-.contact-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:12px}
-.contact-note{
-  margin-top:12px;
-  padding:14px;
-  border-radius: var(--r);
-  border:1px solid rgba(15,17,21,.10);
-  background: rgba(15,17,21,.02);
-  font-weight:850;
-  color:rgba(15,17,21,.80);
-}
+          <label>
+            <span>Votre délai</span>
+            <select id="g_delay">
+              <option value="" selected>Choisir…</option>
+              <option>Urgent (moins de 30 jours)</option>
+              <option>1 à 3 mois</option>
+              <option>3 à 6 mois</option>
+              <option>Plus de 6 mois</option>
+            </select>
+          </label>
+        </div>
 
-.form{
-  border:1px solid var(--line);
-  background: rgba(255,255,255,.92);
-  border-radius: var(--r2);
-  padding:18px;
-  box-shadow: var(--shadow3);
-}
-.form-title{font-weight:950; margin-bottom:12px}
-.form label{display:flex; flex-direction:column; gap:8px; margin-bottom:12px; font-weight:950}
-.form input,.form select,.form textarea{
-  border-radius: 16px;
-  border:1px solid rgba(15,17,21,.12);
-  padding:12px;
-  font-weight:850;
-  font-family:inherit;
-  outline:none;
-}
-.form input:focus,.form select:focus,.form textarea:focus{
-  border-color: rgba(179,18,82,.26);
-  box-shadow: 0 0 0 4px rgba(179,18,82,.10);
-}
-.form-msg{margin:10px 0 0; color:rgba(15,17,21,.70); font-weight:900}
-.form-legal{margin-top:12px; color:rgba(15,17,21,.55); font-weight:850; font-size:12px}
+        <div class="guide__actions">
+          <a class="btn" href="#contact" id="g_cta">Continuer</a>
+          <a class="btn btn--ghost" href="tel:+33XXXXXXXXX">Appeler</a>
+          <p class="micro" id="g_hint">Astuce : sur mobile, “Appeler” est le plus rapide.</p>
+        </div>
 
-/* Footer */
-.footer{border-top:1px solid rgba(15,17,21,.08); padding:22px 0 78px}
-.footer-inner{display:flex; justify-content:space-between; gap:16px; align-items:flex-start}
-.footer-left{display:flex; gap:12px; align-items:center}
-.footer-logo{height:30px; width:auto; filter:grayscale(100%)}
-.footer-name{font-weight:950}
-.footer-sub{color:rgba(15,17,21,.60); font-weight:850; font-size:13px}
-.footer-links{display:flex; gap:14px; color:rgba(15,17,21,.70); font-weight:950}
-.footer-links a:hover{color:var(--text)}
+        <div class="guide__note">
+          <strong>Pourquoi ce guide ?</strong>
+          <p>
+            Pour cadrer rapidement votre projet et vous orienter vers un expert de votre secteur, sans aller-retours inutiles.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* Sticky CTA */
-.sticky{
-  position:fixed; right:14px; bottom:14px;
-  display:flex; gap:10px; z-index:120;
-}
-.sticky-btn{
-  display:flex; align-items:center; gap:10px;
-  padding:12px 14px;
-  border-radius:999px;
-  border:1px solid rgba(15,17,21,.10);
-  background: rgba(255,255,255,.96);
-  box-shadow: var(--shadow3);
-  font-weight:950;
-}
-.sticky-btn.primary{
-  border-color: rgba(179,18,82,.18);
-  background: linear-gradient(135deg, rgba(179,18,82,1), rgba(179,18,82,.85));
-  color:#fff;
-  box-shadow: 0 10px 24px rgba(179,18,82,.16);
-}
-.sticky-btn:hover{transform: translateY(-1px)}
+  <!-- VISU PROOF (photos) -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Une vente visuelle, cohérente et maîtrisée</h2>
+        <p>Des visuels de qualité et une présentation premium renforcent la confiance et accélèrent les décisions.</p>
+      </div>
 
-/* Responsive */
-@media (max-width: 980px){
-  .nav-links{display:none}
-  .burger{display:block}
-  .hero-grid{grid-template-columns:1fr}
-  .pill-row{grid-template-columns:1fr}
-  .grid-3{grid-template-columns:1fr}
-  .gallery{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .feature{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .hero-img img{height:300px}
-}
-@media (max-width: 560px){
-  .brand-text{display:none}
-  .sticky-btn span:last-child{display:none}
-}
+      <div class="gallery">
+        <figure class="shot">
+          <img src="assets/shot-1.jpg" alt="Mise en valeur du bien" loading="lazy" />
+          <figcaption>Mise en valeur</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/shot-2.jpg" alt="Diffusion et visibilité" loading="lazy" />
+          <figcaption>Visibilité & diffusion</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/shot-3.jpg" alt="Suivi des offres jusqu'à la vente" loading="lazy" />
+          <figcaption>Offres → vente</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODE -->
+  <section id="methode" class="section section--soft">
+    <div class="container">
+      <div class="section__head">
+        <h2>La méthode GTI Immobilier</h2>
+        <p>Une stratégie claire, suivie et ajustée au bon moment. Le but : vendre dans les meilleures conditions.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="step__n">1</div>
+          <h3>Estimation argumentée</h3>
+          <p>Analyse du marché local, prix cohérent, stratégie expliquée.</p>
+        </article>
+        <article class="step">
+          <div class="step__n">2</div>
+          <h3>Mise en valeur</h3>
+          <p>Présentation soignée du bien, mise en avant de ses atouts.</p>
+        </article>
+        <article class="step">
+          <div class="step__n">3</div>
+          <h3>Diffusion maîtrisée</h3>
+          <p>Visibilité optimisée + suivi des performances + ajustements.</p>
+        </article>
+        <article class="step">
+          <div class="step__n">4</div>
+          <h3>Visites qualifiées</h3>
+          <p>Tri des profils, visites ciblées, retours structurés.</p>
+        </article>
+        <article class="step">
+          <div class="step__n">5</div>
+          <h3>Offres & négociation</h3>
+          <p>Encadrement des offres, sécurisation, négociation avec méthode.</p>
+        </article>
+        <article class="step">
+          <div class="step__n">6</div>
+          <h3>Jusqu’à la signature</h3>
+          <p>Coordination notaire et accompagnement jusqu’à l’acte.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section id="equipe" class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Des experts locaux + une équipe coordonnée</h2>
+        <p>La base, c’est l’expertise. Le différenciant, c’est l’équipe qui sécurise et fait avancer la vente.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Experts de leur secteur</h3>
+          <ul class="bullets">
+            <li>Connaissance fine du marché local</li>
+            <li>Conseil prix & stratégie (données, méthode, cohérence)</li>
+            <li>Formation & accompagnement dans la durée</li>
+            <li>Exigence : suivi, retours, décisions</li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h3>Une vente portée par plusieurs compétences</h3>
+          <ul class="bullets">
+            <li>Référent : piloter, décider, ajuster</li>
+            <li>Commercialisation : diffusion, performance, qualité</li>
+            <li>Suivi offres : encadrement, sécurisation, notaire</li>
+            <li>Continuité : votre projet avance même si un agenda bouge</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quote">
+        <p><strong>Vous avez un interlocuteur.</strong> Et derrière lui, une équipe qui suit, structure et sécurise la vente jusqu’au bout.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLAB -->
+  <section id="collab" class="section section--soft">
+    <div class="container">
+      <div class="section__head">
+        <h2>Option collaborative : vous activez votre réseau, nous pilotons et sécurisons</h2>
+        <p>Une vente est souvent plus efficace quand le vendeur peut aussi créer des opportunités, sans perdre le cadre professionnel.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Vous restez acteur</h3>
+          <p>Vous pouvez partager, présenter, répondre à une demande. Nous restons le cadre : stratégie, négociation, sécurité.</p>
+        </article>
+
+        <article class="card card--highlight">
+          <h3>Si vous apportez l’acquéreur</h3>
+          <p class="big">Honoraires <strong>divisés par deux</strong>*</p>
+          <p>
+            Ce n’est pas une “remise discount”. C’est un partage du travail.
+            Nous assurons l’offre, la sécurisation, le notaire et l’accompagnement jusqu’à la signature.
+          </p>
+          <p class="micro">* Selon conditions prévues au mandat GTI Immobilier.</p>
+        </article>
+
+        <article class="card">
+          <h3>Ce que nous prenons en charge</h3>
+          <ul class="checklist">
+            <li>Encadrement de l’offre d’achat</li>
+            <li>Sécurisation du dossier</li>
+            <li>Négociation & coordination</li>
+            <li>Suivi notaire jusqu’à l’acte</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="ctaBox">
+        <div>
+          <h3>Parlons de votre projet</h3>
+          <p>En 10 minutes, on vous explique le fonctionnement et la meilleure stratégie selon votre situation.</p>
+        </div>
+        <div class="ctaBox__btns">
+          <a class="btn" href="tel:+33XXXXXXXXX">Appeler</a>
+          <a class="btn btn--ghost" href="#contact">Rappel</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FORM -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section__head">
+        <h2>Contact rapide</h2>
+        <p>Choisissez : estimation ou rappel. Formulaire intelligent, très court.</p>
+      </div>
+
+      <div class="contactGrid">
+        <div class="contactCard">
+          <div class="contactCard__head">
+            <img class="contactCard__logo"
+                 src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+                 alt="GTI Immobilier"
+                 loading="lazy" />
+          </div>
+          <h3>📞 Appel direct</h3>
+          <p class="muted">Le plus rapide, surtout sur mobile.</p>
+          <a class="btn" href="tel:+33XXXXXXXXX">Appeler +33 X XX XX XX XX</a>
+          <p class="micro">Remplace le numéro dans le code (tel:+33…).</p>
+        </div>
+
+        <form class="form" id="smartForm">
+          <input type="hidden" name="source" value="Mandat GTI Immobilier - Landing" />
+          <input type="hidden" name="utm_source" id="utm_source" />
+          <input type="hidden" name="utm_medium" id="utm_medium" />
+          <input type="hidden" name="utm_campaign" id="utm_campaign" />
+          <input type="hidden" name="utm_content" id="utm_content" />
+          <input type="hidden" name="utm_term" id="utm_term" />
+          <!-- honeypot anti-bot -->
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="toggle">
+            <button type="button" class="toggle__btn is-active" data-mode="estimation">Estimation</button>
+            <button type="button" class="toggle__btn" data-mode="rappel">Rappel</button>
+          </div>
+
+          <div class="form__grid">
+            <label>
+              <span>Votre prénom</span>
+              <input name="first_name" type="text" autocomplete="given-name" required />
+            </label>
+            <label>
+              <span>Votre téléphone</span>
+              <input name="phone" type="tel" autocomplete="tel" required />
+            </label>
+
+            <label class="span-2">
+              <span>Email (optionnel)</span>
+              <input name="email" type="email" autocomplete="email" />
+            </label>
+
+            <label class="span-2" id="field_address">
+              <span>Adresse / ville du bien</span>
+              <input name="address" type="text" placeholder="ex : Firminy, rue…" />
+            </label>
+
+            <label id="field_type">
+              <span>Type de bien</span>
+              <select name="property_type">
+                <option value="" selected>Choisir…</option>
+                <option>Maison</option>
+                <option>Appartement</option>
+                <option>Terrain</option>
+                <option>Immeuble</option>
+                <option>Autre</option>
+              </select>
+            </label>
+
+            <label id="field_delay">
+              <span>Délai</span>
+              <select name="delay">
+                <option value="" selected>Choisir…</option>
+                <option>Urgent</option>
+                <option>1 à 3 mois</option>
+                <option>3 à 6 mois</option>
+                <option>Plus de 6 mois</option>
+              </select>
+            </label>
+
+            <label class="span-2" id="field_slot" hidden>
+              <span>Quand vous rappeler ?</span>
+              <select name="slot">
+                <option value="" selected>Choisir…</option>
+                <option>Dans la journée</option>
+                <option>Demain matin</option>
+                <option>Demain après-midi</option>
+                <option>Cette semaine</option>
+              </select>
+            </label>
+
+            <label class="span-2">
+              <span>Message (optionnel)</span>
+              <textarea name="message" rows="3" placeholder="Ville, contexte, contrainte de délai…"></textarea>
+            </label>
+          </div>
+
+          <div class="form__actions">
+            <button class="btn" type="submit" id="submitBtn">Demander une estimation</button>
+            <p class="micro" id="formStatus" aria-live="polite"></p>
+          </div>
+
+          <p class="micro">
+            En envoyant ce formulaire, vous acceptez d’être recontacté par GTI Immobilier au sujet de votre demande.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section section--soft">
+    <div class="container">
+      <div class="section__head">
+        <h2>FAQ</h2>
+        <p>Simple et utile. Si vous préférez : appelez-nous, on vous explique en 10 minutes.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Qu’est-ce que le Mandat GTI Immobilier ?</summary>
+          <div class="faq__content">
+            <p>
+              Une méthode de vente structurée : estimation, mise en valeur, diffusion maîtrisée, visites qualifiées,
+              suivi, offres et accompagnement jusqu’à la signature.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Comment se passe le suivi ?</summary>
+          <div class="faq__content">
+            <p>
+              Vous avez un interlocuteur référent et un suivi clair : retours structurés, décisions rapides,
+              ajustements quand c’est utile.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Option collaborative : comment ça marche ?</summary>
+          <div class="faq__content">
+            <p>
+              Vous pouvez activer votre réseau et créer des opportunités. Nous gardons le cadre professionnel :
+              offre, sécurité, notaire, accompagnement jusqu’à l’acte. Si vous apportez l’acquéreur, les honoraires
+              sont divisés par deux selon les conditions prévues au mandat.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Je préfère un échange rapide : c’est possible ?</summary>
+          <div class="faq__content">
+            <p>Oui : l’appel direct est le plus rapide. Sinon, laissez votre téléphone, on vous rappelle.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <img class="footer__logo"
+             src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+             alt="GTI Immobilier"
+             loading="lazy" />
+        <div>
+          <p class="footer__brand">GTI Immobilier</p>
+          <p class="micro">© <span id="year"></span> — Tous droits réservés.</p>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <a href="#top">Haut de page</a>
+        <a href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- STICKY CTA -->
+<div class="stickyCta" role="region" aria-label="Actions rapides">
+  <a class="stickyCta__btn" href="tel:+33XXXXXXXXX" title="Appeler">
+    <span aria-hidden="true">📞</span><span>Appeler</span>
+  </a>
+  <a class="stickyCta__btn stickyCta__btn--primary" href="#contact" title="Contact">
+    <span aria-hidden="true">✉️</span><span>Contact</span>
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
