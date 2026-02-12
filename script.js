@@ -13,133 +13,101 @@
     mobileNav.hidden = true;
   }
 
-  if (burger && mobileNav) {
-    burger.addEventListener("click", () => {
-      const open = burger.getAttribute("aria-expanded") === "true";
-      burger.setAttribute("aria-expanded", String(!open));
-      mobileNav.hidden = open;
-    });
-
-    mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
+  function openMobileNav() {
+    if (!burger || !mobileNav) return;
+    burger.setAttribute("aria-expanded", "true");
+    mobileNav.hidden = false;
   }
 
-  // Smooth scroll with header offset
-  const header = document.getElementById("siteHeader");
-  const headerH = () => header ? header.getBoundingClientRect().height : 0;
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener("click", (e) => {
-      const href = a.getAttribute("href");
-      if (!href || href.length < 2) return;
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      e.preventDefault();
-      const top = window.scrollY + target.getBoundingClientRect().top - headerH() - 12;
-      window.scrollTo({ top, behavior: "smooth" });
-      closeMobileNav();
+  if (burger && mobileNav) {
+    closeMobileNav();
+    burger.addEventListener("click", () => {
+      const expanded = burger.getAttribute("aria-expanded") === "true";
+      expanded ? closeMobileNav() : openMobileNav();
     });
-  });
+    mobileNav.addEventListener("click", (e) => {
+      if (e.target && e.target.matches("a")) closeMobileNav();
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMobileNav();
+    });
+  }
 
-  // Accordion groups: only one open per group
-  const allDetails = Array.from(document.querySelectorAll("details[data-acc-group]"));
-  allDetails.forEach(d => {
-    d.addEventListener("toggle", () => {
-      if (!d.open) return;
-      const group = d.getAttribute("data-acc-group");
-      allDetails.forEach(other => {
-        if (other !== d && other.getAttribute("data-acc-group") === group) other.open = false;
-      });
+  // Accordions
+  const accordions = document.querySelectorAll("[data-accordion]");
+  accordions.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // for cards, next element is .acc; for faq it's next sibling
+      const acc = btn.parentElement?.querySelector(".acc") || btn.nextElementSibling;
+      if (!acc) return;
+      const isHidden = acc.hidden === true;
+      acc.hidden = !isHidden;
+      btn.setAttribute("aria-expanded", String(isHidden));
     });
   });
 
   // Reveal on scroll
-  const reveals = Array.from(document.querySelectorAll(".reveal"));
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(ent => {
-        if (ent.isIntersecting) {
-          ent.target.classList.add("is-in");
-          io.unobserve(ent.target);
-        }
+  const reveals = document.querySelectorAll(".reveal");
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add("is-in");
       });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => io.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add("is-in"));
-  }
+    },
+    { threshold: 0.14 }
+  );
+  reveals.forEach((el) => io.observe(el));
 
-  // Drawer
+  // Drawer (callback)
   const drawer = document.getElementById("drawerCallback");
-  const drawerForm = document.getElementById("drawerForm");
-  const drawerMsg = document.getElementById("drawerMsg");
-
-  let lastFocus = null;
+  const openBtns = document.querySelectorAll('[data-open-drawer="callback"]');
+  const closeBtns = drawer ? drawer.querySelectorAll("[data-close-drawer]") : [];
 
   function openDrawer() {
     if (!drawer) return;
-    lastFocus = document.activeElement;
     drawer.classList.add("is-open");
     drawer.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    const firstInput = drawer.querySelector("input,select,textarea,button");
-    if (firstInput) firstInput.focus();
   }
-
   function closeDrawer() {
     if (!drawer) return;
     drawer.classList.remove("is-open");
     drawer.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
-    btn.addEventListener("click", () => openDrawer());
+  openBtns.forEach((b) => b.addEventListener("click", openDrawer));
+  closeBtns.forEach((b) => b.addEventListener("click", closeDrawer));
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeDrawer();
   });
 
-  document.querySelectorAll("[data-close-drawer]").forEach(el => {
-    el.addEventListener("click", () => closeDrawer());
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeMobileNav();
-      closeDrawer();
-    }
-  });
-
-  // Drawer form (no backend)
-  if (drawerForm && drawerMsg) {
-    drawerForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const prenom = drawerForm.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = drawerForm.querySelector('input[name="tel"]')?.value?.trim();
-      if (!prenom || !tel) {
-        drawerMsg.textContent = "⚠️ Prénom et téléphone requis.";
-        return;
-      }
-      drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
-      drawerForm.reset();
-      setTimeout(() => closeDrawer(), 700);
-    });
-  }
-
-  // Contact form (no backend)
-  const form = document.getElementById("contactForm");
-  const msg = document.getElementById("formMsg");
-  if (form && msg) {
+  // Forms (demo)
+  function handleSubmit(form) {
+    if (!form) return;
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const prenom = form.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = form.querySelector('input[name="tel"]')?.value?.trim();
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+      console.log("Callback form payload:", payload);
 
-      if (!prenom || !tel) {
-        msg.textContent = "⚠️ Merci de renseigner votre prénom et votre téléphone.";
-        return;
+      // UX feedback simple
+      const btn = form.querySelector('button[type="submit"]');
+      const old = btn ? btn.textContent : null;
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = "Envoyé ✅";
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.textContent = old || "Envoyer";
+        }, 1600);
       }
-      msg.textContent = "✅ Merci ! Votre demande est bien envoyée. Nous vous recontactons très rapidement.";
       form.reset();
+      closeDrawer();
+      alert("Merci ! Nous vous recontactons rapidement.");
     });
   }
+
+  handleSubmit(document.getElementById("callbackForm"));
+  handleSubmit(document.getElementById("contactForm"));
 })();
