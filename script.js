@@ -95,11 +95,11 @@
   }
 
   document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
-    btn.addEventListener("click", () => openDrawer());
+    btn.addEventListener("click", openDrawer);
   });
 
   document.querySelectorAll("[data-close-drawer]").forEach(el => {
-    el.addEventListener("click", () => closeDrawer());
+    el.addEventListener("click", closeDrawer);
   });
 
   document.addEventListener("keydown", (e) => {
