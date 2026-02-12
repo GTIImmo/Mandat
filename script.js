@@ -3,6 +3,15 @@
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
+  // Header shadow on scroll
+  const header = document.getElementById("siteHeader");
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
   // Mobile menu
   const burger = document.querySelector(".burger");
   const mobileNav = document.querySelector(".mobileNav");
@@ -24,7 +33,6 @@
   }
 
   // Smooth scroll with header offset
-  const header = document.getElementById("siteHeader");
   const headerH = () => header ? header.getBoundingClientRect().height : 0;
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -46,100 +54,44 @@
   allDetails.forEach(d => {
     d.addEventListener("toggle", () => {
       if (!d.open) return;
-      const group = d.getAttribute("data-acc-group");
-      allDetails.forEach(other => {
-        if (other !== d && other.getAttribute("data-acc-group") === group) other.open = false;
+      const g = d.getAttribute("data-acc-group");
+      allDetails.forEach(o => {
+        if (o !== d && o.getAttribute("data-acc-group") === g) o.open = false;
       });
     });
   });
 
-  // Reveal on scroll
-  const reveals = Array.from(document.querySelectorAll(".reveal"));
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(ent => {
-        if (ent.isIntersecting) {
-          ent.target.classList.add("is-in");
-          io.unobserve(ent.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => io.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add("is-in"));
-  }
-
-  // Drawer
-  const drawer = document.getElementById("drawerCallback");
-  const drawerForm = document.getElementById("drawerForm");
-  const drawerMsg = document.getElementById("drawerMsg");
-
-  let lastFocus = null;
+  // Drawer (callback)
+  const drawer = document.getElementById("callbackDrawer");
+  const openBtns = document.querySelectorAll('[data-open-drawer="callback"]');
+  const closeEls = drawer ? drawer.querySelectorAll("[data-close-drawer]") : [];
 
   function openDrawer() {
     if (!drawer) return;
-    lastFocus = document.activeElement;
-    drawer.classList.add("is-open");
     drawer.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    const firstInput = drawer.querySelector("input,select,textarea,button");
-    if (firstInput) firstInput.focus();
+    // focus first input
+    setTimeout(() => {
+      const input = drawer.querySelector("input,button,textarea,select");
+      if (input) input.focus();
+    }, 50);
   }
 
   function closeDrawer() {
     if (!drawer) return;
-    drawer.classList.remove("is-open");
     drawer.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
-    btn.addEventListener("click", () => openDrawer());
-  });
+  openBtns.forEach(b => b.addEventListener("click", openDrawer));
+  closeEls.forEach(el => el.addEventListener("click", closeDrawer));
+  window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
 
-  document.querySelectorAll("[data-close-drawer]").forEach(el => {
-    el.addEventListener("click", () => closeDrawer());
-  });
+  // Fake submit handlers (à brancher sur ton back)
+  const leadForm = document.getElementById("leadForm");
+  const cbForm = document.getElementById("callbackForm");
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeMobileNav();
-      closeDrawer();
-    }
-  });
-
-  // Drawer form (no backend)
-  if (drawerForm && drawerMsg) {
-    drawerForm.addEventListener("submit", (e) => {
+  if (leadForm) {
+    leadForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const prenom = drawerForm.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = drawerForm.querySelector('input[name="tel"]')?.value?.trim();
-      if (!prenom || !tel) {
-        drawerMsg.textContent = "⚠️ Prénom et téléphone requis.";
-        return;
-      }
-      drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
-      drawerForm.reset();
-      setTimeout(() => closeDrawer(), 700);
-    });
-  }
-
-  // Contact form (no backend)
-  const form = document.getElementById("contactForm");
-  const msg = document.getElementById("formMsg");
-  if (form && msg) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const prenom = form.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = form.querySelector('input[name="tel"]')?.value?.trim();
-
-      if (!prenom || !tel) {
-        msg.textContent = "⚠️ Merci de renseigner votre prénom et votre téléphone.";
-        return;
-      }
-      msg.textContent = "✅ Merci ! Votre demande est bien envoyée. Nous vous recontactons très rapidement.";
-      form.reset();
-    });
-  }
-})();
+      alert("✅ Merci ! Votre demande a bien é
