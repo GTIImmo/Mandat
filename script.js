@@ -54,23 +54,6 @@
     });
   });
 
-  // Tabs
-  document.querySelectorAll("[data-tabs]").forEach(root => {
-    const btns = Array.from(root.querySelectorAll(".tabs__btn"));
-    const panes = Array.from(root.querySelectorAll(".pane"));
-
-    const setOn = (id) => {
-      btns.forEach(b => {
-        const on = b.dataset.tab === id;
-        b.classList.toggle("is-on", on);
-        b.setAttribute("aria-selected", String(on));
-      });
-      panes.forEach(p => p.classList.toggle("is-on", p.dataset.pane === id));
-    };
-
-    btns.forEach(b => b.addEventListener("click", () => setOn(b.dataset.tab)));
-  });
-
   // Mini form (no backend)
   const miniForm = document.getElementById("miniForm");
   const miniMsg = document.getElementById("miniMsg");
