@@ -3,7 +3,7 @@
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  // Mobile menu
+  // Mobile menu (robuste + jamais ouvert en desktop)
   const burger = document.querySelector(".burger");
   const mobileNav = document.querySelector(".mobileNav");
 
@@ -21,28 +21,37 @@
 
   if (burger && mobileNav) {
     closeMobileNav();
+
     burger.addEventListener("click", () => {
       const expanded = burger.getAttribute("aria-expanded") === "true";
       expanded ? closeMobileNav() : openMobileNav();
     });
+
+    // click lien => ferme
     mobileNav.addEventListener("click", (e) => {
       if (e.target && e.target.matches("a")) closeMobileNav();
     });
+
+    // ESC => ferme
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeMobileNav();
     });
+
+    // si on repasse en desktop => on force fermé
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 980) closeMobileNav();
+    });
   }
 
-  // Accordions
+  // Accordions (cartes + FAQ)
   const accordions = document.querySelectorAll("[data-accordion]");
   accordions.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // for cards, next element is .acc; for faq it's next sibling
       const acc = btn.parentElement?.querySelector(".acc") || btn.nextElementSibling;
       if (!acc) return;
-      const isHidden = acc.hidden === true;
-      acc.hidden = !isHidden;
-      btn.setAttribute("aria-expanded", String(isHidden));
+      const willOpen = acc.hidden === true;
+      acc.hidden = !willOpen;
+      btn.setAttribute("aria-expanded", String(willOpen));
     });
   });
 
@@ -91,7 +100,6 @@
       const payload = Object.fromEntries(fd.entries());
       console.log("Callback form payload:", payload);
 
-      // UX feedback simple
       const btn = form.querySelector('button[type="submit"]');
       const old = btn ? btn.textContent : null;
       if (btn) {
