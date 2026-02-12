@@ -3,7 +3,7 @@
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  // Mobile menu (robuste + jamais ouvert en desktop)
+  // Mobile menu
   const burger = document.querySelector(".burger");
   const mobileNav = document.querySelector(".mobileNav");
 
@@ -13,109 +13,133 @@
     mobileNav.hidden = true;
   }
 
-  function openMobileNav() {
-    if (!burger || !mobileNav) return;
-    burger.setAttribute("aria-expanded", "true");
-    mobileNav.hidden = false;
-  }
-
   if (burger && mobileNav) {
-    closeMobileNav();
-
     burger.addEventListener("click", () => {
-      const expanded = burger.getAttribute("aria-expanded") === "true";
-      expanded ? closeMobileNav() : openMobileNav();
+      const open = burger.getAttribute("aria-expanded") === "true";
+      burger.setAttribute("aria-expanded", String(!open));
+      mobileNav.hidden = open;
     });
 
-    // click lien => ferme
-    mobileNav.addEventListener("click", (e) => {
-      if (e.target && e.target.matches("a")) closeMobileNav();
-    });
-
-    // ESC => ferme
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMobileNav();
-    });
-
-    // si on repasse en desktop => on force fermé
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 980) closeMobileNav();
-    });
+    mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
   }
 
-  // Accordions (cartes + FAQ)
-  const accordions = document.querySelectorAll("[data-accordion]");
-  accordions.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const acc = btn.parentElement?.querySelector(".acc") || btn.nextElementSibling;
-      if (!acc) return;
-      const willOpen = acc.hidden === true;
-      acc.hidden = !willOpen;
-      btn.setAttribute("aria-expanded", String(willOpen));
+  // Smooth scroll with header offset
+  const header = document.getElementById("siteHeader");
+  const headerH = () => header ? header.getBoundingClientRect().height : 0;
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", (e) => {
+      const href = a.getAttribute("href");
+      if (!href || href.length < 2) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+      const top = window.scrollY + target.getBoundingClientRect().top - headerH() - 12;
+      window.scrollTo({ top, behavior: "smooth" });
+      closeMobileNav();
+    });
+  });
+
+  // Accordion groups: only one open per group
+  const allDetails = Array.from(document.querySelectorAll("details[data-acc-group]"));
+  allDetails.forEach(d => {
+    d.addEventListener("toggle", () => {
+      if (!d.open) return;
+      const group = d.getAttribute("data-acc-group");
+      allDetails.forEach(other => {
+        if (other !== d && other.getAttribute("data-acc-group") === group) other.open = false;
+      });
     });
   });
 
   // Reveal on scroll
-  const reveals = document.querySelectorAll(".reveal");
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add("is-in");
+  const reveals = Array.from(document.querySelectorAll(".reveal"));
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(ent => {
+        if (ent.isIntersecting) {
+          ent.target.classList.add("is-in");
+          io.unobserve(ent.target);
+        }
       });
-    },
-    { threshold: 0.14 }
-  );
-  reveals.forEach((el) => io.observe(el));
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add("is-in"));
+  }
 
-  // Drawer (callback)
+  // Drawer
   const drawer = document.getElementById("drawerCallback");
-  const openBtns = document.querySelectorAll('[data-open-drawer="callback"]');
-  const closeBtns = drawer ? drawer.querySelectorAll("[data-close-drawer]") : [];
+  const drawerForm = document.getElementById("drawerForm");
+  const drawerMsg = document.getElementById("drawerMsg");
+
+  let lastFocus = null;
 
   function openDrawer() {
     if (!drawer) return;
+    lastFocus = document.activeElement;
     drawer.classList.add("is-open");
     drawer.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    const firstInput = drawer.querySelector("input,select,textarea,button");
+    if (firstInput) firstInput.focus();
   }
+
   function closeDrawer() {
     if (!drawer) return;
     drawer.classList.remove("is-open");
     drawer.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  openBtns.forEach((b) => b.addEventListener("click", openDrawer));
-  closeBtns.forEach((b) => b.addEventListener("click", closeDrawer));
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeDrawer();
+  document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
+    btn.addEventListener("click", () => openDrawer());
   });
 
-  // Forms (demo)
-  function handleSubmit(form) {
-    if (!form) return;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const fd = new FormData(form);
-      const payload = Object.fromEntries(fd.entries());
-      console.log("Callback form payload:", payload);
+  document.querySelectorAll("[data-close-drawer]").forEach(el => {
+    el.addEventListener("click", () => closeDrawer());
+  });
 
-      const btn = form.querySelector('button[type="submit"]');
-      const old = btn ? btn.textContent : null;
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Envoyé ✅";
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = old || "Envoyer";
-        }, 1600);
-      }
-      form.reset();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMobileNav();
       closeDrawer();
-      alert("Merci ! Nous vous recontactons rapidement.");
+    }
+  });
+
+  // Drawer form (no backend)
+  if (drawerForm && drawerMsg) {
+    drawerForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const prenom = drawerForm.querySelector('input[name="prenom"]')?.value?.trim();
+      const tel = drawerForm.querySelector('input[name="tel"]')?.value?.trim();
+      if (!prenom || !tel) {
+        drawerMsg.textContent = "⚠️ Prénom et téléphone requis.";
+        return;
+      }
+      drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
+      drawerForm.reset();
+      setTimeout(() => closeDrawer(), 700);
     });
   }
 
-  handleSubmit(document.getElementById("callbackForm"));
-  handleSubmit(document.getElementById("contactForm"));
+  // Contact form (no backend)
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("formMsg");
+  if (form && msg) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const prenom = form.querySelector('input[name="prenom"]')?.value?.trim();
+      const tel = form.querySelector('input[name="tel"]')?.value?.trim();
+
+      if (!prenom || !tel) {
+        msg.textContent = "⚠️ Merci de renseigner votre prénom et votre téléphone.";
+        return;
+      }
+      msg.textContent = "✅ Merci ! Votre demande est bien envoyée. Nous vous recontactons très rapidement.";
+      form.reset();
+    });
+  }
 })();
