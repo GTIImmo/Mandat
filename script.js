@@ -21,7 +21,6 @@
     });
 
     mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMobileNav(); });
   }
 
   // Smooth scroll with header offset
@@ -54,20 +53,75 @@
     });
   });
 
-  // Mini form (no backend)
-  const miniForm = document.getElementById("miniForm");
-  const miniMsg = document.getElementById("miniMsg");
-  if (miniForm && miniMsg) {
-    miniForm.addEventListener("submit", (e) => {
+  // Reveal on scroll
+  const reveals = Array.from(document.querySelectorAll(".reveal"));
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(ent => {
+        if (ent.isIntersecting) {
+          ent.target.classList.add("is-in");
+          io.unobserve(ent.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add("is-in"));
+  }
+
+  // Drawer
+  const drawer = document.getElementById("drawerCallback");
+  const drawerForm = document.getElementById("drawerForm");
+  const drawerMsg = document.getElementById("drawerMsg");
+
+  let lastFocus = null;
+
+  function openDrawer() {
+    if (!drawer) return;
+    lastFocus = document.activeElement;
+    drawer.classList.add("is-open");
+    drawer.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    const firstInput = drawer.querySelector("input,select,textarea,button");
+    if (firstInput) firstInput.focus();
+  }
+
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  }
+
+  document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
+    btn.addEventListener("click", () => openDrawer());
+  });
+
+  document.querySelectorAll("[data-close-drawer]").forEach(el => {
+    el.addEventListener("click", () => closeDrawer());
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMobileNav();
+      closeDrawer();
+    }
+  });
+
+  // Drawer form (no backend)
+  if (drawerForm && drawerMsg) {
+    drawerForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const prenom = miniForm.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = miniForm.querySelector('input[name="tel"]')?.value?.trim();
+      const prenom = drawerForm.querySelector('input[name="prenom"]')?.value?.trim();
+      const tel = drawerForm.querySelector('input[name="tel"]')?.value?.trim();
       if (!prenom || !tel) {
-        miniMsg.textContent = "⚠️ Prénom et téléphone requis.";
+        drawerMsg.textContent = "⚠️ Prénom et téléphone requis.";
         return;
       }
-      miniMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
-      miniForm.reset();
+      drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
+      drawerForm.reset();
+      setTimeout(() => closeDrawer(), 700);
     });
   }
 
@@ -87,21 +141,5 @@
       msg.textContent = "✅ Merci ! Votre demande est bien envoyée. Nous vous recontactons très rapidement.";
       form.reset();
     });
-  }
-
-  // Reveal on scroll
-  const reveals = Array.from(document.querySelectorAll(".reveal"));
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(ent => {
-        if (ent.isIntersecting) {
-          ent.target.classList.add("is-in");
-          io.unobserve(ent.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => io.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add("is-in"));
   }
 })();
