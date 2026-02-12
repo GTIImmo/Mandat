@@ -21,23 +21,8 @@
     });
 
     mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeMobileNav();
-    });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMobileNav(); });
   }
-
-  // Accordion groups: only one open per group
-  const allDetails = Array.from(document.querySelectorAll("details[data-acc-group]"));
-  allDetails.forEach(d => {
-    d.addEventListener("toggle", () => {
-      if (!d.open) return;
-      const group = d.getAttribute("data-acc-group");
-      allDetails.forEach(other => {
-        if (other !== d && other.getAttribute("data-acc-group") === group) other.open = false;
-      });
-    });
-  });
 
   // Smooth scroll with header offset
   const header = document.getElementById("siteHeader");
@@ -57,7 +42,53 @@
     });
   });
 
-  // Form feedback (no backend)
+  // Accordion groups: only one open per group
+  const allDetails = Array.from(document.querySelectorAll("details[data-acc-group]"));
+  allDetails.forEach(d => {
+    d.addEventListener("toggle", () => {
+      if (!d.open) return;
+      const group = d.getAttribute("data-acc-group");
+      allDetails.forEach(other => {
+        if (other !== d && other.getAttribute("data-acc-group") === group) other.open = false;
+      });
+    });
+  });
+
+  // Tabs
+  document.querySelectorAll("[data-tabs]").forEach(root => {
+    const btns = Array.from(root.querySelectorAll(".tabs__btn"));
+    const panes = Array.from(root.querySelectorAll(".pane"));
+
+    const setOn = (id) => {
+      btns.forEach(b => {
+        const on = b.dataset.tab === id;
+        b.classList.toggle("is-on", on);
+        b.setAttribute("aria-selected", String(on));
+      });
+      panes.forEach(p => p.classList.toggle("is-on", p.dataset.pane === id));
+    };
+
+    btns.forEach(b => b.addEventListener("click", () => setOn(b.dataset.tab)));
+  });
+
+  // Mini form (no backend)
+  const miniForm = document.getElementById("miniForm");
+  const miniMsg = document.getElementById("miniMsg");
+  if (miniForm && miniMsg) {
+    miniForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const prenom = miniForm.querySelector('input[name="prenom"]')?.value?.trim();
+      const tel = miniForm.querySelector('input[name="tel"]')?.value?.trim();
+      if (!prenom || !tel) {
+        miniMsg.textContent = "⚠️ Prénom et téléphone requis.";
+        return;
+      }
+      miniMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
+      miniForm.reset();
+    });
+  }
+
+  // Contact form (no backend)
   const form = document.getElementById("contactForm");
   const msg = document.getElementById("formMsg");
   if (form && msg) {
@@ -68,11 +99,9 @@
 
       if (!prenom || !tel) {
         msg.textContent = "⚠️ Merci de renseigner votre prénom et votre téléphone.";
-        msg.dataset.state = "warn";
         return;
       }
       msg.textContent = "✅ Merci ! Votre demande est bien envoyée. Nous vous recontactons très rapidement.";
-      msg.dataset.state = "ok";
       form.reset();
     });
   }
