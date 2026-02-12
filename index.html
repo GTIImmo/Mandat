@@ -18,11 +18,14 @@
 <header class="topbar" id="siteHeader">
   <div class="container topbar__inner">
     <a class="brand" href="#top" aria-label="GTI Immobilier - Mandat Signature">
-      <span class="brand__mark" aria-hidden="true"></span>
+      <img class="brand__logo"
+           src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+           alt="GTI Immobilier">
       <span class="brand__txt">GTI Immobilier</span>
     </a>
 
-    <nav class="nav" aria-label="Navigation">
+    <!-- Menu desktop -->
+    <nav class="nav" aria-label="Navigation principale">
       <a href="#mise">Méthode</a>
       <a href="#cadre">Cadre</a>
       <a href="#equipe">Équipe</a>
@@ -31,12 +34,17 @@
       <a class="btn btn--small" href="tel:+33XXXXXXXXX">Appeler</a>
     </nav>
 
-    <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+    <!-- Burger mobile -->
+    <button class="burger" type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="mobileNav">
       <span></span><span></span><span></span>
     </button>
   </div>
 
-  <nav class="mobileNav" hidden aria-label="Menu mobile">
+  <!-- Menu mobile (uniquement sur mobile + quand burger ouvert) -->
+  <nav class="mobileNav" id="mobileNav" aria-label="Menu mobile" hidden>
     <a href="#mise">Méthode</a>
     <a href="#cadre">Cadre</a>
     <a href="#equipe">Équipe</a>
@@ -48,8 +56,8 @@
 
 <main id="top">
 
-  <!-- HERO : CTA propres (Appeler / Être rappelé -> drawer) -->
-  <section class="hero hero--clean">
+  <!-- HERO -->
+  <section class="hero">
     <div class="container hero__grid">
       <div class="hero__left reveal">
         <div class="pill">Mandat Signature GTI</div>
@@ -107,7 +115,7 @@
     </div>
   </section>
 
-  <!-- IMPACT / PREUVES -->
+  <!-- SECTION IMPACT -->
   <section class="section section--impact">
     <div class="container">
       <div class="impact__grid">
@@ -147,8 +155,7 @@
           </div>
 
           <p class="impact__hint">
-            <strong>Astuce :</strong> ajoutez ici votre preuve réelle (ex : “4,8/5 sur 1 200 avis Google”)
-            lorsque vous serez prêt.
+            <strong>À personnaliser :</strong> ajoute ta preuve réelle (ex : “4,8/5 sur 1 200 avis Google”).
           </p>
         </div>
       </div>
@@ -157,14 +164,13 @@
 
   <div class="sectionDivider" aria-hidden="true"></div>
 
-  <!-- CE QUE NOUS METTONS EN PLACE (ex A→Z) -->
+  <!-- MISE EN PLACE -->
   <section id="mise" class="section">
     <div class="container">
       <div class="section__head reveal">
         <h2>Ce que nous mettons en place</h2>
         <p>
-          Une seule page, un discours clair : vous voyez exactement ce qui est mis en œuvre, et pourquoi.
-          Cliquez sur chaque bloc pour le détail.
+          Un cadre concret, des actions suivies. Cliquez sur chaque bloc pour le détail.
         </p>
       </div>
 
@@ -289,13 +295,13 @@
             <li>Honoraires divisés par deux (conditions du mandat)</li>
             <li>L’accompagnement reste identique jusqu’à l’acte</li>
           </ul>
-          <a class="btn btn--wide" href="tel:+33XXXXXXXXX">📞 Appeler</a>
+          <button class="btn btn--action btn--wide" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EQUIPE -->
+  <!-- ÉQUIPE -->
   <section id="equipe" class="section">
     <div class="container">
       <div class="section__head reveal">
@@ -384,7 +390,7 @@
             <label>Ville du bien</label>
             <input name="city" type="text" placeholder="Ex : Saint-Étienne">
           </div>
-          <button class="btn btn--wide" type="submit">Envoyer</button>
+          <button class="btn btn--action btn--wide" type="submit">Envoyer</button>
           <p class="form__hint">Nous vous rappelons rapidement (horaires ouvrés).</p>
         </form>
       </div>
@@ -431,7 +437,7 @@
         <label>Ville du bien</label>
         <input name="city" type="text" placeholder="Ex : Firminy">
       </div>
-      <button class="btn btn--wide" type="submit">Envoyer</button>
+      <button class="btn btn--action btn--wide" type="submit">Envoyer</button>
       <p class="form__hint">Nous vous rappelons rapidement (horaires ouvrés).</p>
     </form>
   </div>
@@ -453,3 +459,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
