@@ -1,455 +1,538 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --soft:#f6f7fb;
 
-  <title>Mandat Signature GTI | GTI Immobilier</title>
-  <meta name="description" content="Mandat Signature GTI : une vente pilotée, premium et sécurisée jusqu’à l’acte. Honoraires divisés par deux si vous présentez l’acquéreur (selon conditions du mandat)." />
+  --text:#0f1115;
+  --muted:rgba(15,17,21,.72);
+  --muted2:rgba(15,17,21,.56);
+  --line:rgba(15,17,21,.10);
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  --brand:#b31252;
+  --brand2:#7f0f3a;
+  --cta:#16a34a;
+  --teal:#0b6b63;
 
-  <link rel="stylesheet" href="style.css" />
-</head>
+  --tint-brand: rgba(179,18,82,.10);
+  --tint-cta: rgba(22,163,74,.10);
+  --tint-teal: rgba(11,107,99,.10);
 
-<body id="top">
+  --shadow: 0 18px 60px rgba(15,17,21,.10);
+  --shadow2: 0 10px 30px rgba(15,17,21,.08);
+  --shadow3: 0 6px 18px rgba(15,17,21,.06);
 
-<header class="topbar" id="siteHeader">
-  <div class="container topbar__inner">
-    <a class="brand" href="#top" aria-label="GTI Immobilier - Mandat Signature GTI">
-      <img class="brand__logo"
-           src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
-           alt="GTI Immobilier">
-      <div class="brand__txt">
-        <div class="brand__name">GTI Immobilier</div>
-        <div class="brand__sub">Mandat Signature GTI</div>
-      </div>
-    </a>
+  --r:18px;
+  --r2:26px;
+  --container:1140px;
+}
 
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="#mise-en-place">Le service</a>
-      <a href="#cadre">Votre mandat</a>
-      <a href="#faq">FAQ</a>
-      <a class="nav__cta" href="#contact">Parler à un conseiller</a>
-    </nav>
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.55;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button,input,textarea{font:inherit}
+.container{max-width:var(--container);margin:0 auto;padding:0 20px}
 
-    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+/* ---------- Header ---------- */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(180%) blur(10px);
+  background:rgba(255,255,255,.78);
+  border-bottom:1px solid rgba(15,17,21,.08);
+  transition: box-shadow .2s ease, background .2s ease;
+}
+.topbar.is-scrolled{
+  background:rgba(255,255,255,.88);
+  box-shadow:0 10px 30px rgba(15,17,21,.06);
+}
+.topbar__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:74px;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand__logo{height:36px;width:auto;filter:none;opacity:.95}
+.brand__name{font-weight:800;letter-spacing:-.02em}
+.brand__sub{font-size:13px;color:var(--muted2);margin-top:1px}
 
-  <div class="mobileNav" id="mobileNav" hidden>
-    <div class="container mobileNav__inner">
-      <a href="#mise-en-place">Le service</a>
-      <a href="#cadre">Votre mandat</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Parler à un conseiller</a>
-      <div class="mobileNav__actions">
-        <a class="btn btn--brand" href="#contact">📞 Être conseillé</a>
-        <button class="btn btn--cta" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
-      </div>
-    </div>
-  </div>
-</header>
+.nav{display:flex;align-items:center;gap:10px}
+.nav a{
+  padding:10px 12px;border-radius:12px;
+  color:var(--muted);
+  transition: background .18s ease, color .18s ease, transform .18s ease;
+}
+.nav a:hover{background:rgba(179,18,82,.06);color:var(--text)}
+.nav__cta{
+  background:linear-gradient(135deg, rgba(22,163,74,.16), rgba(22,163,74,.08));
+  border:1px solid rgba(22,163,74,.22);
+  color:var(--text) !important;
+}
+.nav__cta:hover{transform:translateY(-1px);background:linear-gradient(135deg, rgba(22,163,74,.22), rgba(22,163,74,.10))}
 
-<main>
+.burger{
+  display:none;
+  width:44px;height:44px;border-radius:14px;
+  border:1px solid rgba(15,17,21,.10);
+  background:rgba(15,17,21,.03);
+  align-items:center;justify-content:center;
+  gap:4px;flex-direction:column;
+}
+.burger span{display:block;width:18px;height:2px;background:rgba(15,17,21,.72);border-radius:99px}
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero__grid">
-      <div class="hero__copy">
-        <div class="pill">
-          <span class="dot"></span>
-          Vente premium, pilotée et sécurisée
-        </div>
+/* Mobile nav */
+.mobileNav{
+  border-top:1px solid rgba(15,17,21,.08);
+  background:rgba(255,255,255,.92);
+}
+.mobileNav__inner{
+  padding:16px 0 18px;
+  display:grid;gap:10px;
+}
+.mobileNav a{
+  padding:12px 12px;border-radius:14px;
+  background:rgba(15,17,21,.03);
+  border:1px solid rgba(15,17,21,.08);
+}
+.mobileNav__actions{display:grid;gap:10px;margin-top:8px}
 
-        <h1 class="hero__title">
-          <span class="hl">Mandat Signature GTI</span><br>
-          une vente cadrée, efficace…<br class="hide-m"> et <span class="accent">sans stress</span>.
-        </h1>
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:10px;
+  padding:12px 16px;
+  border-radius:14px;
+  border:1px solid rgba(179,18,82,.18);
+  background:linear-gradient(135deg, var(--brand), rgba(179,18,82,.82));
+  color:#fff;
+  box-shadow:0 14px 28px rgba(179,18,82,.18);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  cursor:pointer;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 18px 40px rgba(179,18,82,.22)}
+.btn:active{transform:translateY(0px)}
+.btn--block{width:100%}
 
-        <p class="hero__lead">
-          Nous prenons en charge l’essentiel (stratégie, diffusion, visites, suivi, négociation, sécurisation),
-          et vous gardez la liberté de présenter un acquéreur.
-        </p>
+.btn--ghost{
+  background:rgba(15,17,21,.035);
+  border:1px solid rgba(15,17,21,.12);
+  color:var(--text);
+  box-shadow:none;
+}
+.btn--ghost:hover{box-shadow:0 18px 40px rgba(15,17,21,.10)}
 
-        <div class="hero__actions">
-          <a class="btn btn--brand" href="#contact">📞 Parler à un conseiller</a>
-          <button class="btn btn--cta" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
-          <a class="btn btn--ghost" href="#cadre">Voir le cadre du mandat</a>
-        </div>
+.btn--cta{
+  border:1px solid rgba(22,163,74,.22);
+  background:linear-gradient(135deg, var(--cta), rgba(22,163,74,.85));
+  box-shadow:0 14px 28px rgba(22,163,74,.18);
+}
+.btn--cta:hover{box-shadow:0 18px 40px rgba(22,163,74,.22)}
 
-        <div class="hero__trust">
-          <div class="trust">
-            <div class="trust__icon">✓</div>
-            <div class="trust__txt">
-              <div class="trust__t">Pilotage de A à Z</div>
-              <div class="trust__s">Un interlocuteur GTI dédié</div>
-            </div>
-          </div>
-          <div class="trust">
-            <div class="trust__icon">★</div>
-            <div class="trust__txt">
-              <div class="trust__t">Positionnement premium</div>
-              <div class="trust__s">Valorisation et diffusion maîtrisées</div>
-            </div>
-          </div>
-          <div class="trust">
-            <div class="trust__icon">⏱</div>
-            <div class="trust__txt">
-              <div class="trust__t">Suivi transparent</div>
-              <div class="trust__s">Compte rendu & actions concrètes</div>
-            </div>
-          </div>
-        </div>
-      </div>
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  padding:56px 0 34px;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 520px at 15% 0%, var(--tint-brand), transparent 60%),
+    radial-gradient(900px 520px at 90% 10%, var(--tint-cta), transparent 55%),
+    #fff;
+}
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:28px;
+  align-items:center;
+}
 
-      <div class="hero__media">
-        <div class="heroCard">
-          <div class="heroCard__top">
-            <div class="badge">Signature</div>
-            <div class="badge badge--soft">Premium</div>
-          </div>
+.pill{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 12px;border-radius:999px;
+  border:1px solid rgba(179,18,82,.14);
+  background:rgba(179,18,82,.06);
+  color:rgba(15,17,21,.86);
+  font-weight:600;
+  font-size:13px;
+}
+.pill .dot{
+  width:9px;height:9px;border-radius:99px;
+  background:var(--brand);
+  box-shadow:0 0 0 4px rgba(179,18,82,.14);
+}
 
-          <div class="heroCard__title">Ce que vous obtenez</div>
+.hero__title{
+  margin:14px 0 10px;
+  line-height:1.05;
+  letter-spacing:-.04em;
+  font-size:clamp(30px, 3.6vw, 54px);
+}
+.hl{
+  display:inline-block;
+  padding:0 .18em;
+  border-radius:14px;
+  background:linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.86));
+  border:1px solid rgba(15,17,21,.06);
+  box-shadow:var(--shadow3);
+}
+.accent{color:var(--brand)}
+.hero__lead{
+  color:var(--muted);
+  font-size:clamp(15px, 1.3vw, 17px);
+  max-width:52ch;
+}
 
-          <ul class="checklist">
-            <li><span>✓</span> Stratégie de prix & plan de vente</li>
-            <li><span>✓</span> Mise en valeur & diffusion multi-canaux</li>
-            <li><span>✓</span> Sélection acquéreurs & visites qualifiées</li>
-            <li><span>✓</span> Négociation & sécurisation du dossier</li>
-            <li><span>✓</span> Suivi jusqu’à l’acte chez le notaire</li>
-          </ul>
+.hero__actions{
+  display:flex;flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
 
-          <div class="heroCard__cta">
-            <a class="miniLink" href="#mise-en-place">Découvrir le détail →</a>
-          </div>
-        </div>
+.hero__trust{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:10px;
+  margin-top:18px;
+}
+.trust{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:12px;
+  border:1px solid rgba(15,17,21,.08);
+  border-radius:16px;
+  background:rgba(255,255,255,.74);
+  box-shadow:var(--shadow3);
+}
+.trust__icon{
+  width:34px;height:34px;border-radius:12px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg, rgba(11,107,99,.16), rgba(179,18,82,.10));
+  border:1px solid rgba(15,17,21,.06);
+  font-weight:900;
+}
+.trust__t{font-weight:800;font-size:13px;letter-spacing:-.01em}
+.trust__s{font-size:12px;color:var(--muted2);margin-top:2px}
 
-        <div class="hero__glow" aria-hidden="true"></div>
-      </div>
-    </div>
-  </section>
+/* Hero right card */
+.hero__media{position:relative}
+.heroCard{
+  border-radius:var(--r2);
+  background:
+    radial-gradient(520px 280px at 10% 0%, rgba(179,18,82,.14), transparent 60%),
+    radial-gradient(520px 280px at 90% 10%, rgba(22,163,74,.14), transparent 55%),
+    #fff;
+  border:1px solid rgba(15,17,21,.10);
+  box-shadow:var(--shadow);
+  padding:18px 18px 14px;
+}
+.heroCard__top{display:flex;gap:8px;align-items:center;justify-content:flex-start}
+.badge{
+  font-size:12px;font-weight:800;
+  padding:6px 10px;border-radius:999px;
+  background:rgba(179,18,82,.10);
+  border:1px solid rgba(179,18,82,.18);
+}
+.badge--soft{
+  background:rgba(11,107,99,.08);
+  border:1px solid rgba(11,107,99,.14);
+}
+.heroCard__title{margin:12px 0 10px;font-weight:900;letter-spacing:-.02em}
+.checklist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.checklist li{display:flex;gap:10px;align-items:flex-start;color:rgba(15,17,21,.86)}
+.checklist li span{
+  width:22px;height:22px;border-radius:8px;
+  display:grid;place-items:center;
+  background:rgba(22,163,74,.12);
+  border:1px solid rgba(22,163,74,.18);
+  color:var(--cta);
+  font-weight:900;
+  flex:0 0 auto;
+}
+.checklist--big li{font-size:15px}
+.heroCard__cta{margin-top:12px}
+.miniLink{
+  display:inline-flex;gap:8px;align-items:center;
+  color:var(--brand);
+  font-weight:800;
+}
+.miniLink:hover{text-decoration:underline}
 
-  <!-- SECTION: mise en place -->
-  <section class="section section--soft" id="mise-en-place">
-    <div class="container">
-      <div class="section__head">
-        <h2>Ce que nous mettons en place</h2>
-        <p>Un service premium, très concret, pensé pour vendre mieux et plus sereinement.</p>
-      </div>
+.hero__glow{
+  position:absolute;inset:auto -40px -40px auto;
+  width:240px;height:240px;border-radius:999px;
+  background:radial-gradient(circle at 30% 30%, rgba(179,18,82,.30), transparent 60%),
+             radial-gradient(circle at 70% 70%, rgba(22,163,74,.25), transparent 58%);
+  filter:blur(6px);
+  pointer-events:none;
+}
 
-      <div class="cards3">
-        <article class="card">
-          <div class="card__icon">📌</div>
-          <h3>Stratégie & prix</h3>
-          <p>Analyse du marché local, positionnement intelligent, plan d’actions et calendrier.</p>
-        </article>
+/* ---------- Sections ---------- */
+.section{padding:78px 0;position:relative}
+.section::before{
+  content:"";
+  position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg, transparent, rgba(15,17,21,.10), transparent);
+}
+.section--soft{
+  background:
+    radial-gradient(900px 520px at 10% 0%, var(--tint-brand), transparent 60%),
+    radial-gradient(900px 520px at 90% 20%, var(--tint-teal), transparent 60%),
+    var(--soft);
+}
+.section--tint{
+  background:
+    radial-gradient(900px 520px at 10% 0%, rgba(22,163,74,.10), transparent 60%),
+    radial-gradient(900px 520px at 90% 20%, rgba(179,18,82,.10), transparent 60%),
+    #fff;
+}
 
-        <article class="card">
-          <div class="card__icon">🎯</div>
-          <h3>Diffusion maîtrisée</h3>
-          <p>Diffusion ciblée, vitrine, réseaux, base acquéreurs, et optimisation continue.</p>
-        </article>
+.section__head{max-width:760px}
+.section__head h2{
+  margin:0;
+  font-size:clamp(24px, 2.6vw, 38px);
+  letter-spacing:-.03em;
+  line-height:1.12;
+}
+.section__head p{margin:10px 0 0;color:var(--muted);font-size:16px}
 
-        <article class="card">
-          <div class="card__icon">🤝</div>
-          <h3>Visites qualifiées</h3>
-          <p>Sélection sérieuse des candidats, visites cadrées et retours systématiques.</p>
-        </article>
+/* cards */
+.cards3{
+  margin-top:22px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:14px;
+}
+.card{
+  border-radius:var(--r2);
+  border:1px solid rgba(15,17,21,.10);
+  background:rgba(255,255,255,.86);
+  box-shadow:var(--shadow3);
+  padding:16px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow2);border-color:rgba(179,18,82,.18)}
+.card__icon{
+  width:44px;height:44px;border-radius:16px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg, rgba(179,18,82,.12), rgba(11,107,99,.10));
+  border:1px solid rgba(15,17,21,.06);
+  margin-bottom:10px;
+  font-size:20px;
+}
+.card h3{margin:0 0 6px;font-size:16px;letter-spacing:-.01em}
+.card p{margin:0;color:var(--muted);font-size:14px}
 
-        <article class="card">
-          <div class="card__icon">🧾</div>
-          <h3>Dossier sécurisé</h3>
-          <p>Vérification des pièces, solvabilité, accompagnement jusqu’au compromis.</p>
-        </article>
+/* band */
+.band{
+  margin-top:18px;
+  display:flex;gap:14px;align-items:center;justify-content:space-between;
+  padding:14px 14px;
+  border-radius:var(--r2);
+  border:1px solid rgba(22,163,74,.18);
+  background:linear-gradient(135deg, rgba(22,163,74,.10), rgba(179,18,82,.06));
+  box-shadow:var(--shadow3);
+}
+.band__txt{color:rgba(15,17,21,.86)}
 
-        <article class="card">
-          <div class="card__icon">📈</div>
-          <h3>Suivi transparent</h3>
-          <p>Point régulier, actions réalisées, ajustements (prix, diffusion, ciblage).</p>
-        </article>
+/* split */
+.split{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  margin-top:20px;
+}
+.split__card{
+  border-radius:var(--r2);
+  border:1px solid rgba(15,17,21,.10);
+  background:#fff;
+  box-shadow:var(--shadow3);
+  padding:18px;
+}
+.split__card--tint{
+  background:
+    radial-gradient(700px 360px at 0% 0%, rgba(22,163,74,.10), transparent 62%),
+    radial-gradient(700px 360px at 100% 10%, rgba(179,18,82,.10), transparent 60%),
+    #fff;
+}
+.split__card h3{margin:0 0 12px;font-size:18px;letter-spacing:-.02em}
+.shots{display:grid;gap:10px}
+.shot{
+  padding:12px;border-radius:16px;
+  border:1px solid rgba(15,17,21,.08);
+  background:rgba(15,17,21,.02);
+}
+.shot__k{font-size:12px;color:var(--muted2);font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.shot__v{margin-top:4px;font-weight:700}
+.note{
+  margin-top:12px;
+  display:flex;gap:10px;align-items:flex-start;
+  padding:12px;border-radius:16px;
+  background:rgba(179,18,82,.06);
+  border:1px solid rgba(179,18,82,.12);
+}
+.note__dot{
+  width:10px;height:10px;border-radius:99px;
+  background:var(--brand);
+  box-shadow:0 0 0 4px rgba(179,18,82,.12);
+  margin-top:5px;
+}
+.note p{margin:0;color:var(--muted)}
+.miniCtas{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 
-        <article class="card">
-          <div class="card__icon">🏁</div>
-          <h3>Jusqu’à l’acte</h3>
-          <p>Coordination notaire, relances, échéances, sécurisation finale.</p>
-        </article>
-      </div>
+/* stats + quote */
+.stats{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:14px;
+}
+.stat{
+  border-radius:var(--r2);
+  border:1px solid rgba(15,17,21,.10);
+  background:#fff;
+  box-shadow:var(--shadow3);
+  padding:16px;
+}
+.stat__n{font-size:28px;font-weight:900;letter-spacing:-.03em;color:var(--brand)}
+.stat__t{margin-top:2px;font-weight:900}
+.stat__s{margin-top:4px;color:var(--muted);font-size:14px}
 
-      <div class="band">
-        <div class="band__txt">
-          <strong>Vous présentez l’acquéreur ?</strong> Les honoraires peuvent être divisés par deux (selon conditions du mandat).
-        </div>
-        <a class="btn btn--cta" href="#contact">En parler</a>
-      </div>
-    </div>
-  </section>
+.quote{
+  margin-top:16px;
+  border-radius:var(--r2);
+  border:1px solid rgba(15,17,21,.10);
+  background:linear-gradient(135deg, rgba(179,18,82,.08), rgba(22,163,74,.08));
+  box-shadow:var(--shadow3);
+  padding:16px;
+}
+.quote p{margin:0;font-size:15px;color:rgba(15,17,21,.86)}
+.quote__by{margin-top:8px;font-weight:900;color:rgba(15,17,21,.78)}
 
-  <!-- SECTION: cadre -->
-  <section class="section" id="cadre">
-    <div class="container">
-      <div class="section__head">
-        <h2>Un cadre complet… et vous restez acteur de votre vente.</h2>
-        <p>Le Mandat Signature fixe un cadre clair, premium et rassurant.</p>
-      </div>
+/* FAQ */
+.faq{margin-top:18px;display:grid;gap:10px}
+.faq__item{
+  border-radius:var(--r2);
+  border:1px solid rgba(15,17,21,.10);
+  background:#fff;
+  box-shadow:var(--shadow3);
+  overflow:hidden;
+}
+.faq__item summary{
+  cursor:pointer;
+  list-style:none;
+  padding:14px 16px;
+  font-weight:900;
+  letter-spacing:-.01em;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.faq__item summary::-webkit-details-marker{display:none}
+.faq__item summary::after{
+  content:"＋";
+  font-weight:900;
+  color:rgba(15,17,21,.66);
+}
+.faq__item[open] summary::after{content:"—"}
+.faq__content{padding:0 16px 14px;color:var(--muted)}
 
-      <div class="split">
-        <div class="split__card">
-          <h3>Un mandat pensé pour performer</h3>
+/* Contact */
+.contactGrid{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap:14px;
+}
+.form{
+  border-radius:var(--r2);
+  border:1px solid rgba(15,17,21,.10);
+  background:#fff;
+  box-shadow:var(--shadow2);
+  padding:18px;
+}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{display:grid;gap:6px;margin-top:10px}
+.field label{font-weight:800;font-size:13px;color:rgba(15,17,21,.82)}
+.field input,.field textarea{
+  border-radius:14px;
+  border:1px solid rgba(15,17,21,.12);
+  background:rgba(15,17,21,.02);
+  padding:12px 12px;
+  outline:none;
+  transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.field input:focus,.field textarea:focus{
+  border-color:rgba(179,18,82,.30);
+  box-shadow:0 0 0 4px rgba(179,18,82,.10);
+  background:#fff;
+}
+.form__actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.fineprint{margin:10px 0 0;color:var(--muted2);font-size:12px}
 
-          <div class="shots">
-            <div class="shot">
-              <div class="shot__k">Objectif</div>
-              <div class="shot__v">Vendre au bon prix, dans de bons délais</div>
-            </div>
-            <div class="shot">
-              <div class="shot__k">Méthode</div>
-              <div class="shot__v">Pilotage, diffusion, visites, négociation</div>
-            </div>
-            <div class="shot">
-              <div class="shot__k">Sécurité</div>
-              <div class="shot__v">Dossier cadré jusqu’à l’acte notarié</div>
-            </div>
-          </div>
+.contactCard{
+  border-radius:var(--r2);
+  border:1px solid rgba(15,17,21,.10);
+  background:
+    radial-gradient(700px 360px at 0% 0%, rgba(179,18,82,.10), transparent 62%),
+    radial-gradient(700px 360px at 100% 10%, rgba(22,163,74,.10), transparent 60%),
+    #fff;
+  box-shadow:var(--shadow2);
+  padding:18px;
+}
+.contactCard__title{font-weight:900;letter-spacing:-.02em}
+.contactCard__sub{margin-top:4px;color:var(--muted)}
+.tips{margin-top:14px;display:grid;gap:10px}
+.tip{
+  display:grid;
+  grid-template-columns:36px 1fr;
+  grid-template-rows:auto auto;
+  column-gap:10px;
+  padding:12px;border-radius:16px;
+  border:1px solid rgba(15,17,21,.08);
+  background:rgba(15,17,21,.02);
+}
+.tip__i{
+  grid-row:1 / span 2;
+  width:36px;height:36px;border-radius:14px;
+  display:grid;place-items:center;
+  background:rgba(22,163,74,.12);
+  border:1px solid rgba(22,163,74,.18);
+  font-weight:900;color:var(--cta);
+}
+.tip__t{font-weight:900}
+.tip__s{color:var(--muted);font-size:13px;margin-top:2px}
+.contactCard__cta{margin-top:14px}
 
-          <div class="note">
-            <span class="note__dot"></span>
-            <p><strong>Important :</strong> les conditions exactes (honoraires, division par 2, etc.) sont définies dans le mandat que nous signons ensemble.</p>
-          </div>
-        </div>
+/* Footer */
+.footer{
+  border-top:1px solid rgba(15,17,21,.10);
+  background:rgba(15,17,21,.02);
+  padding:22px 0;
+}
+.footer__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;
+}
+.footer__brand{display:flex;gap:12px;align-items:center}
+.footer__logo{height:34px;filter:none;opacity:.92}
+.footer__name{font-weight:900}
+.footer__sub{font-size:13px;color:var(--muted2)}
+.footer__links{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted)}
+.footer__links a:hover{text-decoration:underline}
+.footer__legal{color:var(--muted2);font-size:12px}
 
-        <div class="split__card split__card--tint">
-          <h3>Ce que vous ressentez au quotidien</h3>
-          <ul class="checklist checklist--big">
-            <li><span>✓</span> Moins d’appels inutiles, plus de visites qualifiées</li>
-            <li><span>✓</span> Un suivi clair et des actions visibles</li>
-            <li><span>✓</span> Un dossier solide qui avance sans blocage</li>
-            <li><span>✓</span> Une vente plus sereine, mieux sécurisée</li>
-          </ul>
-
-          <div class="miniCtas">
-            <a class="btn btn--brand" href="#contact">📞 Demander un avis</a>
-            <button class="btn btn--cta" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION: accompagnement -->
-  <section class="section section--tint">
-    <div class="container">
-      <div class="section__head">
-        <h2>Chez GTI Immobilier, vous n’êtes pas seul.</h2>
-        <p>Un cadre, c’est bien. Un accompagnement régulier, c’est mieux.</p>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <div class="stat__n">1</div>
-          <div class="stat__t">Interlocuteur dédié</div>
-          <div class="stat__s">Un suivi cohérent du début à la fin</div>
-        </div>
-        <div class="stat">
-          <div class="stat__n">+18</div>
-          <div class="stat__t">Agences GTI</div>
-          <div class="stat__s">Réseau local, visibilité et puissance</div>
-        </div>
-        <div class="stat">
-          <div class="stat__n">✔</div>
-          <div class="stat__t">Process sécurisé</div>
-          <div class="stat__s">Dossier cadré et relances notaire</div>
-        </div>
-      </div>
-
-      <div class="quote">
-        <p>“On veut que vous sachiez <strong>ce qui est fait</strong>, <strong>pourquoi</strong>, et <strong>ce qui vient ensuite</strong>. C’est ça, une vente pilotée.”</p>
-        <div class="quote__by">— L’équipe GTI Immobilier</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section__head">
-        <h2>FAQ</h2>
-        <p>Les réponses aux questions les plus fréquentes.</p>
-      </div>
-
-      <div class="faq">
-        <details class="faq__item" data-acc-group="faq">
-          <summary>En quoi ce mandat est différent ?</summary>
-          <div class="faq__content">
-            <p>Il structure la vente avec un pilotage plus poussé : stratégie, diffusion, visites, suivi et sécurisation jusqu’à l’acte.</p>
-          </div>
-        </details>
-
-        <details class="faq__item" data-acc-group="faq">
-          <summary>Et si je trouve un acquéreur ?</summary>
-          <div class="faq__content">
-            <p>Selon les conditions prévues au mandat, les honoraires peuvent être ajustés (ex : divisés par deux).</p>
-          </div>
-        </details>
-
-        <details class="faq__item" data-acc-group="faq">
-          <summary>Est-ce que vous m’obligez à baisser le prix ?</summary>
-          <div class="faq__content">
-            <p>Non. Nous proposons des ajustements basés sur le marché et les retours de visites. La décision finale reste la vôtre.</p>
-          </div>
-        </details>
-
-        <details class="faq__item" data-acc-group="faq">
-          <summary>Quels documents dois-je préparer ?</summary>
-          <div class="faq__content">
-            <p>Nous vous guidons : diagnostics, taxe foncière, règlement de copropriété, etc. L’objectif est d’éviter tout blocage au compromis.</p>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section section--soft" id="contact">
-    <div class="container">
-      <div class="section__head">
-        <h2>Parlons de votre projet</h2>
-        <p>Dites-nous où se situe le bien et ce que vous attendez : on vous rappelle rapidement.</p>
-      </div>
-
-      <div class="contactGrid">
-        <form class="form" id="leadForm">
-          <div class="form__row">
-            <div class="field">
-              <label for="prenom">Prénom</label>
-              <input id="prenom" name="prenom" autocomplete="given-name" placeholder="Votre prénom" required>
-            </div>
-            <div class="field">
-              <label for="nom">Nom</label>
-              <input id="nom" name="nom" autocomplete="family-name" placeholder="Votre nom" required>
-            </div>
-          </div>
-
-          <div class="form__row">
-            <div class="field">
-              <label for="tel">Téléphone</label>
-              <input id="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="06..." required>
-            </div>
-            <div class="field">
-              <label for="ville">Ville du bien</label>
-              <input id="ville" name="ville" autocomplete="address-level2" placeholder="Ex. Saint-Étienne" required>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="msg">Votre message</label>
-            <textarea id="msg" name="msg" rows="4" placeholder="Type de bien, délai, contexte… (optionnel)"></textarea>
-          </div>
-
-          <div class="form__actions">
-            <button class="btn btn--brand" type="submit">📨 Envoyer</button>
-            <button class="btn btn--cta" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
-          </div>
-
-          <p class="fineprint">
-            En envoyant, vous acceptez d’être recontacté par GTI Immobilier au sujet de votre demande.
-          </p>
-        </form>
-
-        <aside class="contactCard">
-          <div class="contactCard__top">
-            <div class="contactCard__title">Conseil rapide</div>
-            <div class="contactCard__sub">Le bon prix fait 80% de la vente.</div>
-          </div>
-
-          <div class="tips">
-            <div class="tip">
-              <div class="tip__i">1</div>
-              <div class="tip__t">Visites qualifiées</div>
-              <div class="tip__s">Mieux vaut 6 bonnes visites que 25 curieux.</div>
-            </div>
-            <div class="tip">
-              <div class="tip__i">2</div>
-              <div class="tip__t">Dossier prêt</div>
-              <div class="tip__s">Un dossier solide évite les retards au compromis.</div>
-            </div>
-            <div class="tip">
-              <div class="tip__i">3</div>
-              <div class="tip__t">Suivi & ajustements</div>
-              <div class="tip__s">On adapte la diffusion et le prix selon les retours.</div>
-            </div>
-          </div>
-
-          <div class="contactCard__cta">
-            <a class="btn btn--brand btn--block" href="#top">Revenir en haut</a>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <img class="footer__logo"
-           src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
-           alt="GTI Immobilier">
-      <div>
-        <div class="footer__name">GTI Immobilier</div>
-        <div class="footer__sub">Mandat Signature GTI</div>
-      </div>
-    </div>
-
-    <div class="footer__links">
-      <a href="#mise-en-place">Le service</a>
-      <a href="#cadre">Votre mandat</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <div class="footer__legal">
-      <div>© <span id="year"></span> GTI Immobilier — Tous droits réservés</div>
-    </div>
-  </div>
-</footer>
-
-<!-- Drawer callback -->
-<div class="drawer" id="callbackDrawer" aria-hidden="true">
-  <div class="drawer__backdrop" data-close-drawer></div>
-  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
-    <div class="drawer__head">
-      <div>
-        <div class="drawer__title" id="drawerTitle">Être rappelé</div>
-        <div class="drawer__sub">Laissez votre numéro, on vous rappelle rapidement.</div>
-      </div>
-      <button class="drawer__close" type="button" aria-label="Fermer" data-close-drawer>✕</button>
-    </div>
-
-    <form class="drawer__form" id="callbackForm">
-      <div class="field">
-        <label for="cb_name">Nom</label>
-        <input id="cb_name" name="cb_name" placeholder="Votre nom">
-      </div>
-      <div class="field">
-        <label for="cb_tel">Téléphone *</label>
-        <input id="cb_tel" name="cb_tel" inputmode="tel" placeholder="06..." required>
-      </div>
-      <div class="field">
-        <label for="cb_city">Ville du bien</label>
-        <input id="cb_city" name="cb_city" placeholder="Ex. Firminy">
-      </div>
-
-      <button class="btn btn--cta btn--block" type="submit">📞 Demander le rappel</button>
-      <p class="fineprint">Nous vous recontactons au sujet de votre projet immobilier.</p>
-    </form>
-  </div>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+/* Drawer */
+.drawer[aria-hidden="true"]{display:none}
+.drawer{position:fixed;inset:0;z-index:100}
+.drawer__backdrop{position:absolute;inset:0;background:rgba(15,17,21,.55)}
+.drawer__panel{
+  position:absolute;right:0;top:0;bottom:0;
+  width:min(460px, 92vw);
+  background:#fff;
+  border-left:1px solid rgba(15,17,21,.10);
+  box-shadow:0 30px 80px rgba(15,17,21,.24);
+  padding:18px;
+  overflow:auto;
+}
+.drawer__head{display:fle
