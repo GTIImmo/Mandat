@@ -13,24 +13,14 @@
     mobileNav.hidden = true;
   }
 
-  function openMobileNav() {
-    if (!burger || !mobileNav) return;
-    burger.setAttribute("aria-expanded", "true");
-    mobileNav.hidden = false;
-  }
-
   if (burger && mobileNav) {
     burger.addEventListener("click", () => {
       const open = burger.getAttribute("aria-expanded") === "true";
-      if (open) closeMobileNav();
-      else openMobileNav();
+      burger.setAttribute("aria-expanded", String(!open));
+      mobileNav.hidden = open;
     });
 
     mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
-
-    window.addEventListener("resize", () => {
-      if (window.matchMedia("(min-width: 981px)").matches) closeMobileNav();
-    });
   }
 
   // Smooth scroll with header offset
@@ -92,7 +82,6 @@
     drawer.classList.add("is-open");
     drawer.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-
     const firstInput = drawer.querySelector("input,select,textarea,button");
     if (firstInput) firstInput.focus();
   }
@@ -120,27 +109,19 @@
     }
   });
 
-  // Helpers
-  function cleanPhone(s) {
-    if (!s) return "";
-    return String(s).replace(/[^\d+]/g, "").trim();
-  }
-
   // Drawer form (no backend)
   if (drawerForm && drawerMsg) {
     drawerForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const prenom = drawerForm.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = cleanPhone(drawerForm.querySelector('input[name="tel"]')?.value?.trim();
-
+      const tel = drawerForm.querySelector('input[name="tel"]')?.value?.trim();
       if (!prenom || !tel) {
         drawerMsg.textContent = "⚠️ Prénom et téléphone requis.";
         return;
       }
-
       drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
       drawerForm.reset();
-      setTimeout(() => closeDrawer(), 700);
+      setTimeout(closeDrawer, 700);
     });
   }
 
@@ -150,15 +131,13 @@
   if (form && msg) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
       const prenom = form.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = cleanPhone(form.querySelector('input[name="tel"]')?.value?.trim();
+      const tel = form.querySelector('input[name="tel"]')?.value?.trim();
 
       if (!prenom || !tel) {
         msg.textContent = "⚠️ Merci de renseigner votre prénom et votre téléphone.";
         return;
       }
-
       msg.textContent = "✅ Merci ! Votre demande est bien envoyée. Nous vous recontactons très rapidement.";
       form.reset();
     });
