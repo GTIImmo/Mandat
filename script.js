@@ -27,8 +27,8 @@
     });
 
     mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
+
     window.addEventListener("resize", () => {
-      // Si on repasse desktop, on ferme le menu mobile
       if (window.matchMedia("(min-width: 981px)").matches) closeMobileNav();
     });
   }
@@ -92,6 +92,7 @@
     drawer.classList.add("is-open");
     drawer.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+
     const firstInput = drawer.querySelector("input,select,textarea,button");
     if (firstInput) firstInput.focus();
   }
@@ -130,7 +131,7 @@
     drawerForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const prenom = drawerForm.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = cleanPhone(drawerForm.querySelector('input[name="tel"]')?.value?.trim());
+      const tel = cleanPhone(drawerForm.querySelector('input[name="tel"]')?.value?.trim();
 
       if (!prenom || !tel) {
         drawerMsg.textContent = "⚠️ Prénom et téléphone requis.";
@@ -151,7 +152,7 @@
       e.preventDefault();
 
       const prenom = form.querySelector('input[name="prenom"]')?.value?.trim();
-      const tel = cleanPhone(form.querySelector('input[name="tel"]')?.value?.trim());
+      const tel = cleanPhone(form.querySelector('input[name="tel"]')?.value?.trim();
 
       if (!prenom || !tel) {
         msg.textContent = "⚠️ Merci de renseigner votre prénom et votre téléphone.";
