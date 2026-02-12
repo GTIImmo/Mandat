@@ -17,47 +17,45 @@
 <body>
 <header class="topbar" id="siteHeader">
   <div class="container topbar__inner">
-    <a class="brand" href="#top" aria-label="GTI Immobilier - Mandat Signature">
+    <a class="brand" href="#top" aria-label="GTI Immobilier - Mandat Signature GTI">
       <img class="brand__logo"
            src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
            alt="GTI Immobilier">
-      <span class="brand__txt">GTI Immobilier</span>
+      <div class="brand__txt">
+        <div class="brand__name">GTI Immobilier</div>
+        <div class="brand__sub">Mandat Signature GTI</div>
+      </div>
     </a>
 
-    <!-- Menu desktop -->
     <nav class="nav" aria-label="Navigation principale">
-      <a href="#mise">Méthode</a>
-      <a href="#cadre">Cadre</a>
+      <a href="#mise">Ce que nous mettons en place</a>
+      <a href="#mandat">Le mandat équilibré</a>
       <a href="#equipe">Équipe</a>
       <a href="#faq">FAQ</a>
-      <a class="btn btn--ghost btn--small" href="#contact">Contact</a>
-      <a class="btn btn--small" href="tel:+33XXXXXXXXX">Appeler</a>
+      <a href="#contact" class="nav__cta">Contact</a>
     </nav>
 
-    <!-- Burger mobile -->
-    <button class="burger" type="button"
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
-            aria-controls="mobileNav">
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 
-  <!-- Menu mobile (uniquement sur mobile + quand burger ouvert) -->
-  <nav class="mobileNav" id="mobileNav" aria-label="Menu mobile" hidden>
-    <a href="#mise">Méthode</a>
-    <a href="#cadre">Cadre</a>
-    <a href="#equipe">Équipe</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-    <a class="btn btn--wide" href="tel:+33XXXXXXXXX">📞 Appeler</a>
-  </nav>
+  <div class="mobileNav" hidden>
+    <div class="container mobileNav__inner">
+      <a href="#mise">Ce que nous mettons en place</a>
+      <a href="#mandat">Le mandat équilibré</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--ghost btn--small" href="#contact">Contact</a>
+      <a class="btn btn--small" href="tel:+33XXXXXXXXX">Appeler</a>
+    </div>
+  </div>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO : CTA propres (Appeler / Être rappelé -> drawer) -->
+  <section class="hero hero--clean">
     <div class="container hero__grid">
       <div class="hero__left reveal">
         <div class="pill">Mandat Signature GTI</div>
@@ -78,8 +76,8 @@
         </div>
 
         <div class="hero__cta">
-          <a class="btn btn--ghost" href="tel:+33XXXXXXXXX">📞 Appeler</a>
-          <button class="btn btn--action" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+          <a class="btn" href="tel:+33XXXXXXXXX">📞 Appeler</a>
+          <button class="btn btn--ghost" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
         </div>
 
         <div class="note note--grad">
@@ -108,355 +106,346 @@
         <div class="hero__stats">
           <div class="stat"><div class="stat__k">Pilotage</div><div class="stat__v">Un plan + des actions</div></div>
           <div class="stat"><div class="stat__k">Offres</div><div class="stat__v">Encadrées & sécurisées</div></div>
-          <div class="stat"><div class="stat__k">Suivi</div><div class="stat__v">Relances & compte-rendus</div></div>
-          <div class="stat"><div class="stat__k">Signature</div><div class="stat__v">Jusqu’à l’acte</div></div>
+          <div class="stat"><div class="stat__k">Suivi</div><div class="stat__v">Jusqu’à l’acte</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION IMPACT -->
-  <section class="section section--impact">
-    <div class="container">
-      <div class="impact__grid">
-        <div class="impact__left reveal">
-          <h2>Une organisation de vente… <span>qui vous sécurise</span>.</h2>
-          <p class="impact__lead">
-            Le mandat Signature GTI, c’est un cadre clair, des actions suivies, et une continuité de dossier
-            jusqu’à la signature. Vous savez toujours où on en est — et pourquoi.
-          </p>
-
-          <div class="impact__chips">
-            <span class="chip">✅ Méthode + suivi</span>
-            <span class="chip">✅ Visites qualifiées</span>
-            <span class="chip">✅ Offres encadrées</span>
-            <span class="chip">✅ Dossier sécurisé</span>
-          </div>
-        </div>
-
-        <div class="impact__right reveal">
-          <div class="impactCards">
-            <div class="impactCard">
-              <div class="impactCard__k">Cadre</div>
-              <div class="impactCard__v">Une méthode claire, expliquée</div>
-            </div>
-            <div class="impactCard">
-              <div class="impactCard__k">Rigueur</div>
-              <div class="impactCard__v">Suivi + relances + traçabilité</div>
-            </div>
-            <div class="impactCard">
-              <div class="impactCard__k">Sécurité</div>
-              <div class="impactCard__v">Acquéreurs qualifiés, étapes maîtrisées</div>
-            </div>
-            <div class="impactCard">
-              <div class="impactCard__k">Sérénité</div>
-              <div class="impactCard__v">Vous n’êtes jamais “sans nouvelles”</div>
-            </div>
-          </div>
-
-          <p class="impact__hint">
-            <strong>À personnaliser :</strong> ajoute ta preuve réelle (ex : “4,8/5 sur 1 200 avis Google”).
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="sectionDivider" aria-hidden="true"></div>
-
-  <!-- MISE EN PLACE -->
+  <!-- CE QUE NOUS METTONS EN PLACE (ex A→Z) -->
   <section id="mise" class="section">
     <div class="container">
       <div class="section__head reveal">
         <h2>Ce que nous mettons en place</h2>
         <p>
-          Un cadre concret, des actions suivies. Cliquez sur chaque bloc pour le détail.
+          Une seule page, un discours clair : vous voyez exactement ce qui est mis en œuvre, et pourquoi.
+          Cliquez sur chaque bloc pour le détail.
         </p>
       </div>
 
-      <div class="grid cards reveal">
-        <button class="card card--click" type="button" data-accordion>
-          <div class="card__top">
-            <div class="card__icon">🎯</div>
-            <div class="card__title">Positionnement & stratégie</div>
-          </div>
-          <div class="card__txt">Prix, angle marketing, plan d’actions.</div>
-          <div class="acc" hidden>
-            <ul>
-              <li>Analyse du marché et du bien</li>
-              <li>Recommandation de positionnement</li>
-              <li>Plan de commercialisation</li>
-            </ul>
-          </div>
-        </button>
+      <div class="a2zGrid">
+        <div class="a2zLeft reveal">
 
-        <button class="card card--click" type="button" data-accordion>
-          <div class="card__top">
-            <div class="card__icon">📸</div>
-            <div class="card__title">Valorisation & diffusion</div>
-          </div>
-          <div class="card__txt">Annonce, réseaux, visibilité.</div>
-          <div class="acc" hidden>
-            <ul>
-              <li>Photos / présentation optimisée</li>
-              <li>Rédaction orientée conversion</li>
-              <li>Diffusion multi-supports</li>
-            </ul>
-          </div>
-        </button>
+          <details class="acc" data-acc-group="mise" open>
+            <summary><span class="acc__title">1) Prix & stratégie de mise en vente</span><span class="acc__hint">Voir</span></summary>
+            <div class="acc__body">
+              <ul>
+                <li>Analyse du marché local + comparables pertinents</li>
+                <li>Positionnement prix expliqué : cible, timing, leviers</li>
+                <li>Recommandations concrètes avant mise en vente</li>
+              </ul>
+            </div>
+          </details>
 
-        <button class="card card--click" type="button" data-accordion>
-          <div class="card__top">
-            <div class="card__icon">🧠</div>
-            <div class="card__title">Qualification acquéreurs</div>
-          </div>
-          <div class="card__txt">Filtrer, cadrer, sécuriser.</div>
-          <div class="acc" hidden>
-            <ul>
-              <li>Profil / budget / timing</li>
-              <li>Pré-qualification avant visite</li>
-              <li>Visites utiles et ciblées</li>
-            </ul>
-          </div>
-        </button>
+          <details class="acc" data-acc-group="mise">
+            <summary><span class="acc__title">2) Mise en valeur qui inspire confiance</span><span class="acc__hint">Voir</span></summary>
+            <div class="acc__body">
+              <ul>
+                <li>Annonce claire, complète et rassurante</li>
+                <li>Visuels cohérents et hiérarchisés</li>
+                <li>Objectif : moins de visites inutiles, plus de profils sérieux</li>
+              </ul>
+            </div>
+          </details>
 
-        <button class="card card--click" type="button" data-accordion>
-          <div class="card__top">
-            <div class="card__icon">🧾</div>
-            <div class="card__title">Offres & négociation</div>
-          </div>
-          <div class="card__txt">Cadre et arbitrage.</div>
-          <div class="acc" hidden>
-            <ul>
-              <li>Offres formalisées</li>
-              <li>Négociation structurée</li>
-              <li>Conseil et prise de décision</li>
-            </ul>
-          </div>
-        </button>
+          <details class="acc" data-acc-group="mise">
+            <summary><span class="acc__title">3) Diffusion et pilotage de la visibilité</span><span class="acc__hint">Voir</span></summary>
+            <div class="acc__body">
+              <ul>
+                <li>Diffusion sur les canaux adaptés au bien et au secteur</li>
+                <li>Suivi des signaux : volume, qualité des leads, objections</li>
+                <li>Ajustements au bon moment (sans attendre “que ça s’essouffle”)</li>
+              </ul>
+            </div>
+          </details>
 
-        <button class="card card--click" type="button" data-accordion>
-          <div class="card__top">
-            <div class="card__icon">🔒</div>
-            <div class="card__title">Sécurisation du dossier</div>
-          </div>
-          <div class="card__txt">Jusqu’au notaire.</div>
-          <div class="acc" hidden>
-            <ul>
-              <li>Pièces et conformité</li>
-              <li>Suivi notaire / acquéreur</li>
-              <li>Coordination jusqu’à l’acte</li>
-            </ul>
-          </div>
-        </button>
+          <details class="acc" data-acc-group="mise">
+            <summary><span class="acc__title">4) Visites qualifiées</span><span class="acc__hint">Voir</span></summary>
+            <div class="acc__body">
+              <ul>
+                <li>Qualification projet, budget, financement, timing</li>
+                <li>Organisation et suivi des visites</li>
+                <li>Retours structurés : on sait ce qui bloque et ce qui plaît</li>
+              </ul>
+            </div>
+          </details>
 
-        <button class="card card--click" type="button" data-accordion>
-          <div class="card__top">
-            <div class="card__icon">📍</div>
-            <div class="card__title">Suivi & transparence</div>
+          <details class="acc" data-acc-group="mise">
+            <summary><span class="acc__title">5) Offres & négociation encadrées</span><span class="acc__hint">Voir</span></summary>
+            <div class="acc__body">
+              <ul>
+                <li>Analyse des offres : conditions, solidité du dossier</li>
+                <li>Négociation structurée, au bon tempo</li>
+                <li>Sécurisation pour éviter les mauvaises surprises</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="acc" data-acc-group="mise">
+            <summary><span class="acc__title">6) Suivi jusqu’à l’acte</span><span class="acc__hint">Voir</span></summary>
+            <div class="acc__body">
+              <ul>
+                <li>Coordination notaire, pièces, délais</li>
+                <li>Suivi du dossier vendeur / acquéreur</li>
+                <li>Objectif : aller au bout, sans flottement</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="a2zRight reveal">
+          <div class="photoStack">
+            <figure class="shot">
+              <img src="assets/shot-1.jpg" alt="Conseil prix et stratégie">
+              <figcaption><strong>Conseil prix</strong><br>Stratégie argumentée, pas une estimation vague.</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="assets/shot-2.jpg" alt="Mise en valeur premium">
+              <figcaption><strong>Mise en valeur</strong><br>Présentation premium pour filtrer et convaincre.</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="assets/shot-3.jpg" alt="Suivi et sécurisation jusqu’à l’acte">
+              <figcaption><strong>Suivi</strong><br>Offres, dossier, notaire : on sécurise jusqu’à l’acte.</figcaption>
+            </figure>
           </div>
-          <div class="card__txt">Compte-rendus & relances.</div>
-          <div class="acc" hidden>
-            <ul>
-              <li>Retours de visites</li>
-              <li>Plan de relance</li>
-              <li>Points réguliers</li>
-            </ul>
-          </div>
-        </button>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CADRE -->
-  <section id="cadre" class="section section--soft">
+  <!-- LE MANDAT ÉQUILIBRÉ (remplace la section engagement “promo”) -->
+  <section id="mandat" class="section section--impact">
     <div class="container">
-      <div class="section__head reveal">
+      <div class="impactCard reveal">
+        <div class="impactCard__pill">Le mandat équilibré</div>
         <h2>Un cadre complet… et vous restez acteur de votre vente.</h2>
         <p>
-          Le mandat Signature GTI est pensé pour vous accompagner avec une méthode.
-          Et si vous présentez l’acquéreur, les honoraires sont divisés par deux (selon conditions du mandat).
+          Le Mandat Signature GTI est conçu pour vendre dans les meilleures conditions :
+          une organisation structurée, une méthode claire, et un pilotage jusqu’à l’acte.
+          <span>Et si vous présentez un acquéreur, les honoraires sont divisés par deux (selon conditions).</span>
+        </p>
+
+        <div class="impactGrid">
+          <div class="impactItem">✔ Même niveau d’accompagnement</div>
+          <div class="impactItem">✔ Même exigence sur le dossier</div>
+          <div class="impactItem">✔ Même suivi jusqu’à l’acte</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section id="equipe" class="section section--soft">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2>Chez GTI Immobilier, vous n’êtes pas seul.</h2>
+        <p>
+          Nos négociateurs sont des experts locaux, formés et suivis.
+          Et la vente ne repose pas sur une seule personne : une organisation structurée assure la continuité
+          de la commercialisation et le suivi jusqu’à l’acte.
         </p>
       </div>
 
       <div class="split reveal">
-        <div class="panel">
-          <h3>Vous gagnez</h3>
-          <ul class="list">
-            <li><strong>Une méthode</strong> : actions définies, suivies et mesurées</li>
-            <li><strong>De la sécurité</strong> : dossiers et offres cadrées</li>
-            <li><strong>De la clarté</strong> : vous savez où on en est</li>
-          </ul>
+        <div class="split__img">
+          <img src="assets/team.jpg" alt="Organisation GTI Immobilier">
         </div>
-        <div class="panel panel--accent">
-          <h3>Vous restez libre</h3>
-          <ul class="list">
-            <li>Vous pouvez présenter un acquéreur</li>
-            <li>Honoraires divisés par deux (conditions du mandat)</li>
-            <li>L’accompagnement reste identique jusqu’à l’acte</li>
-          </ul>
-          <button class="btn btn--action btn--wide" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ÉQUIPE -->
-  <section id="equipe" class="section">
-    <div class="container">
-      <div class="section__head reveal">
-        <h2>Chez GTI Immobilier, vous n’êtes pas seul.</h2>
-        <p>Votre dossier est suivi, même si un interlocuteur est indisponible.</p>
-      </div>
-
-      <div class="grid team reveal">
-        <div class="teamCard">
-          <div class="teamCard__icon">👤</div>
-          <div class="teamCard__title">Un référent</div>
-          <div class="teamCard__txt">Votre interlocuteur principal.</div>
-        </div>
-        <div class="teamCard">
-          <div class="teamCard__icon">👥</div>
-          <div class="teamCard__title">Une équipe</div>
-          <div class="teamCard__txt">Une organisation structurée.</div>
-        </div>
-        <div class="teamCard">
-          <div class="teamCard__icon">🗂️</div>
-          <div class="teamCard__title">Un suivi</div>
-          <div class="teamCard__txt">Relances, étapes, compte-rendus.</div>
-        </div>
-        <div class="teamCard">
-          <div class="teamCard__icon">✅</div>
-          <div class="teamCard__title">Une continuité</div>
-          <div class="teamCard__txt">Le dossier ne “s’arrête” jamais.</div>
+        <div class="split__card">
+          <h3>Un référent… et une organisation structurée</h3>
+          <p class="muted">
+            Pour vous, ça change tout : continuité, rigueur, sécurité du dossier et meilleur pilotage de la vente.
+          </p>
+          <div class="checks">
+            <div class="check">✔ Continuité de suivi</div>
+            <div class="check">✔ Dossier cadré</div>
+            <div class="check">✔ Offres encadrées</div>
+            <div class="check">✔ Pilotage jusqu’à l’acte</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="section section--soft">
+  <section id="faq" class="section">
     <div class="container">
       <div class="section__head reveal">
         <h2>FAQ</h2>
-        <p>Les questions fréquentes sur le mandat Signature GTI.</p>
+        <p>Simple, utile, concret.</p>
       </div>
 
-      <div class="faq reveal">
-        <button class="faq__q" type="button" data-accordion>À quel moment les honoraires sont divisés par deux ?</button>
-        <div class="faq__a acc" hidden>
-          Selon les conditions du mandat, si vous présentez l’acquéreur, les honoraires sont divisés par deux.
-        </div>
+      <div class="faq">
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Le Mandat Signature GTI, c’est quoi exactement ?</summary>
+          <div class="faq__body">
+            Une vente pilotée : stratégie, mise en valeur, diffusion, visites qualifiées,
+            offres encadrées et suivi jusqu’à l’acte.
+          </div>
+        </details>
 
-        <button class="faq__q" type="button" data-accordion>Est-ce que je garde le même niveau de service ?</button>
-        <div class="faq__a acc" hidden>
-          Oui : la méthode, le suivi, et la sécurisation restent identiques jusqu’à l’acte.
-        </div>
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Et si je présente moi-même l’acquéreur ?</summary>
+          <div class="faq__body">
+            Selon les conditions du mandat, les honoraires sont divisés par deux.
+            L’accompagnement reste identique jusqu’à la signature.
+          </div>
+        </details>
 
-        <button class="faq__q" type="button" data-accordion>Qui suit mon dossier ?</button>
-        <div class="faq__a acc" hidden>
-          Un référent est dédié, et l’organisation permet la continuité même en cas d’absence.
-        </div>
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Comment évitez-vous les visites inutiles ?</summary>
+          <div class="faq__body">
+            Par la qualification du projet (budget, financement, timing) et une présentation claire qui filtre mieux.
+          </div>
+        </details>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="section">
+  <section id="contact" class="section section--soft">
     <div class="container">
       <div class="section__head reveal">
         <h2>Parlons de votre projet</h2>
-        <p>Un rappel ou un échange direct : choisissez ce qui vous convient.</p>
+        <p>Un échange rapide suffit pour définir la meilleure stratégie.</p>
       </div>
 
-      <div class="contactGrid reveal">
-        <div class="contactCard">
+      <div class="contactGrid">
+        <div class="contactCard reveal">
           <h3>📞 Appel direct</h3>
-          <p>Vous préférez aller vite ? Appelez-nous.</p>
-          <a class="btn btn--ghost btn--wide" href="tel:+33XXXXXXXXX">Appeler l’agence</a>
+          <p class="muted">Le plus rapide, surtout sur mobile.</p>
+          <a class="btn btn--wide" href="tel:+33XXXXXXXXX">Appeler l’agence</a>
+          <p class="micro">Astuce : si vous avez déjà un acquéreur, dites-le dès le début.</p>
         </div>
 
-        <form class="form contactCard" id="contactForm">
-          <h3>✉️ Être rappelé</h3>
-          <div class="form__row">
-            <label>Nom</label>
-            <input name="name" type="text" placeholder="Votre nom" required>
-          </div>
-          <div class="form__row">
-            <label>Téléphone</label>
-            <input name="phone" type="tel" placeholder="06..." required>
-          </div>
-          <div class="form__row">
-            <label>Ville du bien</label>
-            <input name="city" type="text" placeholder="Ex : Saint-Étienne">
-          </div>
-          <button class="btn btn--action btn--wide" type="submit">Envoyer</button>
-          <p class="form__hint">Nous vous rappelons rapidement (horaires ouvrés).</p>
+        <form class="form reveal" id="contactForm">
+          <div class="form__title">Demande de rappel</div>
+
+          <label>
+            <span>Votre prénom</span>
+            <input name="prenom" required>
+          </label>
+
+          <label>
+            <span>Téléphone</span>
+            <input name="tel" type="tel" required>
+          </label>
+
+          <label>
+            <span>Email (optionnel)</span>
+            <input name="email" type="email">
+          </label>
+
+          <label>
+            <span>Votre situation</span>
+            <select name="situation">
+              <option value="" selected>Choisir…</option>
+              <option>Je veux une estimation</option>
+              <option>Je veux vendre vite</option>
+              <option>Je veux vendre au meilleur prix</option>
+              <option>J’ai déjà un acquéreur</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Message (optionnel)</span>
+            <textarea name="message" rows="4" placeholder="Expliquez votre projet en quelques mots…"></textarea>
+          </label>
+
+          <button class="btn btn--wide" type="submit">Envoyer</button>
+          <p class="form__msg" id="formMsg" aria-live="polite"></p>
+
+          <p class="micro">En envoyant ce formulaire, vous acceptez d’être recontacté par GTI Immobilier.</p>
         </form>
       </div>
     </div>
   </section>
 
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <img class="footer__logo"
+             src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+             alt="GTI Immobilier">
+        <div>
+          <div class="footer__brand">GTI Immobilier</div>
+          <div class="footer__sub">© <span id="year"></span> — Tous droits réservés</div>
+        </div>
+      </div>
+      <div class="footer__links">
+        <a href="#top">Haut</a>
+        <a href="#contact">Contact</a>
+        <a href="tel:+33XXXXXXXXX">Appeler</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CTA vertical à droite (desktop) : icône seule -> libellé au survol -->
+  <aside class="ctaRail" aria-label="Actions rapides">
+    <a class="ctaRail__btn" href="tel:+33XXXXXXXXX" title="Appeler">
+      <span class="ctaRail__ico">📞</span>
+      <span class="ctaRail__txt">Appeler</span>
+    </a>
+    <button class="ctaRail__btn ctaRail__btn--primary" type="button" data-open-drawer="callback" title="Être rappelé">
+      <span class="ctaRail__ico">✉️</span>
+      <span class="ctaRail__txt">Être rappelé</span>
+    </button>
+  </aside>
+
+  <!-- Barre bas (mobile) -->
+  <div class="ctaBar" role="region" aria-label="Actions rapides mobile">
+    <a class="ctaBar__btn" href="tel:+33XXXXXXXXX">📞 Appeler</a>
+    <button class="ctaBar__btn ctaBar__btn--primary" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+  </div>
+
+  <!-- Drawer rappel -->
+  <div class="drawer" id="drawerCallback" aria-hidden="true">
+    <div class="drawer__backdrop" data-close-drawer></div>
+
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Demande de rappel">
+      <div class="drawer__head">
+        <div>
+          <div class="drawer__title">Être rappelé</div>
+          <div class="drawer__sub">On vous rappelle rapidement.</div>
+        </div>
+        <button class="drawer__close" type="button" data-close-drawer aria-label="Fermer">✕</button>
+      </div>
+
+      <form class="drawerForm" id="drawerForm">
+        <label>
+          <span>Prénom</span>
+          <input name="prenom" required>
+        </label>
+
+        <label>
+          <span>Téléphone</span>
+          <input name="tel" type="tel" required>
+        </label>
+
+        <label>
+          <span>Votre situation</span>
+          <select name="situation">
+            <option value="" selected>Choisir…</option>
+            <option>Je veux une estimation</option>
+            <option>Je veux vendre vite</option>
+            <option>Je veux vendre au meilleur prix</option>
+            <option>J’ai déjà un acquéreur</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Message (optionnel)</span>
+          <textarea name="message" rows="4" placeholder="Adresse, type de bien, délai…"></textarea>
+        </label>
+
+        <button class="btn btn--wide" type="submit">Envoyer</button>
+        <p class="drawerForm__msg" id="drawerMsg" aria-live="polite"></p>
+        <p class="micro">En envoyant, vous acceptez d’être recontacté par GTI Immobilier.</p>
+      </form>
+    </div>
+  </div>
+
 </main>
-
-<!-- CTA rail (desktop) -->
-<div class="ctaRail" aria-hidden="true">
-  <a class="ctaRail__btn" href="tel:+33XXXXXXXXX">
-    <span class="ctaRail__ic">📞</span><span class="ctaRail__txt">Appeler</span>
-  </a>
-  <button class="ctaRail__btn ctaRail__btn--primary" type="button" data-open-drawer="callback">
-    <span class="ctaRail__ic">✉️</span><span class="ctaRail__txt">Être rappelé</span>
-  </button>
-</div>
-
-<!-- CTA bar (mobile) -->
-<div class="ctaBar" aria-hidden="true">
-  <a class="ctaBar__btn" href="tel:+33XXXXXXXXX">📞 Appeler</a>
-  <button class="ctaBar__btn ctaBar__btn--primary" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
-</div>
-
-<!-- Drawer callback -->
-<div class="drawer" id="drawerCallback" aria-hidden="true">
-  <div class="drawer__overlay" data-close-drawer></div>
-  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
-    <div class="drawer__top">
-      <div class="drawer__title" id="drawerTitle">Être rappelé</div>
-      <button class="drawer__close" type="button" aria-label="Fermer" data-close-drawer>✕</button>
-    </div>
-
-    <form class="drawerForm" id="callbackForm">
-      <div class="form__row">
-        <label>Nom</label>
-        <input name="name" type="text" placeholder="Votre nom" required>
-      </div>
-      <div class="form__row">
-        <label>Téléphone</label>
-        <input name="phone" type="tel" placeholder="06..." required>
-      </div>
-      <div class="form__row">
-        <label>Ville du bien</label>
-        <input name="city" type="text" placeholder="Ex : Firminy">
-      </div>
-      <button class="btn btn--action btn--wide" type="submit">Envoyer</button>
-      <p class="form__hint">Nous vous rappelons rapidement (horaires ouvrés).</p>
-    </form>
-  </div>
-</div>
-
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__left">
-      <div class="footer__brand">GTI Immobilier</div>
-      <div class="footer__muted">© <span id="year"></span> — Tous droits réservés.</div>
-    </div>
-    <div class="footer__right">
-      <a href="#top">Haut de page</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</footer>
 
 <script src="script.js"></script>
 </body>
 </html>
-
