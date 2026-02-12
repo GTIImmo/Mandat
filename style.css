@@ -1,489 +1,455 @@
-:root{
-  --bg:#ffffff;
-  --soft:#f6f7fb;
-  --text:#0f1115;
-  --muted:rgba(15,17,21,.72);
-  --muted2:rgba(15,17,21,.56);
-  --line:rgba(15,17,21,.10);
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  --accent:#b31252;
-  --teal:#0b6b63;
+  <title>Mandat Signature GTI | GTI Immobilier</title>
+  <meta name="description" content="Mandat Signature GTI : une vente pilotée, premium et sécurisée jusqu’à l’acte. Honoraires divisés par deux si vous présentez l’acquéreur (selon conditions du mandat)." />
 
-  --shadow: 0 18px 60px rgba(15,17,21,.10);
-  --shadow2: 0 10px 30px rgba(15,17,21,.08);
-  --shadow3: 0 6px 18px rgba(15,17,21,.06);
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  --r:18px;
-  --r2:26px;
-  --container:1140px;
-}
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--text);
-  background:var(--bg);
-  line-height:1.55;
-}
-a{color:inherit;text-decoration:none}
-.container{width:min(var(--container),calc(100% - 44px));margin:0 auto}
-.muted{color:var(--muted)}
-.micro{font-size:12px;color:var(--muted2);font-weight:800;margin-top:10px}
-html{scroll-behavior:smooth}
-:target{scroll-margin-top:84px}
+<body id="top">
 
-/* Topbar */
-.topbar{
-  position:sticky;top:0;z-index:60;
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,.90);
-  border-bottom:1px solid var(--line);
-}
-.topbar__inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-.brand{display:flex;align-items:center;gap:12px;min-width:260px}
-.brand__logo{height:34px;width:auto;display:block;filter: grayscale(100%)}
-.brand__txt{display:flex;flex-direction:column;line-height:1.1}
-.brand__name{font-weight:950}
-.brand__sub{font-size:12px;color:var(--muted2);font-weight:850}
+<header class="topbar" id="siteHeader">
+  <div class="container topbar__inner">
+    <a class="brand" href="#top" aria-label="GTI Immobilier - Mandat Signature GTI">
+      <img class="brand__logo"
+           src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+           alt="GTI Immobilier">
+      <div class="brand__txt">
+        <div class="brand__name">GTI Immobilier</div>
+        <div class="brand__sub">Mandat Signature GTI</div>
+      </div>
+    </a>
 
-.nav{display:flex;align-items:center;gap:12px;color:var(--muted);font-weight:900}
-.nav a{padding:8px 10px;border-radius:14px}
-.nav a:hover{background:rgba(15,17,21,.05);color:var(--text)}
-.nav__cta{
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(15,17,21,.03);
-  padding:8px 12px;
-  border-radius:999px;
-  font-weight:950;
-}
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#mise-en-place">Le service</a>
+      <a href="#cadre">Votre mandat</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav__cta" href="#contact">Parler à un conseiller</a>
+    </nav>
 
-.burger{
-  display:none;width:44px;height:44px;border-radius:16px;
-  background:rgba(15,17,21,.03);border:1px solid var(--line);cursor:pointer;
-}
-.burger span{display:block;width:18px;height:2px;background:rgba(15,17,21,.65);margin:5px auto;border-radius:99px}
-.mobileNav{border-top:1px solid var(--line);background:rgba(255,255,255,.95)}
-.mobileNav__inner{display:flex;flex-direction:column;gap:10px;padding:14px 0 18px}
-.mobileNav__inner a{padding:10px 12px;border-radius:14px;color:var(--muted);font-weight:900}
-.mobileNav__inner a:hover{background:rgba(15,17,21,.05);color:var(--text)}
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 
-/* Buttons */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  padding:12px 16px;border-radius:18px;font-weight:950;
-  border:1px solid rgba(179,18,82,.18);
-  background:linear-gradient(135deg, rgba(179,18,82,1), rgba(179,18,82,.82));
-  color:#fff;
-  box-shadow:0 14px 28px rgba(179,18,82,.18);
-  transition:transform .16s ease, filter .16s ease, box-shadow .16s ease;
-  cursor:pointer;
-}
-.btn:hover{transform:translateY(-1px);filter:brightness(1.02);box-shadow:0 18px 40px rgba(179,18,82,.22)}
-.btn--ghost{background:rgba(15,17,21,.03);border:1px solid var(--line);color:var(--text);box-shadow:none}
-.btn--ghost:hover{background:rgba(15,17,21,.05)}
-.btn--small{padding:10px 12px;border-radius:14px}
-.btn--wide{width:100%}
+  <div class="mobileNav" id="mobileNav" hidden>
+    <div class="container mobileNav__inner">
+      <a href="#mise-en-place">Le service</a>
+      <a href="#cadre">Votre mandat</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Parler à un conseiller</a>
+      <div class="mobileNav__actions">
+        <a class="btn btn--brand" href="#contact">📞 Être conseillé</a>
+        <button class="btn btn--cta" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+      </div>
+    </div>
+  </div>
+</header>
 
-/* Hero */
-.hero{
-  padding:58px 0 32px;
-  background:
-    radial-gradient(900px 520px at 10% -10%, rgba(179,18,82,.13), transparent 62%),
-    radial-gradient(900px 520px at 92% 10%, rgba(11,107,99,.12), transparent 62%),
-    #fff;
-}
-.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}
-.pill{
-  display:inline-flex;padding:8px 12px;border-radius:999px;
-  border:1px solid rgba(15,17,21,.12);
-  background:linear-gradient(135deg, rgba(179,18,82,.11), rgba(11,107,99,.10));
-  font-weight:950;
-}
-h1{
-  font-size:clamp(30px,4vw,54px);
-  line-height:1.05;
-  letter-spacing:-.04em;
-  margin:14px 0 10px;
-}
-.lead{
-  color:var(--muted);
-  font-size:18px;
-  max-width:78ch;
-  font-weight:850;
-  margin:0 0 12px;
-}
-.hero__highlights{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:12px;
-}
-.hl{
-  padding:10px 12px;border-radius:16px;
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(255,255,255,.90);
-  box-shadow:var(--shadow3);
-  font-weight:900;color:rgba(15,17,21,.82);
-  display:flex;gap:8px;align-items:flex-start;
-}
-.hl span{color:var(--teal)}
-.hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-.note{
-  margin-top:14px;
-  padding:14px;border-radius:18px;
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(255,255,255,.92);
-  box-shadow:var(--shadow3);
-  font-weight:900;color:rgba(15,17,21,.86);
-}
-.note--grad{background:linear-gradient(135deg, rgba(11,107,99,.12), rgba(179,18,82,.10))}
-.note span{color:rgba(15,17,21,.70)}
+<main>
 
-.trustRow{
-  display:flex;gap:10px;flex-wrap:wrap;margin-top:12px
-}
-.trustRow__item{
-  padding:10px 12px;border-radius:999px;
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(255,255,255,.92);
-  box-shadow:var(--shadow3);
-  font-weight:950;color:rgba(15,17,21,.78);
-}
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <div class="pill">
+          <span class="dot"></span>
+          Vente premium, pilotée et sécurisée
+        </div>
 
-/* Hero right */
-.media{
-  margin:0;border-radius:var(--r2);overflow:hidden;
-  border:1px solid rgba(15,17,21,.10);
-  background:#fff;
-  box-shadow:var(--shadow);
-}
-.media__frame{position:relative}
-.media img{width:100%;height:340px;object-fit:cover;display:block}
-.media__shade{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,17,21,0) 40%, rgba(15,17,21,.32) 100%)}
-.media__badge{
-  position:absolute;left:12px;top:12px;
-  padding:8px 10px;border-radius:999px;
-  background:rgba(255,255,255,.92);
-  border:1px solid rgba(15,17,21,.12);
-  font-weight:950;font-size:12px;
-  box-shadow:var(--shadow3);
-}
-.media figcaption{padding:12px 14px;color:var(--muted);font-weight:900;background:rgba(255,255,255,.95)}
-.hero__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-.stat{
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(255,255,255,.92);
-  border-radius:18px;
-  box-shadow:var(--shadow3);
-  padding:12px;
-}
-.stat__k{font-weight:950}
-.stat__v{color:var(--muted);font-weight:850}
+        <h1 class="hero__title">
+          <span class="hl">Mandat Signature GTI</span><br>
+          une vente cadrée, efficace…<br class="hide-m"> et <span class="accent">sans stress</span>.
+        </h1>
 
-/* Sections */
-.section{padding:74px 0}
-.section--soft{
-  background:var(--soft);
-  border-top:1px solid rgba(15,17,21,.08);
-  border-bottom:1px solid rgba(15,17,21,.08);
-}
-.section__head{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
-.section__head h2{margin:0;font-size:clamp(22px,3vw,36px);letter-spacing:-.02em}
-.section__head p{margin:0;color:var(--muted);max-width:92ch;font-weight:850}
+        <p class="hero__lead">
+          Nous prenons en charge l’essentiel (stratégie, diffusion, visites, suivi, négociation, sécurisation),
+          et vous gardez la liberté de présenter un acquéreur.
+        </p>
 
-/* Grid (same as old a2z) */
-.a2zGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;align-items:start}
-.a2zRight{position:sticky;top:94px}
-.photoStack{display:grid;gap:10px}
-.shot{
-  margin:0;border-radius:var(--r2);overflow:hidden;
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(255,255,255,.92);
-  box-shadow:var(--shadow3);
-}
-.shot img{width:100%;height:190px;object-fit:cover;display:block}
-.shot figcaption{padding:12px 14px;color:var(--muted);font-weight:850}
+        <div class="hero__actions">
+          <a class="btn btn--brand" href="#contact">📞 Parler à un conseiller</a>
+          <button class="btn btn--cta" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+          <a class="btn btn--ghost" href="#cadre">Voir le cadre du mandat</a>
+        </div>
 
-/* Accordions */
-.acc{
-  border:1px solid rgba(15,17,21,.10);
-  border-radius:18px;
-  background:rgba(255,255,255,.92);
-  box-shadow:var(--shadow3);
-  overflow:hidden;
-  margin-bottom:10px;
-}
-.acc summary{
-  cursor:pointer;list-style:none;
-  padding:14px 14px;
-  font-weight:950;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-}
-.acc summary::-webkit-details-marker{display:none}
-.acc__hint{
-  font-size:12px;
-  padding:6px 10px;border-radius:999px;
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(15,17,21,.02);
-  color:rgba(15,17,21,.70);
-}
-.acc[open] .acc__hint{background:rgba(179,18,82,.10);border-color:rgba(179,18,82,.18);color:rgba(15,17,21,.86)}
-.acc__body{
-  padding:12px 14px;
-  border-top:1px solid rgba(15,17,21,.08);
-  color:var(--muted);
-  font-weight:850;
-}
-.acc__body ul{margin:10px 0 0;padding-left:18px}
-.acc__body li{margin:6px 0}
+        <div class="hero__trust">
+          <div class="trust">
+            <div class="trust__icon">✓</div>
+            <div class="trust__txt">
+              <div class="trust__t">Pilotage de A à Z</div>
+              <div class="trust__s">Un interlocuteur GTI dédié</div>
+            </div>
+          </div>
+          <div class="trust">
+            <div class="trust__icon">★</div>
+            <div class="trust__txt">
+              <div class="trust__t">Positionnement premium</div>
+              <div class="trust__s">Valorisation et diffusion maîtrisées</div>
+            </div>
+          </div>
+          <div class="trust">
+            <div class="trust__icon">⏱</div>
+            <div class="trust__txt">
+              <div class="trust__t">Suivi transparent</div>
+              <div class="trust__s">Compte rendu & actions concrètes</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-/* Impact */
-.section--impact{
-  background:
-    radial-gradient(900px 520px at 15% 0%, rgba(179,18,82,.18), transparent 60%),
-    radial-gradient(900px 520px at 85% 20%, rgba(11,107,99,.16), transparent 60%),
-    linear-gradient(180deg, #ffffff, #fbfbfd);
-  border-top:1px solid rgba(15,17,21,.08);
-  border-bottom:1px solid rgba(15,17,21,.08);
-}
-.impactCard{
-  padding:22px;border-radius:var(--r2);
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(255,255,255,.92);
-  box-shadow:var(--shadow);
-}
-.impactCard__pill{
-  display:inline-flex;padding:8px 12px;border-radius:999px;
-  border:1px solid rgba(15,17,21,.12);
-  background:rgba(15,17,21,.03);
-  font-weight:950;
-}
-.impactCard h2{margin:12px 0 10px;font-size:clamp(22px,3vw,38px)}
-.impactCard p{margin:0;color:var(--muted);font-weight:850;max-width:92ch}
-.impactCard p span{color:rgba(15,17,21,.62)}
-.impactGrid{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.impactItem{
-  padding:10px 12px;border-radius:16px;
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(15,17,21,.02);
-  font-weight:900;color:rgba(15,17,21,.80);
-}
+      <div class="hero__media">
+        <div class="heroCard">
+          <div class="heroCard__top">
+            <div class="badge">Signature</div>
+            <div class="badge badge--soft">Premium</div>
+          </div>
 
-/* Team split */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:stretch}
-.split__img{
-  border-radius:var(--r2);overflow:hidden;
-  border:1px solid rgba(15,17,21,.10);
-  box-shadow:var(--shadow3);
-}
-.split__img img{width:100%;height:340px;object-fit:cover;display:block}
-.split__card{
-  padding:18px;border-radius:var(--r2);
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(255,255,255,.92);
-  box-shadow:var(--shadow3);
-}
-.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
-.check{
-  padding:10px 12px;border-radius:16px;
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(15,17,21,.02);
-  font-weight:900;color:rgba(15,17,21,.80);
-}
+          <div class="heroCard__title">Ce que vous obtenez</div>
 
-/* FAQ */
-.faq{display:grid;gap:10px}
-.faq__item{
-  padding:14px 16px;border-radius:var(--r2);
-  background:rgba(255,255,255,.92);
-  border:1px solid rgba(15,17,21,.10);
-  box-shadow:var(--shadow3);
-}
-.faq__item summary{cursor:pointer;font-weight:950;list-style:none}
-.faq__item summary::-webkit-details-marker{display:none}
-.faq__body{margin-top:10px;color:var(--muted);font-weight:850}
+          <ul class="checklist">
+            <li><span>✓</span> Stratégie de prix & plan de vente</li>
+            <li><span>✓</span> Mise en valeur & diffusion multi-canaux</li>
+            <li><span>✓</span> Sélection acquéreurs & visites qualifiées</li>
+            <li><span>✓</span> Négociation & sécurisation du dossier</li>
+            <li><span>✓</span> Suivi jusqu’à l’acte chez le notaire</li>
+          </ul>
 
-/* Contact */
-.contactGrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:12px;align-items:start}
-.contactCard{
-  padding:18px;border-radius:var(--r2);
-  border:1px solid rgba(15,17,21,.10);
-  background:linear-gradient(135deg, rgba(179,18,82,.12), rgba(11,107,99,.10));
-  box-shadow:var(--shadow3);
-}
-.form{
-  padding:18px;border-radius:var(--r2);
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(255,255,255,.92);
-  box-shadow:var(--shadow3);
-}
-.form__title{font-weight:950;margin-bottom:10px}
-.form__msg{margin:10px 0 0;color:rgba(15,17,21,.72);font-weight:900}
-label{display:flex;flex-direction:column;gap:8px;font-weight:950;margin-bottom:12px}
-input,select,textarea{
-  width:100%;
-  padding:12px;border-radius:16px;
-  border:1px solid rgba(15,17,21,.12);
-  outline:none;font-family:inherit;font-weight:850;background:#fff;
-}
-input:focus,select:focus,textarea:focus{
-  border-color:rgba(179,18,82,.26);
-  box-shadow:0 0 0 4px rgba(179,18,82,.10);
-}
+          <div class="heroCard__cta">
+            <a class="miniLink" href="#mise-en-place">Découvrir le détail →</a>
+          </div>
+        </div>
 
-/* Footer */
-.footer{border-top:1px solid rgba(15,17,21,.08);padding:22px 0 84px}
-.footer__inner{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-.footer__left{display:flex;align-items:center;gap:12px}
-.footer__logo{height:28px;width:auto;display:block;filter:grayscale(100%)}
-.footer__brand{font-weight:950}
-.footer__sub{color:var(--muted2);font-weight:850;font-size:13px}
-.footer__links{display:flex;gap:14px;color:var(--muted);font-weight:950}
+        <div class="hero__glow" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
 
-/* CTA RAIL (desktop) : icône seule -> texte au hover */
-.ctaRail{
-  position:fixed;
-  right:14px;
-  top:50%;
-  transform:translateY(-50%);
-  z-index:90;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.ctaRail__btn{
-  display:flex;
-  align-items:center;
+  <!-- SECTION: mise en place -->
+  <section class="section section--soft" id="mise-en-place">
+    <div class="container">
+      <div class="section__head">
+        <h2>Ce que nous mettons en place</h2>
+        <p>Un service premium, très concret, pensé pour vendre mieux et plus sereinement.</p>
+      </div>
 
-  width:54px;
-  padding:12px;
-  border-radius:16px;
+      <div class="cards3">
+        <article class="card">
+          <div class="card__icon">📌</div>
+          <h3>Stratégie & prix</h3>
+          <p>Analyse du marché local, positionnement intelligent, plan d’actions et calendrier.</p>
+        </article>
 
-  background:rgba(255,255,255,.96);
-  border:1px solid rgba(15,17,21,.10);
-  box-shadow:var(--shadow3);
-  backdrop-filter: blur(10px);
+        <article class="card">
+          <div class="card__icon">🎯</div>
+          <h3>Diffusion maîtrisée</h3>
+          <p>Diffusion ciblée, vitrine, réseaux, base acquéreurs, et optimisation continue.</p>
+        </article>
 
-  cursor:pointer;
-  overflow:hidden;
-  gap:10px;
+        <article class="card">
+          <div class="card__icon">🤝</div>
+          <h3>Visites qualifiées</h3>
+          <p>Sélection sérieuse des candidats, visites cadrées et retours systématiques.</p>
+        </article>
 
-  transition: width .18s ease, transform .18s ease, box-shadow .18s ease;
-}
-.ctaRail__ico{font-size:18px;line-height:1}
-.ctaRail__txt{
-  font-weight:950;
-  color:rgba(15,17,21,.92);
-  opacity:0;
-  transform:translateX(-6px);
-  transition: opacity .18s ease, transform .18s ease;
-  white-space:nowrap;
-}
-.ctaRail__btn:hover{
-  width:176px;
-  transform:translateY(-1px);
-  box-shadow:0 18px 50px rgba(15,17,21,.12);
-}
-.ctaRail__btn:hover .ctaRail__txt{
-  opacity:1;
-  transform:none;
-}
-.ctaRail__btn--primary{
-  background:linear-gradient(135deg, rgba(179,18,82,1), rgba(179,18,82,.82));
-  border-color:rgba(179,18,82,.16);
-}
-.ctaRail__btn--primary .ctaRail__txt{color:#fff}
+        <article class="card">
+          <div class="card__icon">🧾</div>
+          <h3>Dossier sécurisé</h3>
+          <p>Vérification des pièces, solvabilité, accompagnement jusqu’au compromis.</p>
+        </article>
 
-/* Drawer */
-.drawer{
-  position:fixed; inset:0;
-  display:none;
-  z-index:120;
-}
-.drawer.is-open{display:block}
-.drawer__backdrop{
-  position:absolute; inset:0;
-  background:rgba(15,17,21,.50);
-}
-.drawer__panel{
-  position:absolute;
-  top:0; right:0;
-  height:100%;
-  width:min(420px, calc(100% - 40px));
-  background:#fff;
-  border-left:1px solid rgba(15,17,21,.10);
-  box-shadow: -20px 0 60px rgba(15,17,21,.18);
-  padding:16px;
-  transform:translateX(12px);
-  animation: slideIn .18s ease forwards;
-}
-@keyframes slideIn { to { transform:translateX(0);} }
-.drawer__head{
-  display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-  padding:8px 6px 14px;
-  border-bottom:1px solid rgba(15,17,21,.08);
-}
-.drawer__title{font-weight:950;font-size:18px}
-.drawer__sub{color:var(--muted);font-weight:850;font-size:13px;margin-top:4px}
-.drawer__close{
-  width:44px;height:44px;border-radius:16px;
-  border:1px solid rgba(15,17,21,.10);
-  background:rgba(15,17,21,.03);
-  cursor:pointer;
-  font-weight:950;
-}
-.drawerForm{padding:14px 6px}
-.drawerForm__msg{margin:10px 0 0;color:rgba(15,17,21,.72);font-weight:900}
+        <article class="card">
+          <div class="card__icon">📈</div>
+          <h3>Suivi transparent</h3>
+          <p>Point régulier, actions réalisées, ajustements (prix, diffusion, ciblage).</p>
+        </article>
 
-/* CTA BAR mobile */
-.ctaBar{
-  position:fixed;
-  left:12px;
-  right:12px;
-  bottom:12px;
-  z-index:95;
-  display:none;
-  gap:10px;
-}
-.ctaBar__btn{
-  flex:1;
-  display:flex;align-items:center;justify-content:center;
-  padding:14px 12px;border-radius:18px;
-  background:rgba(255,255,255,.96);
-  border:1px solid rgba(15,17,21,.10);
-  box-shadow:var(--shadow3);
-  font-weight:950;
-  cursor:pointer;
-}
-.ctaBar__btn--primary{
-  background:linear-gradient(135deg, rgba(179,18,82,1), rgba(179,18,82,.82));
-  border-color:rgba(179,18,82,.16);
-  color:#fff;
-}
+        <article class="card">
+          <div class="card__icon">🏁</div>
+          <h3>Jusqu’à l’acte</h3>
+          <p>Coordination notaire, relances, échéances, sécurisation finale.</p>
+        </article>
+      </div>
 
-/* Reveal */
-.reveal{opacity:0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease}
-.reveal.is-in{opacity:1; transform:none}
+      <div class="band">
+        <div class="band__txt">
+          <strong>Vous présentez l’acquéreur ?</strong> Les honoraires peuvent être divisés par deux (selon conditions du mandat).
+        </div>
+        <a class="btn btn--cta" href="#contact">En parler</a>
+      </div>
+    </div>
+  </section>
 
-/* Responsive */
-@media (max-width:980px){
-  .nav{display:none}
-  .burger{display:block}
-  .hero__grid{grid-template-columns:1fr}
-  .hero__highlights{grid-template-columns:1fr}
-  .hero__stats{grid-template-columns:1fr}
-  .a2zGrid{grid-template-columns:1fr}
-  .a2zRight{position:static}
-  .impactGrid{grid-template-columns:1fr}
-  .split{grid-template-columns:1fr}
-  .split__img img{height:260px}
-  .contactGrid{grid-template-columns:1fr}
+  <!-- SECTION: cadre -->
+  <section class="section" id="cadre">
+    <div class="container">
+      <div class="section__head">
+        <h2>Un cadre complet… et vous restez acteur de votre vente.</h2>
+        <p>Le Mandat Signature fixe un cadre clair, premium et rassurant.</p>
+      </div>
 
-  .ctaRail{display:none}
-  .ctaBar{display:flex}
-}
-@media (max-width:560px){
-  .brand__txt{display:none}
-}
+      <div class="split">
+        <div class="split__card">
+          <h3>Un mandat pensé pour performer</h3>
+
+          <div class="shots">
+            <div class="shot">
+              <div class="shot__k">Objectif</div>
+              <div class="shot__v">Vendre au bon prix, dans de bons délais</div>
+            </div>
+            <div class="shot">
+              <div class="shot__k">Méthode</div>
+              <div class="shot__v">Pilotage, diffusion, visites, négociation</div>
+            </div>
+            <div class="shot">
+              <div class="shot__k">Sécurité</div>
+              <div class="shot__v">Dossier cadré jusqu’à l’acte notarié</div>
+            </div>
+          </div>
+
+          <div class="note">
+            <span class="note__dot"></span>
+            <p><strong>Important :</strong> les conditions exactes (honoraires, division par 2, etc.) sont définies dans le mandat que nous signons ensemble.</p>
+          </div>
+        </div>
+
+        <div class="split__card split__card--tint">
+          <h3>Ce que vous ressentez au quotidien</h3>
+          <ul class="checklist checklist--big">
+            <li><span>✓</span> Moins d’appels inutiles, plus de visites qualifiées</li>
+            <li><span>✓</span> Un suivi clair et des actions visibles</li>
+            <li><span>✓</span> Un dossier solide qui avance sans blocage</li>
+            <li><span>✓</span> Une vente plus sereine, mieux sécurisée</li>
+          </ul>
+
+          <div class="miniCtas">
+            <a class="btn btn--brand" href="#contact">📞 Demander un avis</a>
+            <button class="btn btn--cta" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: accompagnement -->
+  <section class="section section--tint">
+    <div class="container">
+      <div class="section__head">
+        <h2>Chez GTI Immobilier, vous n’êtes pas seul.</h2>
+        <p>Un cadre, c’est bien. Un accompagnement régulier, c’est mieux.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__n">1</div>
+          <div class="stat__t">Interlocuteur dédié</div>
+          <div class="stat__s">Un suivi cohérent du début à la fin</div>
+        </div>
+        <div class="stat">
+          <div class="stat__n">+18</div>
+          <div class="stat__t">Agences GTI</div>
+          <div class="stat__s">Réseau local, visibilité et puissance</div>
+        </div>
+        <div class="stat">
+          <div class="stat__n">✔</div>
+          <div class="stat__t">Process sécurisé</div>
+          <div class="stat__s">Dossier cadré et relances notaire</div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <p>“On veut que vous sachiez <strong>ce qui est fait</strong>, <strong>pourquoi</strong>, et <strong>ce qui vient ensuite</strong>. C’est ça, une vente pilotée.”</p>
+        <div class="quote__by">— L’équipe GTI Immobilier</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section__head">
+        <h2>FAQ</h2>
+        <p>Les réponses aux questions les plus fréquentes.</p>
+      </div>
+
+      <div class="faq">
+        <details class="faq__item" data-acc-group="faq">
+          <summary>En quoi ce mandat est différent ?</summary>
+          <div class="faq__content">
+            <p>Il structure la vente avec un pilotage plus poussé : stratégie, diffusion, visites, suivi et sécurisation jusqu’à l’acte.</p>
+          </div>
+        </details>
+
+        <details class="faq__item" data-acc-group="faq">
+          <summary>Et si je trouve un acquéreur ?</summary>
+          <div class="faq__content">
+            <p>Selon les conditions prévues au mandat, les honoraires peuvent être ajustés (ex : divisés par deux).</p>
+          </div>
+        </details>
+
+        <details class="faq__item" data-acc-group="faq">
+          <summary>Est-ce que vous m’obligez à baisser le prix ?</summary>
+          <div class="faq__content">
+            <p>Non. Nous proposons des ajustements basés sur le marché et les retours de visites. La décision finale reste la vôtre.</p>
+          </div>
+        </details>
+
+        <details class="faq__item" data-acc-group="faq">
+          <summary>Quels documents dois-je préparer ?</summary>
+          <div class="faq__content">
+            <p>Nous vous guidons : diagnostics, taxe foncière, règlement de copropriété, etc. L’objectif est d’éviter tout blocage au compromis.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--soft" id="contact">
+    <div class="container">
+      <div class="section__head">
+        <h2>Parlons de votre projet</h2>
+        <p>Dites-nous où se situe le bien et ce que vous attendez : on vous rappelle rapidement.</p>
+      </div>
+
+      <div class="contactGrid">
+        <form class="form" id="leadForm">
+          <div class="form__row">
+            <div class="field">
+              <label for="prenom">Prénom</label>
+              <input id="prenom" name="prenom" autocomplete="given-name" placeholder="Votre prénom" required>
+            </div>
+            <div class="field">
+              <label for="nom">Nom</label>
+              <input id="nom" name="nom" autocomplete="family-name" placeholder="Votre nom" required>
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <label for="tel">Téléphone</label>
+              <input id="tel" name="tel" inputmode="tel" autocomplete="tel" placeholder="06..." required>
+            </div>
+            <div class="field">
+              <label for="ville">Ville du bien</label>
+              <input id="ville" name="ville" autocomplete="address-level2" placeholder="Ex. Saint-Étienne" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="msg">Votre message</label>
+            <textarea id="msg" name="msg" rows="4" placeholder="Type de bien, délai, contexte… (optionnel)"></textarea>
+          </div>
+
+          <div class="form__actions">
+            <button class="btn btn--brand" type="submit">📨 Envoyer</button>
+            <button class="btn btn--cta" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+          </div>
+
+          <p class="fineprint">
+            En envoyant, vous acceptez d’être recontacté par GTI Immobilier au sujet de votre demande.
+          </p>
+        </form>
+
+        <aside class="contactCard">
+          <div class="contactCard__top">
+            <div class="contactCard__title">Conseil rapide</div>
+            <div class="contactCard__sub">Le bon prix fait 80% de la vente.</div>
+          </div>
+
+          <div class="tips">
+            <div class="tip">
+              <div class="tip__i">1</div>
+              <div class="tip__t">Visites qualifiées</div>
+              <div class="tip__s">Mieux vaut 6 bonnes visites que 25 curieux.</div>
+            </div>
+            <div class="tip">
+              <div class="tip__i">2</div>
+              <div class="tip__t">Dossier prêt</div>
+              <div class="tip__s">Un dossier solide évite les retards au compromis.</div>
+            </div>
+            <div class="tip">
+              <div class="tip__i">3</div>
+              <div class="tip__t">Suivi & ajustements</div>
+              <div class="tip__s">On adapte la diffusion et le prix selon les retours.</div>
+            </div>
+          </div>
+
+          <div class="contactCard__cta">
+            <a class="btn btn--brand btn--block" href="#top">Revenir en haut</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img class="footer__logo"
+           src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
+           alt="GTI Immobilier">
+      <div>
+        <div class="footer__name">GTI Immobilier</div>
+        <div class="footer__sub">Mandat Signature GTI</div>
+      </div>
+    </div>
+
+    <div class="footer__links">
+      <a href="#mise-en-place">Le service</a>
+      <a href="#cadre">Votre mandat</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="footer__legal">
+      <div>© <span id="year"></span> GTI Immobilier — Tous droits réservés</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Drawer callback -->
+<div class="drawer" id="callbackDrawer" aria-hidden="true">
+  <div class="drawer__backdrop" data-close-drawer></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <div class="drawer__head">
+      <div>
+        <div class="drawer__title" id="drawerTitle">Être rappelé</div>
+        <div class="drawer__sub">Laissez votre numéro, on vous rappelle rapidement.</div>
+      </div>
+      <button class="drawer__close" type="button" aria-label="Fermer" data-close-drawer>✕</button>
+    </div>
+
+    <form class="drawer__form" id="callbackForm">
+      <div class="field">
+        <label for="cb_name">Nom</label>
+        <input id="cb_name" name="cb_name" placeholder="Votre nom">
+      </div>
+      <div class="field">
+        <label for="cb_tel">Téléphone *</label>
+        <input id="cb_tel" name="cb_tel" inputmode="tel" placeholder="06..." required>
+      </div>
+      <div class="field">
+        <label for="cb_city">Ville du bien</label>
+        <input id="cb_city" name="cb_city" placeholder="Ex. Firminy">
+      </div>
+
+      <button class="btn btn--cta btn--block" type="submit">📞 Demander le rappel</button>
+      <p class="fineprint">Nous vous recontactons au sujet de votre projet immobilier.</p>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
