@@ -8,11 +8,10 @@
   --muted2:rgba(11,13,18,.56);
   --line:rgba(11,13,18,.10);
 
-  /* Accents (premium harmonisés) */
+  /* Accents premium */
   --accent:#b31252;          /* framboise */
-  --accent2:#7a1542;         /* framboise profond */
   --teal:#0b6b63;            /* pétrole */
-  --teal2:#08544f;
+  --navy:#0B1220;            /* profondeur premium */
 
   /* CTA call (vert lisible) */
   --call:#16a34a;
@@ -51,6 +50,15 @@ a{color:inherit;text-decoration:none}
 .container{width:min(var(--container),calc(100% - 44px));margin:0 auto}
 .muted{color:var(--muted)}
 .micro{font-size:12px;color:var(--muted2);font-weight:800;margin-top:10px}
+
+.skipLink{
+  position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;
+}
+.skipLink:focus{
+  left:16px;top:16px;width:auto;height:auto;overflow:visible;
+  background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:12px;
+  z-index:999;
+}
 
 /* ---------------------------------------
    Topbar
@@ -345,9 +353,7 @@ h1{
   font-weight:850;
 }
 
-/* ---------------------------------------
-   a2z grid + photos
---------------------------------------- */
+/* a2z grid + photos */
 .a2zGrid{
   display:grid;
   grid-template-columns:1.1fr .9fr;
@@ -380,9 +386,7 @@ h1{
   font-weight:850;
 }
 
-/* ---------------------------------------
-   Accordions
---------------------------------------- */
+/* Accordions */
 .acc{
   border:1px solid rgba(11,13,18,.10);
   border-radius:var(--r);
@@ -435,9 +439,7 @@ h1{
 .acc__body ul{margin:10px 0 0;padding-left:18px}
 .acc__body li{margin:6px 0}
 
-/* ---------------------------------------
-   Impact section (Mandat)
---------------------------------------- */
+/* Impact section */
 .section--impact{
   background:
     radial-gradient(900px 520px at 15% 0%, rgba(179,18,82,.16), transparent 60%),
@@ -476,9 +478,7 @@ h1{
   color:rgba(11,13,18,.82);
 }
 
-/* ---------------------------------------
-   Team split
---------------------------------------- */
+/* Team split */
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -521,9 +521,7 @@ h1{
   font-weight:900;color:rgba(11,13,18,.82);
 }
 
-/* ---------------------------------------
-   FAQ
---------------------------------------- */
+/* FAQ */
 .faq{display:grid;gap:10px}
 .faq__item{
   padding:14px 16px;
@@ -536,9 +534,7 @@ h1{
 .faq__item summary::-webkit-details-marker{display:none}
 .faq__body{margin-top:10px;color:var(--muted);font-weight:850}
 
-/* ---------------------------------------
-   Contact
---------------------------------------- */
+/* Contact */
 .contactGrid{
   display:grid;
   grid-template-columns:.85fr 1.15fr;
@@ -580,9 +576,7 @@ input:focus,select:focus,textarea:focus{
   outline:none;
 }
 
-/* ---------------------------------------
-   Footer
---------------------------------------- */
+/* Footer */
 .footer{
   border-top:1px solid rgba(11,13,18,.07);
   padding:22px 0 84px;
@@ -595,9 +589,7 @@ input:focus,select:focus,textarea:focus{
 .footer__sub{color:var(--muted2);font-weight:850;font-size:13px}
 .footer__links{display:flex;gap:14px;color:var(--muted);font-weight:950}
 
-/* ---------------------------------------
-   CTA RAIL (desktop)
---------------------------------------- */
+/* CTA Rail (desktop) */
 .ctaRail{
   position:fixed;
   right:14px;
@@ -652,9 +644,7 @@ input:focus,select:focus,textarea:focus{
   background:linear-gradient(135deg, rgba(22,163,74,.14), rgba(34,197,94,.14));
 }
 
-/* ---------------------------------------
-   CTA BAR (mobile)
---------------------------------------- */
+/* CTA Bar (mobile) */
 .ctaBar{
   position:fixed;
   left:12px;
@@ -685,9 +675,7 @@ input:focus,select:focus,textarea:focus{
   color:#fff;
 }
 
-/* ---------------------------------------
-   Drawer
---------------------------------------- */
+/* Drawer */
 .drawer{position:fixed; inset:0; display:none; z-index:120;}
 .drawer.is-open{display:block}
 .drawer__backdrop{position:absolute; inset:0; background:rgba(11,13,18,.50);}
@@ -721,9 +709,7 @@ input:focus,select:focus,textarea:focus{
 .drawerForm{padding:14px 6px}
 .drawerForm__msg{margin:10px 0 0;color:rgba(11,13,18,.72);font-weight:900}
 
-/* ---------------------------------------
-   Reveal
---------------------------------------- */
+/* Reveal */
 .reveal{
   opacity:0;
   transform: translateY(18px);
@@ -731,9 +717,14 @@ input:focus,select:focus,textarea:focus{
 }
 .reveal.is-in{opacity:1;transform:none}
 
-/* ---------------------------------------
-   Responsive
---------------------------------------- */
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .reveal{transition:none}
+  .media img,.shot img,.split__img img{transition:none}
+}
+
+/* Responsive */
 @media (max-width:980px){
   .nav{display:none}
   .burger{display:block}
