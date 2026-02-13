@@ -9,7 +9,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- OPTION 2 : Inter + Fraunces -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -54,9 +56,10 @@
 
 <main id="top">
 
-  <!-- HERO (peu de texte, très institutionnel) -->
+  <!-- HERO : peu de texte, plus premium -->
   <section class="hero hero--institutional">
     <div class="container hero__grid">
+
       <div class="hero__left reveal">
         <div class="kicker">Mandat Signature GTI</div>
 
@@ -68,9 +71,12 @@
         </p>
 
         <div class="hero__cta">
-          <a class="btn" href="#contact">Demander une estimation</a>
+          <button class="btn" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
           <a class="btn btn--ghost" href="tel:+33XXXXXXXXX">📞 Appeler</a>
-          <button class="btn btn--soft" type="button" data-open-drawer="details" data-drawer-title="Notre engagement" data-drawer-content="engagement">
+          <button class="btn btn--soft" type="button"
+                  data-open-drawer="details"
+                  data-drawer-title="Notre engagement"
+                  data-drawer-content="engagement">
             En savoir plus
           </button>
         </div>
@@ -84,37 +90,49 @@
 
       <div class="hero__right reveal">
         <figure class="media">
-          <!-- Option vidéo : remplace l'image par assets/hero.mp4 si tu en mets une -->
+          <!-- Option vidéo (si tu ajoutes assets/hero.mp4) -->
           <!--
           <video class="media__video" autoplay muted loop playsinline poster="assets/hero.jpg">
             <source src="assets/hero.mp4" type="video/mp4">
           </video>
           -->
           <img class="media__img" src="assets/hero.jpg" alt="Mandat Signature GTI - GTI Immobilier" loading="eager">
-
           <div class="media__shade" aria-hidden="true"></div>
           <div class="media__badge">Mandat Signature GTI</div>
         </figure>
 
+        <!-- 3 cartes claires : peu de texte, détails dans drawer -->
         <div class="cards3">
-          <button class="card3" type="button" data-open-drawer="details" data-drawer-title="Préparer" data-drawer-content="preparer">
+          <button class="card3" type="button"
+                  data-open-drawer="details"
+                  data-drawer-title="Préparer"
+                  data-drawer-content="preparer">
             <div class="card3__k">Préparer</div>
             <div class="card3__v">Positionnement + mise en valeur.</div>
           </button>
-          <button class="card3" type="button" data-open-drawer="details" data-drawer-title="Commercialiser" data-drawer-content="commercialiser">
+
+          <button class="card3" type="button"
+                  data-open-drawer="details"
+                  data-drawer-title="Commercialiser"
+                  data-drawer-content="commercialiser">
             <div class="card3__k">Commercialiser</div>
             <div class="card3__v">Diffusion + pilotage.</div>
           </button>
-          <button class="card3" type="button" data-open-drawer="details" data-drawer-title="Sécuriser" data-drawer-content="securiser">
+
+          <button class="card3" type="button"
+                  data-open-drawer="details"
+                  data-drawer-title="Sécuriser"
+                  data-drawer-content="securiser">
             <div class="card3__k">Sécuriser</div>
             <div class="card3__v">Offres + notaire + acte.</div>
           </button>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- MÉTHODE : peu de texte visible, détail en accordéons -->
+  <!-- MÉTHODE -->
   <section id="methode" class="section">
     <div class="container">
       <div class="section__head reveal">
@@ -126,10 +144,7 @@
 
       <div class="protocol reveal">
         <details class="acc" data-acc-group="method" open>
-          <summary>
-            <span class="acc__title">01 — Analyse & positionnement</span>
-            <span class="acc__hint">Voir</span>
-          </summary>
+          <summary><span class="acc__title">01 — Analyse & positionnement</span><span class="acc__hint">Voir</span></summary>
           <div class="acc__body">
             <p>
               Étude du marché local (comparables réellement vendus, dynamique de la demande),
@@ -144,32 +159,26 @@
         </details>
 
         <details class="acc" data-acc-group="method">
-          <summary>
-            <span class="acc__title">02 — Mise en valeur & supports</span>
-            <span class="acc__hint">Voir</span>
-          </summary>
+          <summary><span class="acc__title">02 — Mise en valeur & supports</span><span class="acc__hint">Voir</span></summary>
           <div class="acc__body">
             <p>
               Annonce structurée, visuels hiérarchisés, présentation claire.
               Selon la nature du bien, nous activons des supports modernes :
             </p>
             <ul>
-              <li><strong>Visite virtuelle 360°</strong> (projection, filtrage, gain de temps)</li>
-              <li><strong>Vidéo</strong> de présentation (confiance, perception premium)</li>
+              <li><strong>Visite virtuelle 360°</strong> : projection, tri, gain de temps</li>
+              <li><strong>Vidéo</strong> : perception premium, compréhension du bien</li>
               <li>Supports digitaux optimisés</li>
             </ul>
           </div>
         </details>
 
         <details class="acc" data-acc-group="method">
-          <summary>
-            <span class="acc__title">03 — Diffusion & pilotage</span>
-            <span class="acc__hint">Voir</span>
-          </summary>
+          <summary><span class="acc__title">03 — Diffusion & pilotage</span><span class="acc__hint">Voir</span></summary>
           <div class="acc__body">
             <p>
               Diffusion sur les canaux pertinents, puis pilotage :
-              volume de demandes, qualité des profils, objections, ajustements au bon moment.
+              volume, qualité des profils, objections, ajustements au bon moment.
             </p>
             <ul>
               <li>Analyse des signaux (demande / objections)</li>
@@ -180,10 +189,7 @@
         </details>
 
         <details class="acc" data-acc-group="method">
-          <summary>
-            <span class="acc__title">04 — Qualification & négociation</span>
-            <span class="acc__hint">Voir</span>
-          </summary>
+          <summary><span class="acc__title">04 — Qualification & négociation</span><span class="acc__hint">Voir</span></summary>
           <div class="acc__body">
             <p>
               Chaque visite est encadrée : projet, budget, financement, timing.
@@ -198,10 +204,7 @@
         </details>
 
         <details class="acc" data-acc-group="method">
-          <summary>
-            <span class="acc__title">05 — Sécurisation jusqu’à l’acte</span>
-            <span class="acc__hint">Voir</span>
-          </summary>
+          <summary><span class="acc__title">05 — Sécurisation jusqu’à l’acte</span><span class="acc__hint">Voir</span></summary>
           <div class="acc__body">
             <p>
               Coordination pièces / délais, suivi conditions suspensives, lien notaire.
@@ -217,17 +220,23 @@
       </div>
 
       <div class="microCtas reveal">
-        <button class="microBtn" type="button" data-open-drawer="details" data-drawer-title="Pourquoi cette méthode est efficace" data-drawer-content="pourquoi">
+        <button class="microBtn" type="button"
+                data-open-drawer="details"
+                data-drawer-title="Pourquoi cette méthode est efficace"
+                data-drawer-content="pourquoi">
           Pourquoi ça marche
         </button>
-        <button class="microBtn" type="button" data-open-drawer="details" data-drawer-title="Notre approche des outils (360°, vidéo)" data-drawer-content="outils">
+        <button class="microBtn" type="button"
+                data-open-drawer="details"
+                data-drawer-title="Outils & technologie"
+                data-drawer-content="outils">
           Outils & technologie
         </button>
       </div>
     </div>
   </section>
 
-  <!-- ORGANISATION : très sobre et premium -->
+  <!-- ORGANISATION -->
   <section id="organisation" class="section section--soft">
     <div class="container">
       <div class="section__head reveal">
@@ -242,6 +251,7 @@
         <div class="orgPhoto">
           <img src="assets/team.jpg" alt="Organisation GTI Immobilier">
         </div>
+
         <div class="orgCard">
           <div class="orgCard__title">Ce que ça change pour vous</div>
           <div class="orgList">
@@ -264,7 +274,7 @@
     </div>
   </section>
 
-  <!-- CADRE : court, marketing, rassurant -->
+  <!-- CADRE -->
   <section id="cadre" class="section">
     <div class="container">
       <div class="section__head reveal">
@@ -311,7 +321,7 @@
     </div>
   </section>
 
-  <!-- FAQ minimaliste -->
+  <!-- FAQ -->
   <section id="faq" class="section section--soft">
     <div class="container">
       <div class="section__head reveal">
@@ -490,7 +500,7 @@
     </div>
   </div>
 
-  <!-- Drawer details (contenu long “sur demande”) -->
+  <!-- Drawer details -->
   <div class="drawer" id="drawerDetails" aria-hidden="true">
     <div class="drawer__backdrop" data-close-drawer></div>
 
