@@ -1,10 +1,15 @@
-// script.js
+// script.js (identique, inchangé)
 (() => {
-  // Year
+  // ====== CONFIG (mets ton vrai numéro ici) ======
+  const PHONE = "+33400000000"; // <-- remplace par ton numéro (format +33...)
+
+  document.querySelectorAll("[data-phone-link]").forEach(a => {
+    a.setAttribute("href", `tel:${PHONE}`);
+  });
+
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  // Mobile menu
   const burger = document.querySelector(".burger");
   const mobileNav = document.querySelector(".mobileNav");
 
@@ -21,10 +26,9 @@
       mobileNav.hidden = open;
     });
 
-    mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
+    mobileNav.querySelectorAll("a,button").forEach(el => el.addEventListener("click", closeMobileNav));
   }
 
-  // Smooth scroll with header offset
   const header = document.getElementById("siteHeader");
   const headerH = () => header ? header.getBoundingClientRect().height : 0;
 
@@ -42,7 +46,6 @@
     });
   });
 
-  // Accordion groups: only one open per group
   const allDetails = Array.from(document.querySelectorAll("details[data-acc-group]"));
   allDetails.forEach(d => {
     d.addEventListener("toggle", () => {
@@ -54,7 +57,6 @@
     });
   });
 
-  // Reveal on scroll
   const reveals = Array.from(document.querySelectorAll(".reveal"));
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
@@ -70,7 +72,6 @@
     reveals.forEach(el => el.classList.add("is-in"));
   }
 
-  // Drawer
   const drawer = document.getElementById("drawerCallback");
   const drawerForm = document.getElementById("drawerForm");
   const drawerMsg = document.getElementById("drawerMsg");
@@ -96,11 +97,11 @@
   }
 
   document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
-    btn.addEventListener("click", () => openDrawer());
+    btn.addEventListener("click", openDrawer);
   });
 
   document.querySelectorAll("[data-close-drawer]").forEach(el => {
-    el.addEventListener("click", () => closeDrawer());
+    el.addEventListener("click", closeDrawer);
   });
 
   document.addEventListener("keydown", (e) => {
@@ -110,7 +111,6 @@
     }
   });
 
-  // Drawer form (no backend)
   if (drawerForm && drawerMsg) {
     drawerForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -122,11 +122,10 @@
       }
       drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
       drawerForm.reset();
-      setTimeout(() => closeDrawer(), 700);
+      setTimeout(closeDrawer, 700);
     });
   }
 
-  // Contact form (no backend)
   const form = document.getElementById("contactForm");
   const msg = document.getElementById("formMsg");
   if (form && msg) {
