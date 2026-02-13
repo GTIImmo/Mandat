@@ -69,7 +69,7 @@
     reveals.forEach(el => el.classList.add("is-in"));
   }
 
-  // Drawers (callback + details)
+  // Drawers
   const drawerCallback = document.getElementById("drawerCallback");
   const drawerDetails = document.getElementById("drawerDetails");
   const detailsTitle = document.getElementById("detailsTitle");
@@ -116,114 +116,295 @@
     btn.addEventListener("click", () => openDrawer(drawerCallback));
   });
 
-  // Details content map
+  // Details content (MANDAT-centric)
   const DETAILS = {
-    engagement: `
-      <h3>Notre engagement</h3>
-      <p>
-        Le Mandat Signature GTI formalise une vente structurée :
-        estimation argumentée, commercialisation maîtrisée, qualification des acquéreurs,
-        négociation encadrée et sécurisation jusqu’à l’acte authentique.
+    contenu_mandat: `
+      <h3>Le contenu du Mandat Signature</h3>
+      <p class="detailsLead">
+        Un mandat conçu pour piloter la vente, filtrer les visites, encadrer les offres et sécuriser jusqu’à l’acte.
       </p>
-      <ul>
-        <li>Un cadre clair, des actions suivies</li>
-        <li>Une commercialisation pilotée, pas “déposée”</li>
-        <li>Une transaction sécurisée jusqu’au notaire</li>
-      </ul>
+
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Préparer</strong>
+            <span class="detailsTag">Stratégie</span>
+          </div>
+          <ul>
+            <li>Estimation argumentée & positionnement cohérent</li>
+            <li>Conseils concrets avant lancement</li>
+            <li>Mise en valeur qui inspire confiance</li>
+          </ul>
+        </div>
+
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Commercialiser</strong>
+            <span class="detailsTag">Pilotage</span>
+          </div>
+          <ul>
+            <li>Diffusion adaptée au bien et au secteur</li>
+            <li>Pilotage selon les retours et objections</li>
+            <li>Ajustements au bon moment</li>
+          </ul>
+        </div>
+
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Sécuriser</strong>
+            <span class="detailsTag">Jusqu’à l’acte</span>
+          </div>
+          <ul>
+            <li>Visites qualifiées (budget, financement, timing)</li>
+            <li>Offres encadrées (prix + conditions + solidité)</li>
+            <li>Coordination notaire, pièces, délais</li>
+          </ul>
+        </div>
+      </div>
     `,
+
     preparer: `
-      <h3>Préparer</h3>
-      <p>Une vente solide commence avant la première visite.</p>
-      <ul>
-        <li>Analyse marché + comparables réellement vendus</li>
-        <li>Positionnement prix cohérent et crédible</li>
-        <li>Mise en valeur : annonce structurée, visuels hiérarchisés</li>
-        <li>Selon le bien : <strong>visite virtuelle 360°</strong>, <strong>vidéo</strong>, supports digitaux</li>
-      </ul>
+      <h3>I — Préparer</h3>
+      <p class="detailsLead">On lance une commercialisation efficace quand le positionnement est clair.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Prix & stratégie</strong>
+            <span class="detailsTag">Positionnement</span>
+          </div>
+          <ul>
+            <li>Analyse du marché local</li>
+            <li>Positionnement crédible</li>
+            <li>Objectif : attirer les bons profils</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Mise en valeur</strong>
+            <span class="detailsTag">Confiance</span>
+          </div>
+          <ul>
+            <li>Annonce claire, complète, rassurante</li>
+            <li>Visuels cohérents et hiérarchisés</li>
+            <li>Moins de visites inutiles</li>
+          </ul>
+        </div>
+      </div>
     `,
+
     commercialiser: `
-      <h3>Commercialiser</h3>
-      <p>Diffusion + pilotage : on suit la réalité du marché et on ajuste.</p>
-      <ul>
-        <li>Diffusion sur canaux pertinents</li>
-        <li>Suivi des signaux : volume, qualité, objections</li>
-        <li>Ajustements au bon moment</li>
-      </ul>
+      <h3>II — Commercialiser</h3>
+      <p class="detailsLead">Diffuser, oui. Mais surtout piloter : mesurer et ajuster.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Diffusion</strong>
+            <span class="detailsTag">Visibilité</span>
+          </div>
+          <ul>
+            <li>Canaux adaptés au bien</li>
+            <li>Présentation cohérente</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Pilotage</strong>
+            <span class="detailsTag">Actions</span>
+          </div>
+          <ul>
+            <li>Analyse des retours et objections</li>
+            <li>Ajustements au bon moment</li>
+            <li>Objectif : garder l’efficacité</li>
+          </ul>
+        </div>
+      </div>
     `,
+
     securiser: `
-      <h3>Sécuriser</h3>
-      <p>Notre rôle est d’aboutir à une signature, pas seulement à une offre.</p>
-      <ul>
-        <li>Qualification des acquéreurs (budget, financement, timing)</li>
-        <li>Offres analysées : prix + conditions + solidité du dossier</li>
-        <li>Coordination notaire, pièces, délais</li>
-      </ul>
+      <h3>III — Sécuriser</h3>
+      <p class="detailsLead">Le mandat vise l’acte authentique : le reste est une étape.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Offres encadrées</strong>
+            <span class="detailsTag">Analyse</span>
+          </div>
+          <ul>
+            <li>Conditions, solidité, financement</li>
+            <li>Négociation structurée</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Suivi notaire</strong>
+            <span class="detailsTag">Acte</span>
+          </div>
+          <ul>
+            <li>Coordination pièces / délais</li>
+            <li>Suivi des conditions suspensives</li>
+            <li>Conduire jusqu’à la signature</li>
+          </ul>
+        </div>
+      </div>
     `,
-    pourquoi: `
-      <h3>Pourquoi cette méthode est efficace</h3>
-      <ul>
-        <li>Un positionnement cohérent améliore la qualité des contacts</li>
-        <li>Des supports clairs filtrent les visites inutiles</li>
-        <li>Le pilotage évite l’essoufflement et les négociations subies</li>
-        <li>La sécurisation réduit les risques de rupture</li>
-      </ul>
-    `,
+
     outils: `
       <h3>Outils & technologie</h3>
-      <p>
-        Nous utilisons les outils qui servent la vente — jamais l’inverse.
-        Selon le bien, nous pouvons activer :
-      </p>
-      <ul>
-        <li><strong>Visite virtuelle 360°</strong> : projection, tri, gain de temps</li>
-        <li><strong>Vidéo</strong> : perception premium, compréhension du bien</li>
-        <li>Supports digitaux optimisés : clarté, réassurance, précision</li>
-      </ul>
+      <p class="detailsLead">Nous activons les outils qui servent réellement la vente, selon le bien.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Visite virtuelle 360°</strong>
+            <span class="detailsTag">Projection</span>
+          </div>
+          <ul>
+            <li>Meilleure compréhension du bien</li>
+            <li>Tri naturel des demandes</li>
+            <li>Gain de temps sur les visites</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Vidéo</strong>
+            <span class="detailsTag">Premium</span>
+          </div>
+          <ul>
+            <li>Perception plus qualitative</li>
+            <li>Contexte & volumes mieux compris</li>
+            <li>Aide à la décision</li>
+          </ul>
+        </div>
+      </div>
     `,
-    continuite: `
-      <h3>Continuité de dossier</h3>
-      <p>
-        Vous avez un référent, et une organisation qui assure la continuité :
-        coordination, retours structurés, suivi administratif et notaire.
-      </p>
-      <ul>
-        <li>Suivi des étapes et des pièces</li>
-        <li>Relances et coordination</li>
-        <li>Décisions expliquées, visibilité sur l’avancement</li>
-      </ul>
+
+    pourquoi: `
+      <h3>Pourquoi ça marche</h3>
+      <p class="detailsLead">Une vente performante repose sur 3 principes : clarté, exécution, sécurisation.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Clarté</strong>
+            <span class="detailsTag">Cadre</span>
+          </div>
+          <ul>
+            <li>Positionnement crédible = meilleurs contacts</li>
+            <li>Présentation claire = moins de visites inutiles</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Exécution</strong>
+            <span class="detailsTag">Pilotage</span>
+          </div>
+          <ul>
+            <li>On ajuste selon la réalité du marché</li>
+            <li>On évite l’essoufflement</li>
+          </ul>
+        </div>
+      </div>
     `,
-    honoraires: `
-      <h3>Transparence des honoraires</h3>
-      <p>
-        Les honoraires sont définis en amont. Ils couvrent la préparation,
-        la commercialisation, la négociation et la sécurisation jusqu’à l’acte.
-      </p>
-      <p>Tout est clair dès le départ.</p>
+
+    cadre_fixe: `
+      <h3>Ce que le mandat fixe</h3>
+      <p class="detailsLead">Un cadre clair pour piloter la vente et protéger la cohérence de la commercialisation.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Un plan de vente</strong>
+            <span class="detailsTag">Méthode</span>
+          </div>
+          <ul>
+            <li>Étapes, actions, suivi</li>
+            <li>Décisions expliquées</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Une cohérence</strong>
+            <span class="detailsTag">Valeur</span>
+          </div>
+          <ul>
+            <li>Commercialisation structurée</li>
+            <li>Objectif : vendre dans de bonnes conditions</li>
+          </ul>
+        </div>
+      </div>
     `,
+
     acquereur: `
       <h3>Vous pouvez présenter un acquéreur</h3>
-      <p>
-        Si vous identifiez vous-même un acheteur, vous pouvez nous le présenter.
-        Nous sécurisons alors la suite :
-      </p>
-      <ul>
-        <li>Vérification de la solvabilité</li>
-        <li>Encadrement de l’offre</li>
-        <li>Suivi du dossier et coordination notariale</li>
-      </ul>
-      <p>
-        Selon les conditions prévues au mandat, les honoraires peuvent être ajustés,
-        sans modifier le niveau d’accompagnement jusqu’à la signature.
-      </p>
+      <p class="detailsLead">Vous restez acteur : si vous identifiez un acheteur, vous pouvez nous le présenter.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>On sécurise la suite</strong>
+            <span class="detailsTag">Dossier</span>
+          </div>
+          <ul>
+            <li>Analyse de la solvabilité</li>
+            <li>Encadrement de l’offre</li>
+            <li>Suivi notaire jusqu’à l’acte</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Honoraires ajustés</strong>
+            <span class="detailsTag">Mandat</span>
+          </div>
+          <p>
+            Selon les conditions prévues au mandat, les honoraires peuvent être ajustés,
+            sans modifier le niveau d’accompagnement jusqu’à la signature.
+          </p>
+        </div>
+      </div>
     `,
+
     securisation: `
-      <h3>Sécurisation de la transaction</h3>
-      <ul>
-        <li>Offres analysées (prix + conditions)</li>
-        <li>Suivi des conditions suspensives</li>
-        <li>Coordination notaire et pièces</li>
-      </ul>
-      <p>Objectif : conduire la transaction jusqu’à l’acte authentique.</p>
+      <h3>Sécurisation jusqu’à l’acte</h3>
+      <p class="detailsLead">Encadrer les offres et conduire le dossier jusqu’à la signature authentique.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Offres</strong>
+            <span class="detailsTag">Conditions</span>
+          </div>
+          <ul>
+            <li>Conditions, délais, financement</li>
+            <li>Négociation structurée</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Notaire</strong>
+            <span class="detailsTag">Acte</span>
+          </div>
+          <ul>
+            <li>Coordination des pièces</li>
+            <li>Relances et respect des délais</li>
+            <li>Objectif : acte authentique</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    continuite: `
+      <h3>Comment on assure la continuité</h3>
+      <p class="detailsLead">
+        L’idée n’est pas “de parler de l’entreprise”, mais de rendre le mandat plus fiable : suivi, coordination, continuité.
+      </p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Continuité</strong>
+            <span class="detailsTag">Suivi</span>
+          </div>
+          <ul>
+            <li>Un référent + une organisation de suivi</li>
+            <li>Retours structurés et décisions expliquées</li>
+            <li>Coordination dossier / notaire</li>
+          </ul>
+        </div>
+      </div>
     `
   };
 
