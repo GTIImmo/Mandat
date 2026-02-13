@@ -1,13 +1,5 @@
 // script.js
 (() => {
-  // ====== CONFIG (mets ton vrai numéro ici) ======
-  const PHONE = "+33400000000"; // <-- remplace par ton numéro (format +33...)
-
-  // Apply PHONE everywhere via data-phone-link
-  document.querySelectorAll("[data-phone-link]").forEach(a => {
-    a.setAttribute("href", `tel:${PHONE}`);
-  });
-
   // Year
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
@@ -29,7 +21,7 @@
       mobileNav.hidden = open;
     });
 
-    mobileNav.querySelectorAll("a,button").forEach(el => el.addEventListener("click", closeMobileNav));
+    mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
   }
 
   // Smooth scroll with header offset
@@ -104,11 +96,11 @@
   }
 
   document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
-    btn.addEventListener("click", openDrawer);
+    btn.addEventListener("click", () => openDrawer());
   });
 
   document.querySelectorAll("[data-close-drawer]").forEach(el => {
-    el.addEventListener("click", closeDrawer);
+    el.addEventListener("click", () => closeDrawer());
   });
 
   document.addEventListener("keydown", (e) => {
@@ -130,7 +122,7 @@
       }
       drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
       drawerForm.reset();
-      setTimeout(closeDrawer, 700);
+      setTimeout(() => closeDrawer(), 700);
     });
   }
 
