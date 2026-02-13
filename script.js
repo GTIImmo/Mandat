@@ -1,15 +1,9 @@
-// script.js (identique, inchangé)
 (() => {
-  // ====== CONFIG (mets ton vrai numéro ici) ======
-  const PHONE = "+33400000000"; // <-- remplace par ton numéro (format +33...)
-
-  document.querySelectorAll("[data-phone-link]").forEach(a => {
-    a.setAttribute("href", `tel:${PHONE}`);
-  });
-
+  // Year
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
+  // Mobile menu
   const burger = document.querySelector(".burger");
   const mobileNav = document.querySelector(".mobileNav");
 
@@ -26,9 +20,10 @@
       mobileNav.hidden = open;
     });
 
-    mobileNav.querySelectorAll("a,button").forEach(el => el.addEventListener("click", closeMobileNav));
+    mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
   }
 
+  // Smooth scroll with header offset
   const header = document.getElementById("siteHeader");
   const headerH = () => header ? header.getBoundingClientRect().height : 0;
 
@@ -46,6 +41,7 @@
     });
   });
 
+  // Accordion groups: only one open per group
   const allDetails = Array.from(document.querySelectorAll("details[data-acc-group]"));
   allDetails.forEach(d => {
     d.addEventListener("toggle", () => {
@@ -57,6 +53,7 @@
     });
   });
 
+  // Reveal on scroll
   const reveals = Array.from(document.querySelectorAll(".reveal"));
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
@@ -72,44 +69,178 @@
     reveals.forEach(el => el.classList.add("is-in"));
   }
 
-  const drawer = document.getElementById("drawerCallback");
-  const drawerForm = document.getElementById("drawerForm");
-  const drawerMsg = document.getElementById("drawerMsg");
+  // Drawers (callback + details)
+  const drawerCallback = document.getElementById("drawerCallback");
+  const drawerDetails = document.getElementById("drawerDetails");
+  const detailsTitle = document.getElementById("detailsTitle");
+  const detailsBody = document.getElementById("detailsBody");
 
   let lastFocus = null;
 
-  function openDrawer() {
-    if (!drawer) return;
+  function openDrawer(drawerEl) {
+    if (!drawerEl) return;
     lastFocus = document.activeElement;
-    drawer.classList.add("is-open");
-    drawer.setAttribute("aria-hidden", "false");
+    drawerEl.classList.add("is-open");
+    drawerEl.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    const firstInput = drawer.querySelector("input,select,textarea,button");
-    if (firstInput) firstInput.focus();
+    const first = drawerEl.querySelector("input,select,textarea,button,a");
+    if (first) first.focus();
   }
 
-  function closeDrawer() {
-    if (!drawer) return;
-    drawer.classList.remove("is-open");
-    drawer.setAttribute("aria-hidden", "true");
+  function closeDrawer(drawerEl) {
+    if (!drawerEl) return;
+    drawerEl.classList.remove("is-open");
+    drawerEl.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
-    btn.addEventListener("click", openDrawer);
-  });
-
+  // Close on backdrop/buttons
   document.querySelectorAll("[data-close-drawer]").forEach(el => {
-    el.addEventListener("click", closeDrawer);
+    el.addEventListener("click", () => {
+      closeDrawer(drawerCallback);
+      closeDrawer(drawerDetails);
+    });
   });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeMobileNav();
-      closeDrawer();
+      closeDrawer(drawerCallback);
+      closeDrawer(drawerDetails);
     }
   });
+
+  // Open callback drawer
+  document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
+    btn.addEventListener("click", () => openDrawer(drawerCallback));
+  });
+
+  // Details content map (long text only when requested)
+  const DETAILS = {
+    engagement: `
+      <h3>Notre engagement</h3>
+      <p>
+        Le Mandat Signature GTI formalise une vente structurée :
+        estimation argumentée, commercialisation maîtrisée, qualification des acquéreurs,
+        négociation encadrée et sécurisation jusqu’à l’acte authentique.
+      </p>
+      <ul>
+        <li>Un cadre clair, des actions suivies</li>
+        <li>Une commercialisation pilotée, pas “déposée”</li>
+        <li>Une transaction sécurisée jusqu’au notaire</li>
+      </ul>
+    `,
+    preparer: `
+      <h3>Préparer</h3>
+      <p>Une vente solide commence avant la première visite.</p>
+      <ul>
+        <li>Analyse marché + comparables réellement vendus</li>
+        <li>Positionnement prix cohérent et crédible</li>
+        <li>Mise en valeur : annonce structurée, visuels hiérarchisés</li>
+        <li>Selon le bien : <strong>visite virtuelle 360°</strong>, <strong>vidéo</strong>, supports digitaux</li>
+      </ul>
+    `,
+    commercialiser: `
+      <h3>Commercialiser</h3>
+      <p>Diffusion + pilotage : on suit la réalité du marché et on ajuste.</p>
+      <ul>
+        <li>Diffusion sur canaux pertinents</li>
+        <li>Suivi des signaux : volume, qualité, objections</li>
+        <li>Ajustements au bon moment</li>
+      </ul>
+    `,
+    securiser: `
+      <h3>Sécuriser</h3>
+      <p>Notre rôle est d’aboutir à une signature, pas seulement à une offre.</p>
+      <ul>
+        <li>Qualification des acquéreurs (budget, financement, timing)</li>
+        <li>Offres analysées : prix + conditions + solidité du dossier</li>
+        <li>Coordination notaire, pièces, délais</li>
+      </ul>
+    `,
+    pourquoi: `
+      <h3>Pourquoi cette méthode est efficace</h3>
+      <ul>
+        <li>Un positionnement cohérent améliore la qualité des contacts</li>
+        <li>Des supports clairs filtrent les visites inutiles</li>
+        <li>Le pilotage évite l’essoufflement et les négociations subies</li>
+        <li>La sécurisation réduit les risques de rupture</li>
+      </ul>
+    `,
+    outils: `
+      <h3>Outils & technologie</h3>
+      <p>
+        Nous utilisons les outils qui servent la vente — jamais l’inverse.
+        Selon le bien, nous pouvons activer :
+      </p>
+      <ul>
+        <li><strong>Visite virtuelle 360°</strong> : projection, tri, gain de temps</li>
+        <li><strong>Vidéo</strong> : perception premium, compréhension du bien</li>
+        <li>Supports digitaux optimisés : clarté, réassurance, précision</li>
+      </ul>
+    `,
+    continuite: `
+      <h3>Continuité de dossier</h3>
+      <p>
+        Vous avez un référent, et une organisation qui assure la continuité :
+        coordination, retours structurés, suivi administratif et notaire.
+      </p>
+      <ul>
+        <li>Suivi des étapes et des pièces</li>
+        <li>Relances et coordination</li>
+        <li>Décisions expliquées, visibilité sur l’avancement</li>
+      </ul>
+    `,
+    honoraires: `
+      <h3>Transparence des honoraires</h3>
+      <p>
+        Les honoraires sont définis en amont. Ils couvrent la préparation,
+        la commercialisation, la négociation et la sécurisation jusqu’à l’acte.
+      </p>
+      <p>Tout est clair dès le départ.</p>
+    `,
+    acquereur: `
+      <h3>Vous pouvez présenter un acquéreur</h3>
+      <p>
+        Si vous identifiez vous-même un acheteur, vous pouvez nous le présenter.
+        Nous sécurisons alors la suite :
+      </p>
+      <ul>
+        <li>Vérification de la solvabilité</li>
+        <li>Encadrement de l’offre</li>
+        <li>Suivi du dossier et coordination notariale</li>
+      </ul>
+      <p>
+        Selon les conditions prévues au mandat, les honoraires peuvent être ajustés,
+        sans modifier le niveau d’accompagnement jusqu’à la signature.
+      </p>
+    `,
+    securisation: `
+      <h3>Sécurisation de la transaction</h3>
+      <ul>
+        <li>Offres analysées (prix + conditions)</li>
+        <li>Suivi des conditions suspensives</li>
+        <li>Coordination notaire et pièces</li>
+      </ul>
+      <p>Objectif : conduire la transaction jusqu’à l’acte authentique.</p>
+    `
+  };
+
+  // Open details drawer
+  document.querySelectorAll('[data-open-drawer="details"]').forEach(btn => {
+    btn.addEventListener("click", () => {
+      const title = btn.getAttribute("data-drawer-title") || "Détails";
+      const key = btn.getAttribute("data-drawer-content") || "";
+      if (detailsTitle) detailsTitle.textContent = title;
+      if (detailsBody) detailsBody.innerHTML = DETAILS[key] || "<p>Contenu indisponible.</p>";
+      openDrawer(drawerDetails);
+    });
+  });
+
+  // Drawer callback form (no backend)
+  const drawerForm = document.getElementById("drawerForm");
+  const drawerMsg = document.getElementById("drawerMsg");
 
   if (drawerForm && drawerMsg) {
     drawerForm.addEventListener("submit", (e) => {
@@ -122,10 +253,11 @@
       }
       drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
       drawerForm.reset();
-      setTimeout(closeDrawer, 700);
+      setTimeout(() => closeDrawer(drawerCallback), 700);
     });
   }
 
+  // Contact form (no backend)
   const form = document.getElementById("contactForm");
   const msg = document.getElementById("formMsg");
   if (form && msg) {
