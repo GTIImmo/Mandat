@@ -116,7 +116,7 @@
     btn.addEventListener("click", () => openDrawer(drawerCallback));
   });
 
-  // Details content map (long text only when requested)
+  // Details content map
   const DETAILS = {
     engagement: `
       <h3>Notre engagement</h3>
@@ -238,7 +238,7 @@
     });
   });
 
-  // Drawer callback form (no backend)
+  // Callback form (no backend)
   const drawerForm = document.getElementById("drawerForm");
   const drawerMsg = document.getElementById("drawerMsg");
 
