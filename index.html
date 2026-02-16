@@ -4,37 +4,34 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Le Groupe GTI Immobilier | Réseau d’agences locales</title>
-  <meta name="description" content="GTI Immobilier : entreprise familiale fondée en 2000. Réseau d’agences locales, organisation structurée et outils modernes au service de vos projets immobiliers." />
+  <title>Nos Services | GTI Immobilier</title>
+  <meta name="description" content="Découvrez les services GTI Immobilier : estimation stratégique, mise en valeur, diffusion, visites qualifiées, sécurisation du dossier et suivi jusqu’à l’acte authentique." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Police plus subtile (comme tu voulais), premium et lisible -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="services.css" />
 </head>
 
 <body>
 <header class="topbar" id="siteHeader">
   <div class="container topbar__inner">
-    <a class="brand" href="#top" aria-label="GTI Immobilier - Le Groupe">
+    <a class="brand" href="services.html" aria-label="GTI Immobilier">
       <img class="brand__logo"
            src="https://www.gti-immobilier.fr/application/files/5617/3617/2343/GTI-Logos-Grisblanc.png"
            alt="GTI Immobilier">
       <div class="brand__txt">
         <div class="brand__name">GTI Immobilier</div>
-        <div class="brand__sub">Le Groupe</div>
+        <div class="brand__sub">Nos services</div>
       </div>
     </a>
 
     <nav class="nav" aria-label="Navigation principale">
-      <a href="#identite">Notre identité</a>
-      <a href="#reseau">Nos agences</a>
-      <a href="#organisation">Organisation</a>
-      <a href="#outils">Outils</a>
-      <a href="#contact" class="nav__cta">Contact</a>
+      <a class="is-active" href="services.html">Services</a>
+      <a href="mandat.html">Mandat Signature</a>
+      <a href="groupe.html">Le Groupe</a>
+      <button class="nav__cta" type="button" data-open-drawer="callback">Être rappelé</button>
     </nav>
 
     <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -44,12 +41,11 @@
 
   <div class="mobileNav" hidden>
     <div class="container mobileNav__inner">
-      <a href="#identite">Notre identité</a>
-      <a href="#reseau">Nos agences</a>
-      <a href="#organisation">Organisation</a>
-      <a href="#outils">Outils</a>
-      <a class="btn btn--ghost btn--small" href="#contact">Contact</a>
-      <a class="btn btn--small" href="/nos-agences/">Voir nos agences</a>
+      <a href="services.html">Services</a>
+      <a href="mandat.html">Mandat Signature</a>
+      <a href="groupe.html">Le Groupe</a>
+      <button class="btn btn--wide" type="button" data-open-drawer="callback">Être rappelé</button>
+      <a class="btn btn--ghost btn--wide" href="tel:+33XXXXXXXXX">Appeler</a>
     </div>
   </div>
 </header>
@@ -57,397 +53,152 @@
 <main id="top">
 
   <!-- HERO -->
-  <section class="hero hero--group">
+  <section class="hero">
     <div class="container hero__grid">
-
       <div class="hero__left reveal">
-        <div class="pill">Le Groupe GTI Immobilier</div>
-
-        <h1>Une entreprise familiale, un réseau local, une organisation qui suit vraiment vos projets.</h1>
-
+        <div class="pill">Services GTI Immobilier</div>
+        <h1>Vendre un bien, c’est une stratégie — pas une simple annonce.</h1>
         <p class="lead">
-          Depuis <strong>2000</strong>, nous construisons une présence solide sur le territoire.
-          Pour nos clients, cela signifie une chose : <strong>moins d’incertitudes</strong>, plus de
-          <strong>méthode</strong> et un <strong>suivi réel</strong> des dossiers.
+          Nos services sont pensés pour un objectif simple :
+          <strong>vendre dans les meilleures conditions</strong>, au bon tempo,
+          avec un <strong>pilotage clair</strong> et une <strong>sécurisation jusqu’à l’acte</strong>.
         </p>
 
         <div class="hero__cta">
-          <a class="btn" href="/nos-agences/">📍 Découvrir nos agences</a>
-          <a class="btn btn--ghost" href="#contact">✉️ Être rappelé</a>
+          <a class="btn" href="tel:+33XXXXXXXXX">📞 Appeler</a>
+          <button class="btn btn--ghost" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+          <a class="btn btn--ghost" href="mandat.html">Découvrir le Mandat Signature</a>
         </div>
 
-        <div class="note note--grad">
-          <strong>Notre promesse :</strong> un accompagnement sérieux, clair et humain —
-          avec une structure derrière votre projet.
-          <span>Pour notre méthode de vente : <a class="inlineLink" href="/Mandat/">Mandat Signature GTI</a>.</span>
+        <div class="hero__badges">
+          <div class="badge">✔ Estimation stratégique</div>
+          <div class="badge">✔ Mise en valeur premium</div>
+          <div class="badge">✔ Visites qualifiées</div>
+          <div class="badge">✔ Suivi notaire & acte</div>
         </div>
 
-        <div class="proofRow">
-          <div class="proof">
-            <div class="proof__k">+20 ans</div>
-            <div class="proof__s">d’ancrage local</div>
-          </div>
-          <div class="proof">
-            <div class="proof__k">Réseau</div>
-            <div class="proof__s">d’agences locales</div>
-          </div>
-          <div class="proof">
-            <div class="proof__k">Équipe</div>
-            <div class="proof__s">formée & suivie</div>
-          </div>
+        <div class="note">
+          <strong>Ce que vous obtenez au 1er échange :</strong>
+          une estimation cohérente + une recommandation de stratégie (sans engagement).
         </div>
       </div>
 
       <div class="hero__right reveal">
-        <figure class="media">
-          <div class="media__frame">
-            <!-- Image libre : remplace si tu veux par assets/group-hero.jpg -->
-            <img src="assets/group-hero.jpg" alt="GTI Immobilier - équipe et organisation" loading="eager">
-            <div class="media__shade" aria-hidden="true"></div>
-            <div class="media__badge">Réseau & organisation</div>
-          </div>
-          <figcaption>
-            Une structure qui combine proximité terrain et rigueur de suivi.
-          </figcaption>
-        </figure>
-
-        <div class="hero__stats">
-          <div class="stat">
-            <div class="stat__k">Créé</div>
-            <div class="stat__v">en 2000</div>
-          </div>
-          <div class="stat">
-            <div class="stat__k">Implantation</div>
-            <div class="stat__v">multi-agences</div>
-          </div>
-          <div class="stat">
-            <div class="stat__k">Suivi</div>
-            <div class="stat__v">process structuré</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- IDENTITÉ -->
-  <section id="identite" class="section">
-    <div class="container">
-      <div class="section__head reveal">
-        <h2>Notre identité</h2>
-        <p>
-          GTI Immobilier est une entreprise familiale fondée en 2000.
-          Nous avons grandi sur le terrain, en construisant un réseau local et une organisation interne
-          qui sécurise les projets dans la durée.
-        </p>
-      </div>
-
-      <div class="cardsGrid reveal">
-        <article class="card">
-          <div class="card__icon">🏛️</div>
-          <h3>Une histoire familiale</h3>
-          <p>
-            Une croissance progressive, sans perdre l’essentiel :
-            proximité, exigence, et qualité d’accompagnement.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card__icon">📍</div>
-          <h3>Un ancrage régional</h3>
-          <p>
-            La connaissance des micro-marchés fait la différence :
-            prix réels, délais, profils d’acquéreurs, dynamique locale.
-          </p>
-        </article>
-
-        <article class="card">
-          <div class="card__icon">🧭</div>
-          <h3>Une approche structurée</h3>
-          <p>
-            Des méthodes et des repères clairs.
-            Pas de “pilotage au feeling” : des étapes suivies, un dossier tenu.
-          </p>
-        </article>
-      </div>
-
-      <div class="metrics reveal">
-        <div class="metric">
-          <div class="metric__big">2000</div>
-          <div class="metric__small">année de création</div>
-        </div>
-        <div class="metric">
-          <div class="metric__big">18</div>
-          <div class="metric__small">agences (réseau GTI)</div>
-        </div>
-        <div class="metric">
-          <div class="metric__big">35</div>
-          <div class="metric__small">collaborateurs (transaction)</div>
-        </div>
-        <div class="metric">
-          <div class="metric__big">100%</div>
-          <div class="metric__small">orientation client & suivi</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RÉSEAU -->
-  <section id="reseau" class="section section--soft">
-    <div class="container">
-      <div class="section__head reveal">
-        <h2>Nos agences</h2>
-        <p>
-          Une présence locale réelle : chaque secteur a ses spécificités.
-          Notre réseau permet d’être au plus près des marchés… et des clients.
-        </p>
-      </div>
-
-      <div class="presence reveal">
-        <div class="presence__left">
-          <div class="presence__panel">
-            <h3>Une proximité qui change tout</h3>
-            <p class="muted">
-              Sur un projet vendeur, le détail compte : prix, demande locale, saisonnalité, typologie des acheteurs,
-              qualité des dossiers. La présence terrain permet une lecture plus fine.
-            </p>
-
-            <div class="pillRow">
-              <span class="chip">Estimation cohérente</span>
-              <span class="chip">Réseau local</span>
-              <span class="chip">Réactivité</span>
-              <span class="chip">Suivi dossier</span>
+        <div class="heroCard">
+          <div class="heroCard__title">Notre méthode en 3 piliers</div>
+          <div class="heroCard__grid">
+            <div class="kpi">
+              <div class="kpi__k">Préparer</div>
+              <div class="kpi__v">Prix & stratégie</div>
             </div>
-
-            <div class="ctaRow">
-              <a class="btn btn--small" href="/nos-agences/">📍 Voir toutes nos agences</a>
-              <a class="btn btn--ghost btn--small" href="#contact">✉️ Être rappelé</a>
+            <div class="kpi">
+              <div class="kpi__k">Commercialiser</div>
+              <div class="kpi__v">Visibilité pilotée</div>
             </div>
-
-            <p class="micro">
-              Astuce : sur “Nos agences”, affiche une carte + liens par ville/secteur — c’est très rassurant.
-            </p>
-          </div>
-        </div>
-
-        <div class="presence__right">
-          <div class="mapCard">
-            <div class="mapCard__top">
-              <div class="mapCard__title">Exemples d’implantation</div>
-              <div class="mapCard__tag">Région</div>
-            </div>
-            <div class="cityGrid">
-              <div class="city">Saint-Étienne</div>
-              <div class="city">Firminy</div>
-              <div class="city">Montbrison</div>
-              <div class="city">Yssingeaux</div>
-              <div class="city">Issoire</div>
-              <div class="city">Annonay</div>
-              <div class="city city--more">+ voir toutes</div>
-            </div>
-            <div class="mapCard__hint">
-              (Liste courte volontairement : l’objectif est la preuve, pas l’exhaustivité.)
+            <div class="kpi">
+              <div class="kpi__k">Sécuriser</div>
+              <div class="kpi__v">Offres → acte</div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ORGANISATION -->
-  <section id="organisation" class="section">
-    <div class="container">
-      <div class="section__head reveal">
-        <h2>Une organisation qui sécurise</h2>
-        <p>
-          La vente ne devrait jamais dépendre d’une seule personne.
-          Chez GTI, vous avez un référent… et une structure qui assure la continuité du dossier.
-        </p>
-      </div>
-
-      <div class="split reveal">
-        <div class="split__img">
-          <img src="assets/group-org.jpg" alt="Organisation et suivi GTI Immobilier">
-        </div>
-        <div class="split__card">
-          <h3>Concrètement, cela se traduit par :</h3>
-
-          <div class="checks">
-            <div class="check">✔ Un dossier mieux tenu</div>
-            <div class="check">✔ Des étapes mieux anticipées</div>
-            <div class="check">✔ Une coordination plus fluide</div>
-            <div class="check">✔ Une continuité même en cas d’absence</div>
-          </div>
-
-          <div class="divider"></div>
-
-          <details class="acc" data-acc-group="org" open>
-            <summary>
-              <span class="acc__title">Comment nous évitons les “flottements”</span>
-              <span class="acc__hint">Voir</span>
-            </summary>
-            <div class="acc__body">
-              <ul>
-                <li>Des repères clairs sur les étapes d’un dossier</li>
-                <li>Une coordination interne sur les points sensibles</li>
-                <li>Des relances et suivis pilotés, pas “au hasard”</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="acc" data-acc-group="org">
-            <summary>
-              <span class="acc__title">Ce que cela apporte au vendeur</span>
-              <span class="acc__hint">Voir</span>
-            </summary>
-            <div class="acc__body">
-              <ul>
-                <li>Moins d’incertitudes sur les délais</li>
-                <li>Une meilleure qualité de dossiers acquéreurs</li>
-                <li>Une sécurisation renforcée jusqu’à l’acte</li>
-              </ul>
-            </div>
-          </details>
-
-          <div class="micro">
-            Pour découvrir notre méthode détaillée, voir :
-            <a class="inlineLink" href="/Mandat/">Mandat Signature GTI</a>.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OUTILS -->
-  <section id="outils" class="section section--impact">
-    <div class="container">
-      <div class="impactCard reveal">
-        <div class="impactCard__pill">Outils & présentation</div>
-        <h2>Des supports modernes, uniquement quand ils apportent un vrai bénéfice.</h2>
-        <p>
-          L’outil n’est jamais un gadget : il sert à donner confiance,
-          améliorer la projection et clarifier les informations pour accélérer la décision.
-        </p>
-
-        <div class="toolGrid">
-          <div class="tool">
-            <div class="tool__ico">🎥</div>
-            <div class="tool__t">Vidéo</div>
-            <div class="tool__s">Présentation plus claire, meilleure projection.</div>
-          </div>
-          <div class="tool">
-            <div class="tool__ico">🧭</div>
-            <div class="tool__t">Visite virtuelle 360°</div>
-            <div class="tool__s">Filtre et qualifie davantage les demandes.</div>
-          </div>
-          <div class="tool">
-            <div class="tool__ico">🧾</div>
-            <div class="tool__t">Dossier structuré</div>
-            <div class="tool__s">Informations utiles, étapes et pièces suivies.</div>
-          </div>
-          <div class="tool">
-            <div class="tool__ico">📣</div>
-            <div class="tool__t">Diffusion pilotée</div>
-            <div class="tool__s">Ajustements en fonction des retours et signaux.</div>
-          </div>
-        </div>
-
-        <div class="impactFooter">
-          <a class="btn btn--small" href="/nos-agences/">📍 Trouver mon agence</a>
-          <a class="btn btn--ghost btn--small" href="#contact">✉️ Demande de rappel</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ENGAGEMENTS -->
-  <section class="section section--soft">
-    <div class="container">
-      <div class="section__head reveal">
-        <h2>Nos engagements</h2>
-        <p>Ce que vous devez ressentir dès les premiers échanges.</p>
-      </div>
-
-      <div class="engGrid reveal">
-        <article class="eng">
-          <div class="eng__h">Clarté</div>
-          <div class="eng__p">Une stratégie expliquée, des actions visibles.</div>
-        </article>
-        <article class="eng">
-          <div class="eng__h">Sérieux</div>
-          <div class="eng__p">Dossier tenu, étapes suivies, coordination réelle.</div>
-        </article>
-        <article class="eng">
-          <div class="eng__h">Proximité</div>
-          <div class="eng__p">Un contact humain, accessible, disponible.</div>
-        </article>
-        <article class="eng">
-          <div class="eng__h">Responsabilité</div>
-          <div class="eng__p">On accompagne jusqu’au bout, pas “jusqu’à l’annonce”.</div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section__head reveal">
-        <h2>Parlons de votre projet</h2>
-        <p>Un premier échange suffit pour comprendre votre situation et vous orienter.</p>
-      </div>
-
-      <div class="contactGrid">
-        <div class="contactCard reveal">
-          <h3>📍 Trouver mon agence</h3>
-          <p class="muted">
-            Accédez à la page “Nos agences” pour choisir votre secteur et contacter l’équipe locale.
-          </p>
-          <a class="btn btn--wide" href="/nos-agences/">Voir nos agences</a>
-          <p class="micro">Si vous préférez, laissez vos coordonnées : on vous rappelle.</p>
-        </div>
-
-        <form class="form reveal" id="contactForm">
-          <div class="form__title">Demande de rappel</div>
-
-          <label>
-            <span>Votre prénom</span>
-            <input name="prenom" required>
-          </label>
-
-          <label>
-            <span>Téléphone</span>
-            <input name="tel" type="tel" required>
-          </label>
-
-          <label>
-            <span>Email (optionnel)</span>
-            <input name="email" type="email">
-          </label>
-
-          <label>
-            <span>Votre besoin</span>
-            <select name="besoin">
-              <option value="" selected>Choisir…</option>
-              <option>Je veux une estimation</option>
-              <option>Je veux vendre</option>
-              <option>Je veux acheter</option>
-              <option>Je veux des informations</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Message (optionnel)</span>
-            <textarea name="message" rows="4" placeholder="Ville / type de bien / délai…"></textarea>
-          </label>
-
-          <button class="btn btn--wide" type="submit">Envoyer</button>
-          <p class="form__msg" id="formMsg" aria-live="polite"></p>
+          <button class="btn btn--wide heroCard__btn" type="button" data-open-drawer="servicesDetails">
+            Voir le détail (optionnel)
+          </button>
 
           <p class="micro">
-            En envoyant ce formulaire, vous acceptez d’être recontacté par GTI Immobilier.
+            On garde la page claire. Le détail est accessible si vous le souhaitez.
           </p>
-        </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES CARDS -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2>Nos services, simplement</h2>
+        <p>Des blocs courts. Et, si vous voulez, le détail en “En savoir plus”.</p>
+      </div>
+
+      <div class="cards3">
+        <article class="card reveal">
+          <h3>Estimation stratégique</h3>
+          <p class="muted">
+            Une estimation utile : positionnement, timing, et recommandations concrètes.
+          </p>
+          <button class="linkBtn" type="button" data-open-drawer="estimation">En savoir plus</button>
+        </article>
+
+        <article class="card reveal">
+          <h3>Mise en valeur & outils</h3>
+          <p class="muted">
+            Photos, annonce structurée, et selon le bien : vidéo, visite virtuelle 360°.
+          </p>
+          <button class="linkBtn" type="button" data-open-drawer="tools">En savoir plus</button>
+        </article>
+
+        <article class="card reveal">
+          <h3>Sécurisation jusqu’à l’acte</h3>
+          <p class="muted">
+            Qualification, offres encadrées, suivi notaire, conditions suspensives.
+          </p>
+          <button class="linkBtn" type="button" data-open-drawer="security">En savoir plus</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ courte -->
+  <section class="section section--soft" id="faq">
+    <div class="container">
+      <div class="section__head reveal">
+        <h2>Questions fréquentes</h2>
+        <p>Rapide, clair, utile.</p>
+      </div>
+
+      <div class="faq">
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Est-ce que vous faites une estimation “au hasard” ?</summary>
+          <div class="faq__body">
+            Non. Nous appuyons l’estimation sur le marché local et des comparables pertinents,
+            puis nous expliquons le positionnement et la stratégie.
+          </div>
+        </details>
+
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Est-ce que vous utilisez la visite virtuelle / la vidéo ?</summary>
+          <div class="faq__body">
+            Oui, selon le bien et l’objectif : ces outils améliorent la projection,
+            filtrent mieux les demandes et rendent la commercialisation plus efficace.
+          </div>
+        </details>
+
+        <details class="faq__item reveal" data-acc-group="faq">
+          <summary>Quel est votre rôle après une offre acceptée ?</summary>
+          <div class="faq__body">
+            Une offre acceptée n’est pas une vente : nous coordonnons les pièces, les délais,
+            le suivi notaire et les conditions suspensives jusqu’à l’acte.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="ctaBox reveal">
+        <div>
+          <h2>Parlons de votre projet</h2>
+          <p class="muted">
+            Un premier échange suffit pour obtenir une estimation cohérente et une stratégie adaptée.
+          </p>
+        </div>
+        <div class="ctaBox__actions">
+          <a class="btn btn--wide" href="tel:+33XXXXXXXXX">📞 Appeler</a>
+          <button class="btn btn--ghost btn--wide" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+        </div>
       </div>
     </div>
   </section>
@@ -465,32 +216,94 @@
       </div>
       <div class="footer__links">
         <a href="#top">Haut</a>
-        <a href="/nos-agences/">Nos agences</a>
-        <a href="/Mandat/">Mandat Signature</a>
+        <a href="mandat.html">Mandat Signature</a>
+        <a href="groupe.html">Le Groupe</a>
       </div>
     </div>
   </footer>
 
-  <!-- CTA RAIL (desktop) -->
+  <!-- CTA rail desktop -->
   <aside class="ctaRail" aria-label="Actions rapides">
-    <a class="ctaRail__btn" href="/nos-agences/" title="Nos agences">
-      <span class="ctaRail__ico">📍</span>
-      <span class="ctaRail__txt">Nos agences</span>
+    <a class="ctaRail__btn" href="tel:+33XXXXXXXXX" title="Appeler">
+      <span class="ctaRail__ico">📞</span>
+      <span class="ctaRail__txt">Appeler</span>
     </a>
-    <a class="ctaRail__btn ctaRail__btn--primary" href="#contact" title="Être rappelé">
+    <button class="ctaRail__btn ctaRail__btn--primary" type="button" data-open-drawer="callback" title="Être rappelé">
       <span class="ctaRail__ico">✉️</span>
       <span class="ctaRail__txt">Être rappelé</span>
-    </a>
+    </button>
   </aside>
 
-  <!-- CTA BAR mobile -->
+  <!-- CTA bar mobile -->
   <div class="ctaBar" role="region" aria-label="Actions rapides mobile">
-    <a class="ctaBar__btn" href="/nos-agences/">📍 Nos agences</a>
-    <a class="ctaBar__btn ctaBar__btn--primary" href="#contact">✉️ Être rappelé</a>
+    <a class="ctaBar__btn" href="tel:+33XXXXXXXXX">📞 Appeler</a>
+    <button class="ctaBar__btn ctaBar__btn--primary" type="button" data-open-drawer="callback">✉️ Être rappelé</button>
+  </div>
+
+  <!-- DRAWERS -->
+  <div class="drawer" id="drawer">
+    <div class="drawer__backdrop" data-close-drawer></div>
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Détails">
+      <div class="drawer__head">
+        <div>
+          <div class="drawer__title" id="drawerTitle">Détails</div>
+          <div class="drawer__sub" id="drawerSub">Informations complémentaires</div>
+        </div>
+        <button class="drawer__close" type="button" data-close-drawer aria-label="Fermer">✕</button>
+      </div>
+      <div class="drawer__content" id="drawerContent"></div>
+    </div>
+  </div>
+
+  <!-- Drawer rappel -->
+  <div class="drawer" id="drawerCallback" aria-hidden="true">
+    <div class="drawer__backdrop" data-close-drawer></div>
+
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Demande de rappel">
+      <div class="drawer__head">
+        <div>
+          <div class="drawer__title">Être rappelé</div>
+          <div class="drawer__sub">On vous rappelle rapidement.</div>
+        </div>
+        <button class="drawer__close" type="button" data-close-drawer aria-label="Fermer">✕</button>
+      </div>
+
+      <form class="drawerForm" id="drawerForm">
+        <label>
+          <span>Prénom</span>
+          <input name="prenom" required>
+        </label>
+
+        <label>
+          <span>Téléphone</span>
+          <input name="tel" type="tel" required>
+        </label>
+
+        <label>
+          <span>Votre situation</span>
+          <select name="situation">
+            <option value="" selected>Choisir…</option>
+            <option>Je veux une estimation</option>
+            <option>Je veux vendre vite</option>
+            <option>Je veux vendre au meilleur prix</option>
+            <option>J’ai déjà un acquéreur</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Message (optionnel)</span>
+          <textarea name="message" rows="4" placeholder="Adresse, type de bien, délai…"></textarea>
+        </label>
+
+        <button class="btn btn--wide" type="submit">Envoyer</button>
+        <p class="drawerForm__msg" id="drawerMsg" aria-live="polite"></p>
+        <p class="micro">En envoyant, vous acceptez d’être recontacté par GTI Immobilier.</p>
+      </form>
+    </div>
   </div>
 
 </main>
 
-<script src="script.js"></script>
+<script src="services.js"></script>
 </body>
 </html>
