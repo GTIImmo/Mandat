@@ -19,10 +19,11 @@
       burger.setAttribute("aria-expanded", String(!open));
       mobileNav.hidden = open;
     });
-    mobileNav.querySelectorAll("a,button").forEach(el => el.addEventListener("click", closeMobileNav));
+
+    mobileNav.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMobileNav));
   }
 
-  // Smooth scroll (only # anchors on this page)
+  // Smooth scroll with header offset
   const header = document.getElementById("siteHeader");
   const headerH = () => header ? header.getBoundingClientRect().height : 0;
 
@@ -32,6 +33,7 @@
       if (!href || href.length < 2) return;
       const target = document.querySelector(href);
       if (!target) return;
+
       e.preventDefault();
       const top = window.scrollY + target.getBoundingClientRect().top - headerH() - 12;
       window.scrollTo({ top, behavior: "smooth" });
@@ -39,7 +41,7 @@
     });
   });
 
-  // Accordion groups
+  // Accordion groups: only one open per group
   const allDetails = Array.from(document.querySelectorAll("details[data-acc-group]"));
   allDetails.forEach(d => {
     d.addEventListener("toggle", () => {
@@ -51,7 +53,7 @@
     });
   });
 
-  // Reveal
+  // Reveal on scroll
   const reveals = Array.from(document.querySelectorAll(".reveal"));
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver((entries) => {
@@ -67,88 +69,360 @@
     reveals.forEach(el => el.classList.add("is-in"));
   }
 
-  // Generic Drawer (content)
-  const drawer = document.getElementById("drawer");
-  const drawerTitle = document.getElementById("drawerTitle");
-  const drawerSub = document.getElementById("drawerSub");
-  const drawerContent = document.getElementById("drawerContent");
+  // Drawers
+  const drawerCallback = document.getElementById("drawerCallback");
+  const drawerDetails = document.getElementById("drawerDetails");
+  const detailsTitle = document.getElementById("detailsTitle");
+  const detailsBody = document.getElementById("detailsBody");
+
   let lastFocus = null;
 
-  function openDrawerContent(key) {
-    if (!drawer || !drawerTitle || !drawerSub || !drawerContent) return;
-    const d = DRAWER_CONTENT[key];
-    if (!d) return;
-
+  function openDrawer(drawerEl) {
+    if (!drawerEl) return;
     lastFocus = document.activeElement;
-
-    drawerTitle.textContent = d.title;
-    drawerSub.textContent = d.sub || "Informations complémentaires";
-    drawerContent.innerHTML = d.html;
-
-    drawer.classList.add("is-open");
+    drawerEl.classList.add("is-open");
+    drawerEl.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-
-    const first = drawer.querySelector("button, a, input, select, textarea");
+    const first = drawerEl.querySelector("input,select,textarea,button,a");
     if (first) first.focus();
   }
 
-  function closeDrawer(el) {
-    if (!el) return;
-    el.classList.remove("is-open");
+  function closeDrawer(drawerEl) {
+    if (!drawerEl) return;
+    drawerEl.classList.remove("is-open");
+    drawerEl.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  document.querySelectorAll("[data-open-drawer]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const key = btn.getAttribute("data-open-drawer");
-      if (key === "callback") {
-        openCallback();
-      } else {
-        openDrawerContent(key);
-      }
-    });
-  });
-
+  // Close on backdrop/buttons
   document.querySelectorAll("[data-close-drawer]").forEach(el => {
     el.addEventListener("click", () => {
-      closeDrawer(drawer);
-      closeCallback();
+      closeDrawer(drawerCallback);
+      closeDrawer(drawerDetails);
     });
   });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       closeMobileNav();
-      closeDrawer(drawer);
-      closeCallback();
+      closeDrawer(drawerCallback);
+      closeDrawer(drawerDetails);
     }
   });
 
-  // Callback drawer (form)
-  const drawerCallback = document.getElementById("drawerCallback");
+  // Open callback drawer
+  document.querySelectorAll('[data-open-drawer="callback"]').forEach(btn => {
+    btn.addEventListener("click", () => openDrawer(drawerCallback));
+  });
+
+  // Details content (MANDAT-centric)
+  const DETAILS = {
+    contenu_mandat: `
+      <h3>Le contenu du Mandat Signature</h3>
+      <p class="detailsLead">
+        Un mandat conçu pour piloter la vente, filtrer les visites, encadrer les offres et sécuriser jusqu’à l’acte.
+      </p>
+
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Préparer</strong>
+            <span class="detailsTag">Stratégie</span>
+          </div>
+          <ul>
+            <li>Estimation argumentée & positionnement cohérent</li>
+            <li>Conseils concrets avant lancement</li>
+            <li>Mise en valeur qui inspire confiance</li>
+          </ul>
+        </div>
+
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Commercialiser</strong>
+            <span class="detailsTag">Pilotage</span>
+          </div>
+          <ul>
+            <li>Diffusion adaptée au bien et au secteur</li>
+            <li>Pilotage selon les retours et objections</li>
+            <li>Ajustements au bon moment</li>
+          </ul>
+        </div>
+
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Sécuriser</strong>
+            <span class="detailsTag">Jusqu’à l’acte</span>
+          </div>
+          <ul>
+            <li>Visites qualifiées (budget, financement, timing)</li>
+            <li>Offres encadrées (prix + conditions + solidité)</li>
+            <li>Coordination notaire, pièces, délais</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    preparer: `
+      <h3>I — Préparer</h3>
+      <p class="detailsLead">On lance une commercialisation efficace quand le positionnement est clair.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Prix & stratégie</strong>
+            <span class="detailsTag">Positionnement</span>
+          </div>
+          <ul>
+            <li>Analyse du marché local</li>
+            <li>Positionnement crédible</li>
+            <li>Objectif : attirer les bons profils</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Mise en valeur</strong>
+            <span class="detailsTag">Confiance</span>
+          </div>
+          <ul>
+            <li>Annonce claire, complète, rassurante</li>
+            <li>Visuels cohérents et hiérarchisés</li>
+            <li>Moins de visites inutiles</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    commercialiser: `
+      <h3>II — Commercialiser</h3>
+      <p class="detailsLead">Diffuser, oui. Mais surtout piloter : mesurer et ajuster.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Diffusion</strong>
+            <span class="detailsTag">Visibilité</span>
+          </div>
+          <ul>
+            <li>Canaux adaptés au bien</li>
+            <li>Présentation cohérente</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Pilotage</strong>
+            <span class="detailsTag">Actions</span>
+          </div>
+          <ul>
+            <li>Analyse des retours et objections</li>
+            <li>Ajustements au bon moment</li>
+            <li>Objectif : garder l’efficacité</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    securiser: `
+      <h3>III — Sécuriser</h3>
+      <p class="detailsLead">Le mandat vise l’acte authentique : le reste est une étape.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Offres encadrées</strong>
+            <span class="detailsTag">Analyse</span>
+          </div>
+          <ul>
+            <li>Conditions, solidité, financement</li>
+            <li>Négociation structurée</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Suivi notaire</strong>
+            <span class="detailsTag">Acte</span>
+          </div>
+          <ul>
+            <li>Coordination pièces / délais</li>
+            <li>Suivi des conditions suspensives</li>
+            <li>Conduire jusqu’à la signature</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    outils: `
+      <h3>Outils & technologie</h3>
+      <p class="detailsLead">Nous activons les outils qui servent réellement la vente, selon le bien.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Visite virtuelle 360°</strong>
+            <span class="detailsTag">Projection</span>
+          </div>
+          <ul>
+            <li>Meilleure compréhension du bien</li>
+            <li>Tri naturel des demandes</li>
+            <li>Gain de temps sur les visites</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Vidéo</strong>
+            <span class="detailsTag">Premium</span>
+          </div>
+          <ul>
+            <li>Perception plus qualitative</li>
+            <li>Contexte & volumes mieux compris</li>
+            <li>Aide à la décision</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    pourquoi: `
+      <h3>Pourquoi ça marche</h3>
+      <p class="detailsLead">Une vente performante repose sur 3 principes : clarté, exécution, sécurisation.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Clarté</strong>
+            <span class="detailsTag">Cadre</span>
+          </div>
+          <ul>
+            <li>Positionnement crédible = meilleurs contacts</li>
+            <li>Présentation claire = moins de visites inutiles</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Exécution</strong>
+            <span class="detailsTag">Pilotage</span>
+          </div>
+          <ul>
+            <li>On ajuste selon la réalité du marché</li>
+            <li>On évite l’essoufflement</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    cadre_fixe: `
+      <h3>Ce que le mandat fixe</h3>
+      <p class="detailsLead">Un cadre clair pour piloter la vente et protéger la cohérence de la commercialisation.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Un plan de vente</strong>
+            <span class="detailsTag">Méthode</span>
+          </div>
+          <ul>
+            <li>Étapes, actions, suivi</li>
+            <li>Décisions expliquées</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Une cohérence</strong>
+            <span class="detailsTag">Valeur</span>
+          </div>
+          <ul>
+            <li>Commercialisation structurée</li>
+            <li>Objectif : vendre dans de bonnes conditions</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    acquereur: `
+      <h3>Vous pouvez présenter un acquéreur</h3>
+      <p class="detailsLead">Vous restez acteur : si vous identifiez un acheteur, vous pouvez nous le présenter.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>On sécurise la suite</strong>
+            <span class="detailsTag">Dossier</span>
+          </div>
+          <ul>
+            <li>Analyse de la solvabilité</li>
+            <li>Encadrement de l’offre</li>
+            <li>Suivi notaire jusqu’à l’acte</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Honoraires ajustés</strong>
+            <span class="detailsTag">Mandat</span>
+          </div>
+          <p>
+            Selon les conditions prévues au mandat, les honoraires peuvent être ajustés,
+            sans modifier le niveau d’accompagnement jusqu’à la signature.
+          </p>
+        </div>
+      </div>
+    `,
+
+    securisation: `
+      <h3>Sécurisation jusqu’à l’acte</h3>
+      <p class="detailsLead">Encadrer les offres et conduire le dossier jusqu’à la signature authentique.</p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Offres</strong>
+            <span class="detailsTag">Conditions</span>
+          </div>
+          <ul>
+            <li>Conditions, délais, financement</li>
+            <li>Négociation structurée</li>
+          </ul>
+        </div>
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Notaire</strong>
+            <span class="detailsTag">Acte</span>
+          </div>
+          <ul>
+            <li>Coordination des pièces</li>
+            <li>Relances et respect des délais</li>
+            <li>Objectif : acte authentique</li>
+          </ul>
+        </div>
+      </div>
+    `,
+
+    continuite: `
+      <h3>Comment on assure la continuité</h3>
+      <p class="detailsLead">
+        L’idée n’est pas “de parler de l’entreprise”, mais de rendre le mandat plus fiable : suivi, coordination, continuité.
+      </p>
+      <div class="detailsGrid">
+        <div class="detailsCard">
+          <div class="detailsK">
+            <strong>Continuité</strong>
+            <span class="detailsTag">Suivi</span>
+          </div>
+          <ul>
+            <li>Un référent + une organisation de suivi</li>
+            <li>Retours structurés et décisions expliquées</li>
+            <li>Coordination dossier / notaire</li>
+          </ul>
+        </div>
+      </div>
+    `
+  };
+
+  // Open details drawer
+  document.querySelectorAll('[data-open-drawer="details"]').forEach(btn => {
+    btn.addEventListener("click", () => {
+      const title = btn.getAttribute("data-drawer-title") || "Détails";
+      const key = btn.getAttribute("data-drawer-content") || "";
+      if (detailsTitle) detailsTitle.textContent = title;
+      if (detailsBody) detailsBody.innerHTML = DETAILS[key] || "<p>Contenu indisponible.</p>";
+      openDrawer(drawerDetails);
+    });
+  });
+
+  // Callback form (no backend)
   const drawerForm = document.getElementById("drawerForm");
   const drawerMsg = document.getElementById("drawerMsg");
 
-  function openCallback() {
-    if (!drawerCallback) return;
-    lastFocus = document.activeElement;
-    drawerCallback.classList.add("is-open");
-    drawerCallback.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    const firstInput = drawerCallback.querySelector("input,select,textarea,button");
-    if (firstInput) firstInput.focus();
-  }
-
-  function closeCallback() {
-    if (!drawerCallback) return;
-    drawerCallback.classList.remove("is-open");
-    drawerCallback.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
-  }
-
-  // Form (no backend)
   if (drawerForm && drawerMsg) {
     drawerForm.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -160,85 +434,25 @@
       }
       drawerMsg.textContent = "✅ Merci ! On vous rappelle très rapidement.";
       drawerForm.reset();
-      setTimeout(() => closeCallback(), 700);
+      setTimeout(() => closeDrawer(drawerCallback), 700);
     });
   }
 
-  // Drawer contents
-  const DRAWER_CONTENT = {
-    servicesDetails: {
-      title: "Détail de nos services (optionnel)",
-      sub: "Pour comprendre notre approche, sans alourdir la page.",
-      html: `
-        <p>
-          Notre méthode est simple : <strong>préparer</strong>, <strong>commercialiser</strong>, <strong>sécuriser</strong>.
-          L’objectif : une vente claire, pilotée, et sécurisée jusqu’à l’acte authentique.
-        </p>
-        <h3>Préparer</h3>
-        <ul>
-          <li>Estimation argumentée et compréhensible (marché local + comparables).</li>
-          <li>Positionnement prix & stratégie de mise en vente (tempo, leviers, plan d’action).</li>
-        </ul>
-        <h3>Commercialiser</h3>
-        <ul>
-          <li>Mise en valeur : annonce structurée, visuels cohérents et hiérarchisés.</li>
-          <li>Selon le bien : <strong>visite virtuelle 360°</strong>, <strong>vidéo</strong>.</li>
-          <li>Diffusion adaptée et pilotage des retours : on ajuste au bon moment.</li>
-        </ul>
-        <h3>Sécuriser</h3>
-        <ul>
-          <li>Visites qualifiées (projet, budget, financement, délais).</li>
-          <li>Offres encadrées : analyse des conditions et solidité du dossier.</li>
-          <li>Suivi notaire et coordination jusqu’à l’acte.</li>
-        </ul>
-      `
-    },
-    estimation: {
-      title: "Estimation stratégique",
-      sub: "Une estimation utile : un prix + une stratégie.",
-      html: `
-        <p>
-          Une estimation ne se limite pas à un chiffre. Elle sert à définir une stratégie claire :
-          positionnement, timing, mise en valeur et plan d’action.
-        </p>
-        <ul>
-          <li>Analyse du marché local + comparables pertinents.</li>
-          <li>Recommandations concrètes avant mise en vente.</li>
-          <li>Objectif : éviter l’usure du bien et attirer des profils sérieux.</li>
-        </ul>
-      `
-    },
-    tools: {
-      title: "Mise en valeur & outils (vidéo, 360°…)",
-      sub: "Pour filtrer mieux, convaincre plus vite.",
-      html: `
-        <p>
-          La présentation influence la qualité des demandes. Selon le bien et le marché,
-          nous activons les outils qui créent de la confiance et de la projection.
-        </p>
-        <ul>
-          <li>Annonce structurée : claire, rassurante, complète.</li>
-          <li>Visuels hiérarchisés : cohérence, ordre, lisibilité.</li>
-          <li><strong>Visite virtuelle 360°</strong> : projection, tri qualitatif, gain de temps.</li>
-          <li><strong>Vidéo</strong> : perception, compréhension, mise en valeur.</li>
-        </ul>
-      `
-    },
-    security: {
-      title: "Sécurisation jusqu’à l’acte",
-      sub: "Offre acceptée ≠ vente : on sécurise la suite.",
-      html: `
-        <p>
-          La réussite d’une vente se joue autant après l’offre que pendant la commercialisation.
-          On encadre, on suit, on coordonne.
-        </p>
-        <ul>
-          <li>Qualification acquéreur : projet, budget, financement, timing.</li>
-          <li>Analyse des offres : conditions, solidité du dossier, points de vigilance.</li>
-          <li>Suivi notaire : pièces, délais, conditions suspensives.</li>
-          <li>Objectif : aller jusqu’à l’acte, sans flottement.</li>
-        </ul>
-      `
-    }
-  };
+  // Contact form (no backend)
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("formMsg");
+  if (form && msg) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const prenom = form.querySelector('input[name="prenom"]')?.value?.trim();
+      const tel = form.querySelector('input[name="tel"]')?.value?.trim();
+
+      if (!prenom || !tel) {
+        msg.textContent = "⚠️ Merci de renseigner votre prénom et votre téléphone.";
+        return;
+      }
+      msg.textContent = "✅ Merci ! Votre demande est bien envoyée. Nous vous recontactons très rapidement.";
+      form.reset();
+    });
+  }
 })();
